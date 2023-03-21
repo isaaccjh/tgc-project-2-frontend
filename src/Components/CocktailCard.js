@@ -11,7 +11,7 @@ export default function CocktailCard(props) {
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    By: 
+                    By: {props.user.username}
                 </Card.Text>
             <Button variant="danger">View Recipe!</Button>
             </Card.Body>

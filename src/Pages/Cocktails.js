@@ -44,7 +44,7 @@ export default class Cocktails extends React.Component {
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
                                 <CocktailCard name={post.name}
                                               imageUrl={post.imageUrl}
-                                              user={this.state.users}  />
+                                              user={this.state.users.find(user => user._id === post.userId)}  />
                             </div>
                         ))}
                 </div>
