@@ -21,7 +21,7 @@ export default class Cocktails extends React.Component {
         imageUrl: "",
         name: "",
         glassType: "",
-        preparation: ""
+        preparation: "",
     }
 
     // READ FUNCTIONS
@@ -91,8 +91,12 @@ export default class Cocktails extends React.Component {
             imageUrl: "",
             name: "",
             glassType: "",
-            preparation: ""
-        })
+            preparation: "",
+            cocktailFormStatus: false
+        });
+
+
+        this.loadPosts();
     }
 
     componentDidMount = () => {
@@ -105,7 +109,7 @@ export default class Cocktails extends React.Component {
     }
 
     onUpdateField = e => this.setState({ [e.target.name]: e.target.value});
-    
+
     render() {
         return (<div>
 
@@ -115,6 +119,7 @@ export default class Cocktails extends React.Component {
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
                                  closeForm={this.closeCocktailForm}
                                  onUpdateField={this.onUpdateField}
+                                 submitForm={this.submitCocktailForm}
                                   />
                     <div className="row">
                         {this.state.posts.map(post => (
@@ -125,7 +130,8 @@ export default class Cocktails extends React.Component {
                                     cocktailModalStatus={this.state.cocktailModal}
                                     cocktailModalId={this.state.activeCocktailModal}
                                     toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
-                                    closeCocktailModal={this.closeCocktailModal} />
+                                    closeCocktailModal={this.closeCocktailModal}
+                                     />
 
                             </div>
                         ))}
