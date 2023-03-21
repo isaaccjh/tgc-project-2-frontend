@@ -38,13 +38,25 @@ export default function NewCocktail(props) {
                         <Col>
                             <Form.Select name="alcoholic">
                                 <option>Drink Type</option>
-                                <option value="highball"></option>
-                                <option value="lowball">Lowball</option>
+                                <option value="alcoholic">Cocktail</option>
+                                <option value="non-alcoholic">Mocktail</option>
                             </Form.Select>
                         </Col>
                     </Row>
                     <Row>
-
+                        <Col>
+                            <p>Flavour Profile</p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p>Ingredients</p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p>Preparation Instructions</p>
+                        </Col>
                     </Row>
                 </Form>
                 <Button className="mt-4 me-2" variant="danger" onClick={props.closeForm}>Cancel</Button>

@@ -12,8 +12,16 @@ export default class Cocktails extends React.Component {
         users: [],
         cocktailModal: false,
         activeCocktailModal: "",
-        cocktailFormStatus: false
+        cocktailFormStatus: false,
 
+        // FOR COCKTAIL CREATION:
+        userId: "6411699375602770754977c4",
+        alcoholic: "",
+        distinctions: [],
+        imageUrl: "",
+        name: "",
+        glassType: "",
+        preparation: ""
     }
 
     // READ FUNCTIONS
@@ -45,6 +53,8 @@ export default class Cocktails extends React.Component {
         })
     }
 
+
+    //  CREATE FUNCTIONS
     toggleCocktailForm = () => {
         this.setState({
             cocktailFormStatus: true
@@ -57,6 +67,15 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    submitCocktailForm = async () => {
+        try {
+            const response = await axios.post(`${BASE_API}cocktails/new-post`)
+
+        } catch (e) {
+            console.log("Error sending data:", e.message)
+        }
+    }
+
     componentDidMount = () => {
         try {
             this.loadPosts();
@@ -65,6 +84,8 @@ export default class Cocktails extends React.Component {
             console.log("Error fetching data:", e.message)
         }
     }
+
+    onUpdateField = e => this.setState({ [e.target.name]: e.target.value})
 
     render() {
         return (<div>
