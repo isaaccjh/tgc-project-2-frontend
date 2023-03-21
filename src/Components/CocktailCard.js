@@ -7,11 +7,11 @@ export default function CocktailCard(props) {
 
     return <div>
         <Card border="primary" style={{"width": "18rem"}}>
-            <Card.Img variant="top" src="https://www.thespruceeats.com/thmb/r6dINFq3-aq1IX15bubkUWuA-ek=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-mint-julep-recipe-759323-hero-01-ea60587d78c44f7f8e1c5cc16f6c3934.jpg"></Card.Img>
+            <Card.Img style={{"maxHeight": "300px", "min-height": "300px", "objectFit": "cover"}}variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
-                <Card.Title>Mint Julep</Card.Title>
+                <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    By: Isaac Chan
+                    By: 
                 </Card.Text>
             <Button variant="danger">View Recipe!</Button>
             </Card.Body>

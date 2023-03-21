@@ -27,8 +27,16 @@ export default class Cocktails extends React.Component {
     }
 
     render() {
-        return (<div>
-            <CocktailCard />
-        </div>)
+        return (
+            <div className="container">
+                <div className="row">
+                        {this.state.posts.map(post => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
+                                <CocktailCard name={post.name}
+                                              imageUrl={post.imageUrl}  />
+                            </div>
+                        ))}
+                </div>
+            </div>)
     }
 }
