@@ -9,6 +9,7 @@ import { Row, Col } from "react-bootstrap";
 
 export default class NewCocktail extends React.Component {
 
+
     render() {
         return (<div>
             <Modal show={this.props.formStatus} centered="true" animation={true} backdrop="static">
@@ -48,16 +49,27 @@ export default class NewCocktail extends React.Component {
                                 </Form.Select>
                             </Col>
                         </Row>
+
                         <Row className="mt-2">
                             <Col>
-                                <Form.Label>Flavour Profiles: </Form.Label>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Text>Flavour</InputGroup.Text>
-                                    <Form.Control name="distinctions" onChange={this.props.onUpdateField} placeholder="All flavours (e.g. Sour)" />
-                                </InputGroup>
-                                <Button size="sm">Add More</Button>
+                                {this.props.distinctions.map((flavour, index) => (
+                                    <div key={index}>
+                                        <Form.Label>Flavour Profiles: </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <InputGroup.Text>Flavour</InputGroup.Text>
+                                            <Form.Control
+                                                defaultValue={flavour}
+                                                name="addDistinction"
+                                                onChange={this.props.onUpdateField}
+                                                placeholder="All flavours (e.g. Sour)"
+                                            />
+                                        </InputGroup>
+                                        <Button size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
+                                    </div>
+                                ))}
                             </Col>
                         </Row>
+
                         <Row>
                             <Col>
                                 <Form.Label>Preparation Instructions:</Form.Label>

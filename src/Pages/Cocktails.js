@@ -17,11 +17,12 @@ export default class Cocktails extends React.Component {
         // FOR COCKTAIL CREATION:
         userId: "6411699375602770754977c4",
         alcoholic: "",
-        distinctions: [],
+        distinctions: [""],
         imageUrl: "",
         name: "",
         glassType: "",
         preparation: "",
+        addDistinction: ""
     }
 
     // READ FUNCTIONS
@@ -108,7 +109,15 @@ export default class Cocktails extends React.Component {
         }
     }
 
-    onUpdateField = e => this.setState({ [e.target.name]: e.target.value});
+    onUpdateField = e => this.setState({ [e.target.name]: e.target.value });
+
+    addDistinction = (e) => {
+        if (!this.state.distinctions.includes(this.state.addDistinction)) {
+            this.setState({
+                distinctions: [...this.state.distinctions, this.state.addDistinction]
+            })
+        }
+    }
 
     render() {
         return (<div>
@@ -117,10 +126,13 @@ export default class Cocktails extends React.Component {
                 <div className="row">
                     <button className="mt-3 mx-auto" onClick={this.toggleCocktailForm}>Add New Cocktail</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
-                                 closeForm={this.closeCocktailForm}
-                                 onUpdateField={this.onUpdateField}
-                                 submitForm={this.submitCocktailForm}
-                                  />
+                        closeForm={this.closeCocktailForm}
+                        onUpdateField={this.onUpdateField}
+                        submitForm={this.submitCocktailForm}
+                        updateFlavour={this.onUpdateFlavour}
+                        addDistinction={this.addDistinction}
+                        distinctions={this.state.distinctions}
+                    />
                     <div className="row">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
@@ -131,8 +143,7 @@ export default class Cocktails extends React.Component {
                                     cocktailModalId={this.state.activeCocktailModal}
                                     toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
                                     closeCocktailModal={this.closeCocktailModal}
-                                     />
-
+                                />
                             </div>
                         ))}
                     </div>

@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button"
 export default function CocktailCard(props) {
 
     return <div>
-        <Card border="primary" style={{"width": "18rem"}}>
+        <Card border="primary" style={{"width": "22rem"}}>
             <Card.Img style={{"maxHeight": "300px", "min-height": "300px", "objectFit": "cover"}}variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
@@ -16,7 +16,7 @@ export default function CocktailCard(props) {
             <Button variant="primary" onClick={props.toggleCocktailModal}>View Recipe!</Button>
             </Card.Body>
         </Card>
-        <Modal show={props.cocktailModalStatus} animation="true" centered="true">
+        <Modal show={props.cocktailModalStatus} animation="true" centered="true" backdrop={true}>
             <Modal.Body>
                 <div>{props.cocktailModalId}</div>
             <Button variant="danger" onClick={props.closeCocktailModal}>Close</Button>
