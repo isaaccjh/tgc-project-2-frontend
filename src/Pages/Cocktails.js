@@ -69,11 +69,30 @@ export default class Cocktails extends React.Component {
 
     submitCocktailForm = async () => {
         try {
-            const response = await axios.post(`${BASE_API}cocktails/new-post`)
+            const response = await axios.post(`${BASE_API}cocktails/new-post`, {
+                userId: this.state.userId,
+                alcoholic: this.state.alcoholic,
+                distinctions: this.state.distinctions,
+                glassType: this.state.glassType,
+                imageUrl: this.state.imageUrl,
+                name: this.state.name,
+                preparation: this.state.preparation
+            })
+
+            console.log("Response:", response.data)
 
         } catch (e) {
             console.log("Error sending data:", e.message)
-        }
+        };
+
+        this.setState({
+            alcoholic: "",
+            distinctions: [],
+            imageUrl: "",
+            name: "",
+            glassType: "",
+            preparation: ""
+        })
     }
 
     componentDidMount = () => {
@@ -85,8 +104,8 @@ export default class Cocktails extends React.Component {
         }
     }
 
-    onUpdateField = e => this.setState({ [e.target.name]: e.target.value})
-
+    onUpdateField = e => this.setState({ [e.target.name]: e.target.value});
+    
     render() {
         return (<div>
 
@@ -94,7 +113,9 @@ export default class Cocktails extends React.Component {
                 <div className="row">
                     <button className="mt-3 mx-auto" onClick={this.toggleCocktailForm}>Add New Cocktail</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
-                                 closeForm={this.closeCocktailForm} />
+                                 closeForm={this.closeCocktailForm}
+                                 onUpdateField={this.onUpdateField}
+                                  />
                     <div className="row">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
