@@ -47,8 +47,14 @@ export default class Cocktails extends React.Component {
 
     toggleCocktailForm = () => {
         this.setState({
-            cocktailFormStatus: "true"
+            cocktailFormStatus: true
         });
+    }
+
+    closeCocktailForm = () => {
+        this.setState({
+            cocktailFormStatus: false
+        })
     }
 
     componentDidMount = () => {
@@ -66,7 +72,8 @@ export default class Cocktails extends React.Component {
             <div className="container">
                 <div className="row">
                     <button className="mt-3 mx-auto" onClick={this.toggleCocktailForm}>Add New Cocktail</button>
-                    <NewCocktail formStatus={this.state.cocktailFormStatus} />
+                    <NewCocktail formStatus={this.state.cocktailFormStatus}
+                                 closeForm={this.closeCocktailForm} />
                     <div className="row">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
