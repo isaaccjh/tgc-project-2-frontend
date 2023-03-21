@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button"
@@ -13,8 +13,15 @@ export default function CocktailCard(props) {
                 <Card.Text className="text-muted">
                     By: {props.user.username}
                 </Card.Text>
-            <Button variant="danger">View Recipe!</Button>
+            <Button variant="primary" onClick={props.toggleCocktailModal}>View Recipe!</Button>
             </Card.Body>
         </Card>
+        <Modal show={props.cocktailModalStatus} animation="true" centered="true">
+            <Modal.Body>
+                <div>{props.cocktailModalId}</div>
+            <Button variant="danger" onClick={props.closeCocktailModal}>Close</Button>
+            </Modal.Body>
+            
+        </Modal>
     </div>
 }
