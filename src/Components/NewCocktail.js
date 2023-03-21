@@ -11,7 +11,7 @@ export default class NewCocktail extends React.Component {
 
     render() {
         return (<div>
-            <Modal show={this.props.formStatus} centered="true" animation="true">
+            <Modal show={this.props.formStatus} centered="true" animation={true} backdrop="static">
                 <Modal.Header>
                     <Modal.Title>Add a new cocktail</Modal.Title>
                 </Modal.Header>
@@ -55,7 +55,7 @@ export default class NewCocktail extends React.Component {
                                     <InputGroup.Text>Flavour</InputGroup.Text>
                                     <Form.Control name="distinctions" onChange={this.props.onUpdateField} placeholder="All flavours (e.g. Sour)" />
                                 </InputGroup>
-                                <Button size="sm" >Add More</Button>
+                                <Button size="sm">Add More</Button>
                             </Col>
                         </Row>
                         <Row>
