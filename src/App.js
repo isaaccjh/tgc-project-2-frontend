@@ -1,6 +1,6 @@
 import React from "react"
 import Cocktails from "./Pages/Cocktails";
-import BASE_API from "./Components/BASE_API";
+
 
 function App() {
   return (
