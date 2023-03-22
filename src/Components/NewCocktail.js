@@ -94,7 +94,7 @@ export default class NewCocktail extends React.Component {
                         </Row>
                     </Form>
                     <Button className="mt-4 me-2" variant="danger" onClick={this.props.closeForm}>Cancel</Button>
-                    <Button className="mt-4" variant="primary" onClick={this.props.submitForm}>Submit</Button>
+                    <Button className="mt-4" variant="primary" onClick={this.props.submitForm}>Post</Button>
                 </Modal.Body>
             </Modal>
         </div>)

@@ -41,7 +41,7 @@ export default class Cocktails extends React.Component {
         updatedAlcoholic: "",
         updatedPreparation: "",
         updatedName: "",
-        
+
         // TO DELETE COCKTAIL POST
         postToDelete: ""
 
@@ -63,7 +63,7 @@ export default class Cocktails extends React.Component {
     }
 
     toggleCocktailModal = (postId) => {
-        const postToView = this.state.posts.find(post => post._id === postId )
+        const postToView = this.state.posts.find(post => post._id === postId)
 
         this.setState({
             activeCocktailModal: postId,
@@ -141,18 +141,18 @@ export default class Cocktails extends React.Component {
         this.setState({
             postBeingEdited: postId,
             viewDistinctions: [...this.state.viewDistinctions, ""]
-        }, () => console.log(this.state.viewDistinctions));
+        }, () => console.log("begin edit:", this.state.viewDistinctions));
 
         console.log(postId)
     }
 
     cancelEdit = () => {
-        const original = this.state.viewDistinctions.slice(0, -1) 
+        const original = this.state.viewDistinctions.slice(0, -1)
 
         this.setState({
             postBeingEdited: "",
             viewDistinctions: original
-        },() => console.log(original))
+        }, console.log("cancel edit:", original))
     }
 
     confirmEdit = async (post) => {
@@ -176,42 +176,51 @@ export default class Cocktails extends React.Component {
 
     submitCocktailForm = async () => {
 
-        if (this.state.addDistinction) {
-            const finalArr = [...this.state.distinctions, this.state.addDistinction]
-            this.setState({ 
-                distinctions: finalArr
+        const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
+        console.log(filteredArray);
+        console.log(this.state.addDistinction);
+        console.log([...filteredArray, this.state.addDistinction])
+        if (this.state.addDistinction !== "") {
+            const newArr = [...filteredArray, this.state.addDistinction]
+            this.setState({
+                distinctions: newArr
+            }, async () => {
+
+                try {
+                    const response = await axios.post(`${BASE_API}cocktails/new-post`, {
+                        userId: this.state.userId,
+                        alcoholic: this.state.alcoholic,
+                        distinctions: this.state.distinctions,
+                        glassType: this.state.glassType,
+                        imageUrl: this.state.imageUrl,
+                        name: this.state.name,
+                        preparation: this.state.preparation
+                    })
+
+                    console.log("Response:", response.data)
+
+                } catch (e) {
+                    console.log("Error sending data:", e.message)
+                };
+
+                this.setState({
+                    alcoholic: "",
+                    distinctions: [""],
+                    imageUrl: "",
+                    name: "",
+                    glassType: "",
+                    preparation: "",
+                    cocktailFormStatus: false,
+                    addDistinction: ""
+                });
+
+
+                this.loadPosts();
             })
         }
 
-        try {
-            const response = await axios.post(`${BASE_API}cocktails/new-post`, {
-                userId: this.state.userId,
-                alcoholic: this.state.alcoholic,
-                distinctions: this.state.distinctions,
-                glassType: this.state.glassType,
-                imageUrl: this.state.imageUrl,
-                name: this.state.name,
-                preparation: this.state.preparation
-            })
-
-            console.log("Response:", response.data)
-
-        } catch (e) {
-            console.log("Error sending data:", e.message)
-        };
-
-        this.setState({
-            alcoholic: "",
-            distinctions: [],
-            imageUrl: "",
-            name: "",
-            glassType: "",
-            preparation: "",
-            cocktailFormStatus: false
-        });
 
 
-        this.loadPosts();
     }
 
     componentDidMount = () => {
@@ -226,25 +235,15 @@ export default class Cocktails extends React.Component {
     onUpdateField = e => this.setState({ [e.target.name]: e.target.value });
 
     addDistinction = (e) => {
-        if (this.state.distinctions[0] === "") {
-            const arr = this.state.distinctions
-            arr[0] = this.state.addDistinction
+        const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
+
+        if (!this.state.distinctions.includes(this.state.addDistinction)) {
             this.setState({
-                distinctions: [this.state.addDistinction, ""]
+                distinctions: [...filteredArray, this.state.addDistinction, ""],
+                addDistinction: ""
             })
         }
-
-        if (!(this.state.distinctions.includes(this.state.addDistinction))) {
-            const arr = this.state.distinctions.slice(0, -1);
-            const newArr = [...arr, this.state.addDistinction, ""]
-
-            this.setState({
-                distinctions: newArr
-            }, ()=> console.log("distinctions:", this.state.distinctions))
-        }
-
     }
-
     render() {
         return (<div>
 
@@ -263,7 +262,7 @@ export default class Cocktails extends React.Component {
                     <div className="row">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
-                                <CocktailCard 
+                                <CocktailCard
                                     // READ ALL COCKTAIL POSTS
                                     name={post.name}
                                     imageUrl={post.imageUrl}
@@ -280,12 +279,12 @@ export default class Cocktails extends React.Component {
                                     viewName={this.state.viewName}
                                     viewPreparation={this.state.viewPreparation}
                                     //UPDATE COCKTAIL POST
-                                     updatedName={this.state.updatedName}
-                                     updatedImageUrl={this.state.updatedImageUrl}
-                                     updatedAlcoholic={this.state.updatedAlcoholic}
-                                     updatedDistinctions={this.state.updatedDistinctions}
-                                     updatedGlassType={this.state.updatedGlassType}
-                                     updatedPreparation={this.state.updatedPreparation}
+                                    updatedName={this.state.updatedName}
+                                    updatedImageUrl={this.state.updatedImageUrl}
+                                    updatedAlcoholic={this.state.updatedAlcoholic}
+                                    updatedDistinctions={this.state.updatedDistinctions}
+                                    updatedGlassType={this.state.updatedGlassType}
+                                    updatedPreparation={this.state.updatedPreparation}
                                     // FUNCTIONS
                                     onUpdateField={this.onUpdateField}
                                     deletePost={() => this.deletePost(post._id)}
@@ -293,7 +292,7 @@ export default class Cocktails extends React.Component {
                                     cancelDelete={this.cancelDelete}
                                     delete={this.state.deleteConfirmation}
                                     postBeingEdited={this.state.postBeingEdited}
-                                    beginEdit={()=> this.beginEdit(post._id)}
+                                    beginEdit={() => this.beginEdit(post._id)}
                                     cancelEdit={this.cancelEdit}
                                     deleteFlavour={this.deleteFlavourDistinction}
                                     addDistinction={this.addDistinction}
