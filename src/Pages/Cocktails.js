@@ -40,7 +40,10 @@ export default class Cocktails extends React.Component {
         updatedGlassType: "",
         updatedAlcoholic: "",
         updatedPreparation: "",
-        updatedName: ""
+        updatedName: "",
+        
+        // TO DELETE COCKTAIL POST
+        postToDelete: ""
 
     }
 
@@ -89,15 +92,15 @@ export default class Cocktails extends React.Component {
 
     // DELETE FUNCTIONS
 
-    deletePost = async (post) => {
+    deletePost = async () => {
         try {
-            const response = await axios.delete(`${BASE_API}cocktails/delete/${post._id}`);
+            const response = await axios.delete(`${BASE_API}cocktails/delete/${this.state.postToDelete}`);
             console.log("Response:", response)
         } catch (e) {
             console.log("Error", e.message)
         }
 
-        const updatePost = this.state.posts.filter(p => p._id !== post._id);
+        const updatePost = this.state.posts.filter(p => p._id !== this.state.postToDelete);
         this.setState({
             posts: updatePost
         })
@@ -105,31 +108,51 @@ export default class Cocktails extends React.Component {
         this.setState({
             deleteConfirmation: false
         })
+
+        console.log(this.state.postToDelete);
+
     }
 
-    confirmDelete = () => {
+    confirmDelete = (postId) => {
         this.setState({
-            deleteConfirmation: true
+            deleteConfirmation: true,
+            postToDelete: postId
         })
+
+        console.log(postId);
     }
 
     cancelDelete = () => {
         this.setState({
             deleteConfirmation: false
         })
+
+    }
+
+    deleteFlavourDistinction = i => {
+        const arr = this.state.distinctions.filter(distinction => distinction !== this.state.distinctions[i])
+        this.setState({
+            distinctions: arr
+        })
     }
 
     // UPDATE FUNCTIONS 
     beginEdit = (postId) => {
         this.setState({
-            postBeingEdited: postId
-        })
+            postBeingEdited: postId,
+            viewDistinctions: [...this.state.viewDistinctions, ""]
+        }, () => console.log(this.state.viewDistinctions));
+
+        console.log(postId)
     }
 
     cancelEdit = () => {
+        const original = this.state.viewDistinctions.slice(0, -1) 
+
         this.setState({
-            postBeingEdited: ""
-        })
+            postBeingEdited: "",
+            viewDistinctions: original
+        },() => console.log(original))
     }
 
     confirmEdit = async (post) => {
@@ -152,6 +175,14 @@ export default class Cocktails extends React.Component {
     }
 
     submitCocktailForm = async () => {
+
+        if (this.state.addDistinction) {
+            const finalArr = [...this.state.distinctions, this.state.addDistinction]
+            this.setState({ 
+                distinctions: finalArr
+            })
+        }
+
         try {
             const response = await axios.post(`${BASE_API}cocktails/new-post`, {
                 userId: this.state.userId,
@@ -204,10 +235,8 @@ export default class Cocktails extends React.Component {
         }
 
         if (!(this.state.distinctions.includes(this.state.addDistinction))) {
-
             const arr = this.state.distinctions.slice(0, -1);
             const newArr = [...arr, this.state.addDistinction, ""]
-
 
             this.setState({
                 distinctions: newArr
@@ -229,6 +258,7 @@ export default class Cocktails extends React.Component {
                         updateFlavour={this.onUpdateFlavour}
                         addDistinction={this.addDistinction}
                         distinctions={this.state.distinctions}
+                        deleteFlavour={this.deleteFlavourDistinction}
                     />
                     <div className="row">
                         {this.state.posts.map(post => (
@@ -258,13 +288,15 @@ export default class Cocktails extends React.Component {
                                      updatedPreparation={this.state.updatedPreparation}
                                     // FUNCTIONS
                                     onUpdateField={this.onUpdateField}
-                                    deletePost={() => this.deletePost(post)}
-                                    deleteConfirmation={this.confirmDelete}
+                                    deletePost={() => this.deletePost(post._id)}
+                                    deleteConfirmation={() => this.confirmDelete(post._id)}
                                     cancelDelete={this.cancelDelete}
                                     delete={this.state.deleteConfirmation}
                                     postBeingEdited={this.state.postBeingEdited}
                                     beginEdit={()=> this.beginEdit(post._id)}
                                     cancelEdit={this.cancelEdit}
+                                    deleteFlavour={this.deleteFlavourDistinction}
+                                    addDistinction={this.addDistinction}
                                 />
                             </div>
                         ))}

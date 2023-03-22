@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Row, Col } from "react-bootstrap";
+import { ImCancelCircle } from "react-icons/im";
 
 
 
@@ -63,16 +64,19 @@ export default class NewCocktail extends React.Component {
                                                 onChange={this.props.onUpdateField}
                                                 placeholder="All flavours (e.g. Sour)"
                                             />
+                                            <Button variant="outline-secondary" onClick={() => this.props.deleteFlavour(index)}>
+                                                <ImCancelCircle />
+                                            </Button>
                                         </InputGroup>
                                     </div>
                                 ))}
-                                <Button className="mt-2" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
+                                <Button className="mt-1" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
                             </Col>
                         </Row>
 
                         <Row>
                             <Col>
-                                <Form.Label>Preparation Instructions:</Form.Label>
+                                <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
                                 <InputGroup>
                                     <Form.Control as="textarea" name="preparation" onChange={this.props.onUpdateField} />
                                 </InputGroup>

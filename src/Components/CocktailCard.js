@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { Nav, Accordion, Row, Col, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { ImCancelCircle } from "react-icons/im";
 
 
 export default function CocktailCard(props) {
@@ -123,6 +124,28 @@ export default function CocktailCard(props) {
                                     <option value="alcoholic">Cocktail</option>
                                     <option value="non-alcoholic">Mocktail</option>
                                 </Form.Select>
+                            </Col>
+                        </Row>
+                        <Row className="mt-2">
+                            <Col>
+                                <Form.Label>Flavour Profiles: </Form.Label>
+                                {props.viewDistinctions.map((flavour, index, array) => (
+                                    <div key={index}>
+                                        <InputGroup className="mb-1">
+                                            <InputGroup.Text>Flavour</InputGroup.Text>
+                                            <Form.Control
+                                                defaultValue={flavour}
+                                                name="addDistinction"
+                                                onChange={props.onUpdateField}
+                                                placeholder="All flavours (e.g. Sour)"
+                                            />
+                                            <Button variant="outline-secondary" onClick={() => props.deleteFlavour(index)}>
+                                                < ImCancelCircle />
+                                            </Button>
+                                        </InputGroup>
+                                    </div>
+                                ))}
+                                <Button className="mt-1" size="sm" onClick={props.addDistinction}>Add Flavour</Button>
                             </Col>
                         </Row>
                 </Form>
