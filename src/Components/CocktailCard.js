@@ -2,13 +2,14 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { Nav, Accordion } from "react-bootstrap";
+import { Nav, Accordion, Row, Col, InputGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 
 export default function CocktailCard(props) {
 
     return <div>
-        <Card border="primary" style={{ "width": "18rem" }}>
+        <Card border="primary" className="shadow" style={{ "width": "18rem" }}>
             <Card.Img style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
@@ -63,23 +64,50 @@ export default function CocktailCard(props) {
                         </Accordion>
                     </Card.Body>
                 </Card>
-                <Button variant="secondary" className="me-2 mt-3">Edit</Button>
+                <Button variant="secondary" onClick={props.beginEdit} className="me-2 mt-3">Edit</Button>
                 <Button variant="danger" onClick={props.closeCocktailModal} className="mt-3">Close</Button>
             </Modal.Body>
         </Modal>
+
+
+        {/* DELETE CONFIRMATION  */}
         <Modal show={props.delete}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.cancelDelete}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={props.deletePost}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            <Modal.Header closeButton>
+                <Modal.Title>Delete Confirmation</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={props.cancelDelete}>
+                    Cancel
+                </Button>
+                <Button variant="danger" onClick={props.deletePost}>
+                    Delete
+                </Button>
+            </Modal.Footer>
+        </Modal>
+
+        {/* UPDATE FORM */}
+        <Modal show={props.postBeingEdited} centered size="lg">
+            <Modal.Header>
+                <Modal.Title>Edit mocktail</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Row>
+                        <Col>
+                            <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" />
+                        </Col>
+                    </Row>
+                </Form>
+                <Button variant="secondary" className="mt-2 me-2">
+                    Confirm Edit
+                </Button>
+                <Button variant="danger" onClick={props.cancelEdit} className="mt-2">
+                    Cancel Edit
+                </Button>
+
+            </Modal.Body>
+        </Modal>
+
     </div>
 }

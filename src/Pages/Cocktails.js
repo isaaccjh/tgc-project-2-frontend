@@ -31,7 +31,17 @@ export default class Cocktails extends React.Component {
         viewDistinctions: [],
         viewGlassType: "",
         viewAlcoholic: "",
-        viewPreparation: ""
+        viewPreparation: "",
+
+        // TO EDIT COCKTAIL POSTS
+        postBeingEdited: "",
+        updatedImageUrl: "",
+        updatedDistinctions: [],
+        updatedGlassType: "",
+        updatedAlcoholic: "",
+        updatedPreparation: "",
+        updatedName: ""
+
     }
 
     // READ FUNCTIONS
@@ -107,6 +117,23 @@ export default class Cocktails extends React.Component {
         this.setState({
             deleteConfirmation: false
         })
+    }
+
+    // UPDATE FUNCTIONS 
+    beginEdit = (postId) => {
+        this.setState({
+            postBeingEdited: postId
+        })
+    }
+
+    cancelEdit = () => {
+        this.setState({
+            postBeingEdited: ""
+        })
+    }
+
+    confirmEdit = async (post) => {
+
     }
 
 
@@ -223,7 +250,9 @@ export default class Cocktails extends React.Component {
                                     deleteConfirmation={this.confirmDelete}
                                     cancelDelete={this.cancelDelete}
                                     delete={this.state.deleteConfirmation}
-
+                                    postBeingEdited={this.state.postBeingEdited}
+                                    beginEdit={()=> this.beginEdit(post._id)}
+                                    cancelEdit={this.cancelEdit}
                                 />
                             </div>
                         ))}
