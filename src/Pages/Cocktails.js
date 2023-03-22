@@ -13,6 +13,7 @@ export default class Cocktails extends React.Component {
         cocktailModal: false,
         activeCocktailModal: "",
         cocktailFormStatus: false,
+        deleteConfirmation: false,
 
         // FOR COCKTAIL CREATION:
         userId: "6411699375602770754977c4",
@@ -90,6 +91,22 @@ export default class Cocktails extends React.Component {
         this.setState({
             posts: updatePost
         })
+
+        this.setState({
+            deleteConfirmation: false
+        })
+    }
+
+    confirmDelete = () => {
+        this.setState({
+            deleteConfirmation: true
+        })
+    }
+
+    cancelDelete = () => {
+        this.setState({
+            deleteConfirmation: false
+        })
     }
 
 
@@ -102,7 +119,8 @@ export default class Cocktails extends React.Component {
 
     closeCocktailForm = () => {
         this.setState({
-            cocktailFormStatus: false
+            cocktailFormStatus: false,
+            distinctions: [""]
         })
     }
 
@@ -166,7 +184,7 @@ export default class Cocktails extends React.Component {
 
             this.setState({
                 distinctions: newArr
-            })
+            }, ()=> console.log("distinctions:", this.state.distinctions))
         }
 
     }
@@ -202,6 +220,9 @@ export default class Cocktails extends React.Component {
                                     viewName={this.state.viewName}
                                     viewPreparation={this.state.viewPreparation}
                                     deletePost={() => this.deletePost(post)}
+                                    deleteConfirmation={this.confirmDelete}
+                                    cancelDelete={this.cancelDelete}
+                                    delete={this.state.deleteConfirmation}
 
                                 />
                             </div>

@@ -27,18 +27,19 @@ export default class NewCocktail extends React.Component {
                             <Col>
                                 <Form.Select name="glassType" onChange={this.props.onUpdateField}>
                                     <option>Glass Type</option>
-                                    <option value="highball">Highball</option>
-                                    <option value="lowball">Lowball</option>
-                                    <option value="collins">Collins</option>
-                                    <option value="zombie">Zombie</option>
-                                    <option value="rocks">Rocks</option>
-                                    <option value="coupe">Coupe</option>
-                                    <option value="martini">Martini</option>
-                                    <option value="copper">Copper</option>
-                                    <option value="margarita">Margarita</option>
-                                    <option value="hurricane">Hurricane</option>
-                                    <option value="punch">Punch Cup</option>
-                                    <option value="julep">Julep Cup</option>
+                                    <option value="Highball Glass">Highball</option>
+                                    <option value="Lowball Glass">Lowball</option>
+                                    <option value="Collins Glass">Collins</option>
+                                    <option value="Zombie Glass">Zombie</option>
+                                    <option value="Rocks Glass">Rocks</option>
+                                    <option value="Coupe Glass">Coupe</option>
+                                    <option value="Martini Glass">Martini</option>
+                                    <option value="Copper Glass">Copper</option>
+                                    <option value="Margarita Glass">Margarita</option>
+                                    <option value="Hurricane Glass">Hurricane</option>
+                                    <option value="Shot Glass">Shot</option>
+                                    <option value="Punch Cup">Punch Cup</option>
+                                    <option value="Julep Cup">Julep Cup</option>
                                 </Form.Select>
                             </Col>
                             <Col>

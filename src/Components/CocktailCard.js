@@ -16,7 +16,7 @@ export default function CocktailCard(props) {
                     By: {props.user.username}
                 </Card.Text>
                 <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
-                <Button variant="danger" size="sm" onClick={props.deletePost}>Delete</Button>
+                <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
             </Card.Body>
         </Card>
         <Modal show={props.cocktailModalStatus} animation="true" centered="true" backdrop={true}>
@@ -39,7 +39,7 @@ export default function CocktailCard(props) {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Details</Accordion.Header>
                                 <Accordion.Body>
-                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic ? <strong>Cocktail</strong> : <strong>Mocktail</strong>} best consumed in a <strong>{props.viewGlassType}</strong> glass.
+                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic ? <strong>Cocktail</strong> : <strong>Mocktail</strong>} best consumed in a <strong>{props.viewGlassType}</strong>.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -67,5 +67,19 @@ export default function CocktailCard(props) {
                 <Button variant="danger" onClick={props.closeCocktailModal} className="mt-3">Close</Button>
             </Modal.Body>
         </Modal>
+        <Modal show={props.delete}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.cancelDelete}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={props.deletePost}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
 }
