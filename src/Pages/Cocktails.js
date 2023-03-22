@@ -76,6 +76,22 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    // DELETE FUNCTIONS
+
+    deletePost = async (post) => {
+        try {
+            const response = await axios.delete(`${BASE_API}cocktails/delete/${post._id}`);
+            console.log("Response:", response)
+        } catch (e) {
+            console.log("Error", e.message)
+        }
+
+        const updatePost = this.state.posts.filter(p => p._id !== post._id);
+        this.setState({
+            posts: updatePost
+        })
+    }
+
 
     //  CREATE FUNCTIONS
     toggleCocktailForm = () => {
@@ -185,6 +201,7 @@ export default class Cocktails extends React.Component {
                                     viewDistinctions={this.state.viewDistinctions}
                                     viewName={this.state.viewName}
                                     viewPreparation={this.state.viewPreparation}
+                                    deletePost={() => this.deletePost(post)}
 
                                 />
                             </div>
