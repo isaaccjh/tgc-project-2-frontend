@@ -233,11 +233,14 @@ export default class Cocktails extends React.Component {
                     <div className="row">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
-                                <CocktailCard name={post.name}
+                                <CocktailCard 
+                                    // READ ALL COCKTAIL POSTS
+                                    name={post.name}
                                     imageUrl={post.imageUrl}
                                     user={this.state.users.find(user => user._id === post.userId)}
                                     cocktailModalStatus={this.state.cocktailModal}
                                     cocktailModalId={this.state.activeCocktailModal}
+                                    // READ SINGLE COCKTAIL POST
                                     toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
                                     closeCocktailModal={this.closeCocktailModal}
                                     viewGlassType={this.state.viewGlassType}
@@ -246,6 +249,15 @@ export default class Cocktails extends React.Component {
                                     viewDistinctions={this.state.viewDistinctions}
                                     viewName={this.state.viewName}
                                     viewPreparation={this.state.viewPreparation}
+                                    //UPDATE COCKTAIL POST
+                                     updatedName={this.state.updatedName}
+                                     updatedImageUrl={this.state.updatedImageUrl}
+                                     updatedAlcoholic={this.state.updatedAlcoholic}
+                                     updatedDistinctions={this.state.updatedDistinctions}
+                                     updatedGlassType={this.state.updatedGlassType}
+                                     updatedPreparation={this.state.updatedPreparation}
+                                    // FUNCTIONS
+                                    onUpdateField={this.onUpdateField}
                                     deletePost={() => this.deletePost(post)}
                                     deleteConfirmation={this.confirmDelete}
                                     cancelDelete={this.cancelDelete}

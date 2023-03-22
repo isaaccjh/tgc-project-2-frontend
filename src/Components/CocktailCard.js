@@ -40,7 +40,7 @@ export default function CocktailCard(props) {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Details</Accordion.Header>
                                 <Accordion.Body>
-                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic ? <strong>Cocktail</strong> : <strong>Mocktail</strong>} best consumed in a <strong>{props.viewGlassType}</strong>.
+                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic ? "cocktail" : "mocktail"} best consumed in a <strong>{props.viewGlassType}</strong>.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
@@ -95,9 +95,36 @@ export default function CocktailCard(props) {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" />
+                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.viewName}/>
                         </Col>
                     </Row>
+                    <Row className="mt-2">
+                            <Col>
+                                <Form.Select name="glassType" onChange={props.onUpdateField} value={props.viewGlassType}>
+                                    <option>Glass Type</option>
+                                    <option value="Highball Glass">Highball</option>
+                                    <option value="Lowball Glass">Lowball</option>
+                                    <option value="Collins Glass">Collins</option>
+                                    <option value="Zombie Glass">Zombie</option>
+                                    <option value="Rocks Glass">Rocks</option>
+                                    <option value="Coupe Glass">Coupe</option>
+                                    <option value="Martini Glass">Martini</option>
+                                    <option value="Copper Glass">Copper</option>
+                                    <option value="Margarita Glass">Margarita</option>
+                                    <option value="Hurricane Glass">Hurricane</option>
+                                    <option value="Shot Glass">Shot</option>
+                                    <option value="Punch Cup">Punch Cup</option>
+                                    <option value="Julep Cup">Julep Cup</option>
+                                </Form.Select>
+                            </Col>
+                            <Col>
+                                <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.viewAlcoholic}>
+                                    <option>Drink Type</option>
+                                    <option value="alcoholic">Cocktail</option>
+                                    <option value="non-alcoholic">Mocktail</option>
+                                </Form.Select>
+                            </Col>
+                        </Row>
                 </Form>
                 <Button variant="secondary" className="mt-2 me-2">
                     Confirm Edit
