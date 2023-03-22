@@ -49,24 +49,23 @@ export default class NewCocktail extends React.Component {
                                 </Form.Select>
                             </Col>
                         </Row>
-
                         <Row className="mt-2">
                             <Col>
-                                {this.props.distinctions.map((flavour, index) => (
+                            <Form.Label>Flavour Profiles: </Form.Label>
+                                {this.props.distinctions.map((flavour, index, array) => (
                                     <div key={index}>
-                                        <Form.Label>Flavour Profiles: </Form.Label>
-                                        <InputGroup className="mb-3">
+                                        <InputGroup className="mb-1">
                                             <InputGroup.Text>Flavour</InputGroup.Text>
                                             <Form.Control
-                                                defaultValue={flavour}
+                                                defaultValue={array[index+1]}
                                                 name="addDistinction"
                                                 onChange={this.props.onUpdateField}
                                                 placeholder="All flavours (e.g. Sour)"
                                             />
                                         </InputGroup>
-                                        <Button size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
                                     </div>
                                 ))}
+                                <Button className="mt-2" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
                             </Col>
                         </Row>
 

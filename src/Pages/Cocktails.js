@@ -111,12 +111,26 @@ export default class Cocktails extends React.Component {
 
     onUpdateField = e => this.setState({ [e.target.name]: e.target.value });
 
-    addDistinction = (e) => {
-        if (!this.state.distinctions.includes(this.state.addDistinction)) {
+    addDistinction = (e) => {   
+        if (this.state.distinctions[0] === "") {
+            const arr = this.state.distinctions
+            arr[0] =  this.state.addDistinction
             this.setState({
-                distinctions: [...this.state.distinctions, this.state.addDistinction]
+                distinctions: [this.state.addDistinction, ""]
             })
         }
+
+        if (!(this.state.distinctions.includes(this.state.addDistinction))) {
+
+            const arr = this.state.distinctions.slice(0, -1);
+            const newArr = [...arr, this.state.addDistinction, ""]
+
+
+            this.setState({
+                distinctions: newArr
+            })
+        }
+
     }
 
     render() {
