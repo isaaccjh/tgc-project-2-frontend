@@ -22,7 +22,15 @@ export default class Cocktails extends React.Component {
         name: "",
         glassType: "",
         preparation: "",
-        addDistinction: ""
+        addDistinction: "",
+
+        // TO READ COCKTAIL POSTS
+        viewImageUrl: "",
+        viewName: "",
+        viewDistinctions: [],
+        viewGlassType: "",
+        viewAlcoholic: "",
+        viewPreparation: ""
     }
 
     // READ FUNCTIONS
@@ -30,27 +38,41 @@ export default class Cocktails extends React.Component {
         const response = await axios.get(`${BASE_API}cocktails`);
         this.setState({
             posts: response.data
-        }, () => console.log("Posts:", this.state.posts));
+        });
     }
 
     loadUsers = async () => {
         const response = await axios.get(`${BASE_API}users`);
         this.setState({
             users: response.data
-        }, () => console.log("Users:", this.state.users));
+        });
     }
 
     toggleCocktailModal = (postId) => {
+        const postToView = this.state.posts.find(post => post._id === postId )
+
         this.setState({
             activeCocktailModal: postId,
-            cocktailModal: true
-        })
+            cocktailModal: true,
+            viewImageUrl: postToView.imageUrl,
+            viewName: postToView.name,
+            viewDistinctions: postToView.distinctions,
+            viewGlassType: postToView.glassType,
+            viewAlcoholic: postToView.alcoholic,
+            viewPreparation: postToView.preparation
+        });
     }
 
     closeCocktailModal = () => {
         this.setState({
             activeCocktailModal: "",
-            cocktailModal: false
+            cocktailModal: false,
+            viewImageUrl: "",
+            viewName: "",
+            viewDistinctions: [],
+            viewGlassType: "",
+            viewAlcoholic: "",
+            viewPreparation: ""
         })
     }
 
@@ -157,6 +179,13 @@ export default class Cocktails extends React.Component {
                                     cocktailModalId={this.state.activeCocktailModal}
                                     toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
                                     closeCocktailModal={this.closeCocktailModal}
+                                    viewGlassType={this.state.viewGlassType}
+                                    viewAlcoholic={this.state.viewAlcoholic}
+                                    viewImageUrl={this.state.viewImageUrl}
+                                    viewDistinctions={this.state.viewDistinctions}
+                                    viewName={this.state.viewName}
+                                    viewPreparation={this.state.viewPreparation}
+
                                 />
                             </div>
                         ))}
