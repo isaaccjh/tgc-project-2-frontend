@@ -51,13 +51,13 @@ export default class NewCocktail extends React.Component {
                         </Row>
                         <Row className="mt-2">
                             <Col>
-                            <Form.Label>Flavour Profiles: </Form.Label>
+                                <Form.Label>Flavour Profiles: </Form.Label>
                                 {this.props.distinctions.map((flavour, index, array) => (
                                     <div key={index}>
                                         <InputGroup className="mb-1">
                                             <InputGroup.Text>Flavour</InputGroup.Text>
                                             <Form.Control
-                                                defaultValue={array[index+1]}
+                                                defaultValue={array[index + 1]}
                                                 name="addDistinction"
                                                 onChange={this.props.onUpdateField}
                                                 placeholder="All flavours (e.g. Sour)"
