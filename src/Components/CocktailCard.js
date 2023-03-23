@@ -135,7 +135,7 @@ export default function CocktailCard(props) {
                                             <InputGroup.Text>Flavour</InputGroup.Text>
                                             <Form.Control
                                                 defaultValue={flavour}
-                                                name="addDistinction"
+                                                name="updatedDistinctions"
                                                 onChange={props.onUpdateField}
                                                 placeholder="All flavours (e.g. Sour)"
                                             />

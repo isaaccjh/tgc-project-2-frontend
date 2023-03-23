@@ -140,7 +140,7 @@ export default class Cocktails extends React.Component {
     beginEdit = (postId) => {
         this.setState({
             postBeingEdited: postId,
-            viewDistinctions: [...this.state.viewDistinctions, ""]
+            viewDistinctions: [...this.state.viewDistinctions, ""],
         }, () => console.log("begin edit:", this.state.viewDistinctions));
 
         console.log(postId)
@@ -156,7 +156,11 @@ export default class Cocktails extends React.Component {
     }
 
     confirmEdit = async (post) => {
-
+        if (this.state.addDistinction !== "") {
+            this.setState({
+                updatedDistinctions: [...this.state.distinctions, this.state.addDistinction]
+            })
+        }
     }
 
 
@@ -177,10 +181,9 @@ export default class Cocktails extends React.Component {
     submitCocktailForm = async () => {
 
         const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
-        console.log(filteredArray);
-        console.log(this.state.addDistinction);
-        console.log([...filteredArray, this.state.addDistinction])
+
         if (this.state.addDistinction !== "") {
+
             const newArr = [...filteredArray, this.state.addDistinction]
             this.setState({
                 distinctions: newArr
@@ -217,8 +220,36 @@ export default class Cocktails extends React.Component {
 
                 this.loadPosts();
             })
-        }
+        } else {
+            try {
+                const response = await axios.post(`${BASE_API}cocktails/new-post`, {
+                    userId: this.state.userId,
+                    alcoholic: this.state.alcoholic,
+                    distinctions: this.state.distinctions,
+                    glassType: this.state.glassType,
+                    imageUrl: this.state.imageUrl,
+                    name: this.state.name,
+                    preparation: this.state.preparation
+                })
 
+                console.log("Response:", response.data)
+
+            } catch (e) {
+                console.log("Error sending data:", e.message)
+            };
+
+            this.setState({
+                alcoholic: "",
+                distinctions: [""],
+                imageUrl: "",
+                name: "",
+                glassType: "",
+                preparation: "",
+                cocktailFormStatus: false,
+                addDistinction: ""
+            });
+        }
+        console.log("Hello")
 
 
     }
