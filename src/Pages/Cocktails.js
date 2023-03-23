@@ -136,6 +136,19 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    deleteViewFlavourDistinction = i => {
+        const arr = this.state.viewDistinctions.filter(distinction => distinction !== this.state.viewDistinctions[i])
+
+        this.setState({
+            viewDistinctions: arr
+        }, () => console.log("viewDistinctions:", this.state.viewDistinctions))
+
+        console.log(arr)
+        console.log(i);
+        console.log("reached end")
+    }
+
+
     // UPDATE FUNCTIONS 
     beginEdit = (postId) => {
         this.setState({
@@ -275,6 +288,18 @@ export default class Cocktails extends React.Component {
             })
         }
     }
+
+    addViewDistinctions = (e) => {
+        const filteredArray = this.state.viewDistinctions.filter(distinction => distinction !== "");
+
+        if (!this.state.viewDistinctions.includes(this.state.updatedDistinctions)) {
+            this.setState({
+                viewDistinctions: [...filteredArray, this.state.updatedDistinctions, ""],
+                updatedDistinctions: ""
+            })
+        }
+    }
+
     render() {
         return (<div>
 
@@ -325,8 +350,8 @@ export default class Cocktails extends React.Component {
                                     postBeingEdited={this.state.postBeingEdited}
                                     beginEdit={() => this.beginEdit(post._id)}
                                     cancelEdit={this.cancelEdit}
-                                    deleteFlavour={this.deleteFlavourDistinction}
-                                    addDistinction={this.addDistinction}
+                                    deleteFlavour={this.deleteViewFlavourDistinction}
+                                    addDistinction={this.addViewDistinctions}
                                 />
                             </div>
                         ))}
