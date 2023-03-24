@@ -36,7 +36,7 @@ export default class Cocktails extends React.Component {
         // TO EDIT COCKTAIL POSTS
         postBeingEdited: "",
         updatedImageUrl: "",
-        updatedDistinctions: [],
+        updatedDistinctions: "",
         updatedGlassType: "",
         updatedAlcoholic: "",
         updatedPreparation: "",
@@ -292,7 +292,7 @@ export default class Cocktails extends React.Component {
     addViewDistinctions = (e) => {
         const filteredArray = this.state.viewDistinctions.filter(distinction => distinction !== "");
 
-        if (!this.state.viewDistinctions.includes(this.state.updatedDistinctions)) {
+        if (!this.state.viewDistinctions.includes(this.state.updatedDistinctions) && this.state.updatedDistinctions !== "") {
             this.setState({
                 viewDistinctions: [...filteredArray, this.state.updatedDistinctions, ""],
                 updatedDistinctions: ""
