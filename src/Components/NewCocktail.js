@@ -73,7 +73,6 @@ export default class NewCocktail extends React.Component {
                                 <Button className="mt-1" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
                             </Col>
                         </Row>
-
                         <Row>
                             <Col>
                                 <Form.Label className="mt-3">Preparation Instructions:</Form.Label>

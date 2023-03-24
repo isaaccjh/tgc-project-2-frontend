@@ -96,12 +96,12 @@ export default function CocktailCard(props) {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.viewName}/>
+                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.updatedName}/>
                         </Col>
                     </Row>
                     <Row className="mt-2">
                             <Col>
-                                <Form.Select name="glassType" onChange={props.onUpdateField} value={props.viewGlassType}>
+                                <Form.Select name="updatedGlassType" onChange={props.onUpdateField} value={props.updatedGlassType}>
                                     <option>Glass Type</option>
                                     <option value="Highball Glass">Highball</option>
                                     <option value="Lowball Glass">Lowball</option>
@@ -119,7 +119,7 @@ export default function CocktailCard(props) {
                                 </Form.Select>
                             </Col>
                             <Col>
-                                <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.viewAlcoholic}>
+                                <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.updatedAlcoholic}>
                                     <option>Drink Type</option>
                                     <option value="alcoholic">Cocktail</option>
                                     <option value="non-alcoholic">Mocktail</option>
@@ -129,17 +129,17 @@ export default function CocktailCard(props) {
                         <Row className="mt-2">
                             <Col>
                                 <Form.Label>Flavour Profiles: </Form.Label>
-                                {props.viewDistinctions.map((flavour, index, array) => (
-                                    <div key={index}>
+                                {props.updatedDistinctions.map((flavour, index, array) => (
+                                    <div key={flavour}>
                                         <InputGroup className="mb-1">
                                             <InputGroup.Text>Flavour</InputGroup.Text>
                                             <Form.Control
                                                 defaultValue={flavour}
-                                                name="updatedDistinctions"
-                                                onChange={props.onUpdateField}
+                                                name="addDistinction"
+                                                onChange={flavour === "" ?  props.onUpdateField : (e) => props.updateFlavour(e, index)}
                                                 placeholder="All flavours (e.g. Sour)"
                                             />
-                                            <Button variant="outline-secondary" onClick={() => props.deleteFlavour(index)}>
+                                            <Button variant="outline-secondary" onClick={() => props.deleteFlavour(array[index])}>
                                                 < ImCancelCircle />
                                             </Button>
                                         </InputGroup>
@@ -148,8 +148,26 @@ export default function CocktailCard(props) {
                                 <Button className="mt-1" size="sm" onClick={props.addDistinction}>Add Flavour</Button>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
+                                <InputGroup>
+                                    <Form.Control as="textarea" name="updatedPreparation" value={props.updatedPreparation} onChange={props.onUpdateField} />
+                                </InputGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <InputGroup className="mt-2">
+                                    <InputGroup.Text>
+                                        Image URL
+                                    </InputGroup.Text>
+                                    <Form.Control name="updatedImageUrl" value={props.updatedImageUrl} onChange={props.onUpdateField} />
+                                </InputGroup>
+                            </Col>
+                        </Row>
                 </Form>
-                <Button variant="secondary" className="mt-2 me-2">
+                <Button variant="secondary" onClick={props.confirmEdit} className="mt-2 me-2">
                     Confirm Edit
                 </Button>
                 <Button variant="danger" onClick={props.cancelEdit} className="mt-2">
