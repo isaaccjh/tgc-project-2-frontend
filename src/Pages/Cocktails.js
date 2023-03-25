@@ -201,14 +201,10 @@ export default class Cocktails extends React.Component {
                         liked: 0,
                         saved: 0
                     })
-
-                    console.log("Response:", response.data)
-
-                } catch (e) {
-                    console.log("Error sending data:", e.message)
-                };
-
+                    
                 this.setState({
+                    activeCocktailModal: "",
+                    cocktailModal: false,
                     postBeingEdited: "",
                     updatedImageUrl: "",
                     updatedDistinctions: [],
@@ -216,10 +212,16 @@ export default class Cocktails extends React.Component {
                     updatedAlcoholic: "",
                     updatedPreparation: "",
                     updatedName: "",
-                });
+                }, () => this.loadPosts());
 
 
-                this.loadPosts();
+                    console.log("Response:", response.data)
+
+                } catch (e) {
+                    console.log("Error sending data:", e.message)
+                };
+
+                this.loadPosts()
             })
         } else {
             try {
@@ -236,24 +238,28 @@ export default class Cocktails extends React.Component {
                     saved: 0
                 })
 
+                this.setState({
+                    activeCocktailModal: "",
+                    cocktailModal: false,
+                    postBeingEdited: "",
+                    updatedImageUrl: "",
+                    updatedDistinctions: [],
+                    updatedGlassType: "",
+                    updatedAlcoholic: "",
+                    updatedPreparation: "",
+                    updatedName: "",
+                }, () => this.loadPosts());
+
                 console.log("Response:", response.data)
 
             } catch (e) {
                 console.log("Error sending data:", e.message)
             };
 
-            this.setState({
-                postBeingEdited: "",
-                updatedImageUrl: "",
-                updatedDistinctions: [],
-                updatedGlassType: "",
-                updatedAlcoholic: "",
-                updatedPreparation: "",
-                updatedName: "",
-            });
+
         }
         console.log("Hello")
-
+        this.loadPosts()
     }
     
 
@@ -314,10 +320,10 @@ export default class Cocktails extends React.Component {
                         preparation: "",
                         cocktailFormStatus: false,
                         addDistinction: ""
-                    });
+                    }, () =>  this.loadPosts());
 
 
-                    this.loadPosts();
+                   
                 })
             } else {
                 try {
@@ -346,7 +352,7 @@ export default class Cocktails extends React.Component {
                     preparation: "",
                     cocktailFormStatus: false,
                     addDistinction: ""
-                });
+                }, () =>  this.loadPosts());
             }
             console.log("Hello")
 
@@ -370,7 +376,7 @@ export default class Cocktails extends React.Component {
 
             this.setState({
                 updatedDistinctions: arr
-            }, () => console.log("arr in updateFlavour:", arr)
+            }
             )
         }
 
