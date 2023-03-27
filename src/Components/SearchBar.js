@@ -1,13 +1,34 @@
 import React from "react";
-import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsFilter } from "react-icons/bs"
+import { InputGroup, Form, Button, Dropdown } from "react-bootstrap";
 
-export default function SearchBar() {
-    return (<form className="form-light col-12 col-lg-5 mt-2 d-flex w-100 mx-auto">
-        <div className="input-group input-group-inline">
-            <span className="input-group-text pe-3">
-                <AiOutlineSearch />
-            </span>
-            <input type="email" className="form-control" placeholder="Search for a cocktail..." aria-label="Search" aria-describedby="" />
-        </div>
-    </form>)
+export default class SearchBar extends React.Component {
+    state = {
+        
+    }
+
+    render() {
+        return (<InputGroup>
+
+            <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown" className="ms-4">
+                    <BsFilter size={22} /> Filter
+                </Dropdown.Toggle>
+    
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Name</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Ingredients</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Glass Type</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Flavour Profiles</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+            <Form.Control
+                placeholder="Search for a cocktail"
+            />
+    
+    
+            <Button variant="secondary" className="me-4"><AiOutlineSearch /></Button>
+        </InputGroup>)
+    }
 }

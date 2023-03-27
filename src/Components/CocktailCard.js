@@ -96,76 +96,77 @@ export default function CocktailCard(props) {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.updatedName}/>
+                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.updatedName} />
                         </Col>
                     </Row>
                     <Row className="mt-2">
-                            <Col>
-                                <Form.Select name="updatedGlassType" onChange={props.onUpdateField} value={props.updatedGlassType}>
-                                    <option>Glass Type</option>
-                                    <option value="Highball Glass">Highball</option>
-                                    <option value="Lowball Glass">Lowball</option>
-                                    <option value="Collins Glass">Collins</option>
-                                    <option value="Zombie Glass">Zombie</option>
-                                    <option value="Rocks Glass">Rocks</option>
-                                    <option value="Coupe Glass">Coupe</option>
-                                    <option value="Martini Glass">Martini</option>
-                                    <option value="Copper Glass">Copper</option>
-                                    <option value="Margarita Glass">Margarita</option>
-                                    <option value="Hurricane Glass">Hurricane</option>
-                                    <option value="Shot Glass">Shot</option>
-                                    <option value="Punch Cup">Punch Cup</option>
-                                    <option value="Julep Cup">Julep Cup</option>
-                                </Form.Select>
-                            </Col>
-                            <Col>
-                                <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.updatedAlcoholic}>
-                                    <option>Drink Type</option>
-                                    <option value="alcoholic">Cocktail</option>
-                                    <option value="non-alcoholic">Mocktail</option>
-                                </Form.Select>
-                            </Col>
-                        </Row>
-                        <Row className="mt-2">
-                            <Col>
-                                <Form.Label>Flavour Profiles: </Form.Label>
-                                {props.updatedDistinctions.map((flavour, index, array) => (
-                                    <div key={flavour}>
-                                        <InputGroup className="mb-1">
-                                            <InputGroup.Text>Flavour</InputGroup.Text>
-                                            <Form.Control
-                                                defaultValue={flavour}
-                                                name="addDistinction"
-                                                onChange={flavour === "" ?  props.onUpdateField : (e) => props.updateFlavour(e, index)}
-                                                placeholder="All flavours (e.g. Sour)"
-                                            />
-                                            <Button variant="outline-secondary" onClick={() => props.deleteFlavour(array[index])}>
-                                                < ImCancelCircle />
-                                            </Button>
-                                        </InputGroup>
-                                    </div>
-                                ))}
-                                <Button className="mt-1" size="sm" onClick={props.addDistinction}>Add Flavour</Button>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
-                                <InputGroup>
-                                    <Form.Control as="textarea" name="updatedPreparation" value={props.updatedPreparation} onChange={props.onUpdateField} />
-                                </InputGroup>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <InputGroup className="mt-2">
-                                    <InputGroup.Text>
-                                        Image URL
-                                    </InputGroup.Text>
-                                    <Form.Control name="updatedImageUrl" value={props.updatedImageUrl} onChange={props.onUpdateField} />
-                                </InputGroup>
-                            </Col>
-                        </Row>
+                        <Col>
+                            <Form.Select name="updatedGlassType" onChange={props.onUpdateField} value={props.updatedGlassType}>
+                                <option>Glass Type</option>
+                                <option value="Highball Glass">Highball</option>
+                                <option value="Lowball Glass">Lowball</option>
+                                <option value="Collins Glass">Collins</option>
+                                <option value="Zombie Glass">Zombie</option>
+                                <option value="Rocks Glass">Rocks</option>
+                                <option value="Coupe Glass">Coupe</option>
+                                <option value="Martini Glass">Martini</option>
+                                <option value="Copper Glass">Copper</option>
+                                <option value="Margarita Glass">Margarita</option>
+                                <option value="Hurricane Glass">Hurricane</option>
+                                <option value="Shot Glass">Shot</option>
+                                <option value="Punch Cup">Punch Cup</option>
+                                <option value="Julep Cup">Julep Cup</option>
+                            </Form.Select>
+                        </Col>
+                        <Col>
+                            <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.updatedAlcoholic}>
+                                <option>Drink Type</option>
+                                <option value="alcoholic">Cocktail</option>
+                                <option value="non-alcoholic">Mocktail</option>
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                    <Row className="mt-2">
+                        <Col>
+                            <Form.Label>Flavour Profiles: </Form.Label>
+                            {props.updatedDistinctions.map((flavour, index, array) => (
+                                <div key={flavour}>
+                                    <InputGroup className="mb-1">
+                                        <InputGroup.Text>Flavour</InputGroup.Text>
+                                        <Form.Control
+                                            defaultValue={flavour}
+                                            name="addDistinction"
+                                            onChange={flavour === "" ? props.onUpdateField : (e) => props.updateFlavour(e, index)}
+                                            placeholder="All flavours (e.g. Sour)"
+                                            type="text"
+                                        />
+                                        <Button variant="outline-secondary" onClick={() => props.deleteFlavour(array[index])}>
+                                            < ImCancelCircle />
+                                        </Button>
+                                    </InputGroup>
+                                </div>
+                            ))}
+                            <Button className="mt-1" size="sm" onClick={props.addDistinction}>Add Flavour</Button>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
+                            <InputGroup>
+                                <Form.Control as="textarea" name="updatedPreparation" value={props.updatedPreparation} onChange={props.onUpdateField} />
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <InputGroup className="mt-2">
+                                <InputGroup.Text>
+                                    Image URL
+                                </InputGroup.Text>
+                                <Form.Control name="updatedImageUrl" value={props.updatedImageUrl} onChange={props.onUpdateField} />
+                            </InputGroup>
+                        </Col>
+                    </Row>
                 </Form>
                 <Button variant="secondary" onClick={props.confirmEdit} className="mt-2 me-2">
                     Confirm Edit
