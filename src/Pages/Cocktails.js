@@ -47,8 +47,8 @@ export default class Cocktails extends React.Component {
         postToDelete: "",
 
         // FOR SEARCH
-        filter: "Filter",
-        searchBarText: "Search for anything",
+        filter: "Name",
+        searchBarText: "Search for a cocktail",
         search: ""
 
 
@@ -67,6 +67,36 @@ export default class Cocktails extends React.Component {
         this.setState({
             users: response.data
         });
+    }
+
+    searchPosts = async () => {
+        const filter = this.state.filter.toLowerCase();
+        const query = this.state.search;
+
+        let finalQuery;
+        switch (filter) {
+            case "name":
+                finalQuery = `name=${query}`
+                break;
+            case "glass type":
+                finalQuery = `glassType=${query}`
+                break;
+            case "flavour profiles":
+                finalQuery = `distinction=${query}`
+                break;
+            default: 
+                finalQuery = null
+        }
+        
+        const response = await axios.get(`${BASE_API}cocktails?${finalQuery}`);
+        console.log(response.data)
+        console.log(filter)
+        console.log("query:", query)
+        console.log("final query:", finalQuery);
+
+        this.setState({
+            posts: response.data
+        })
     }
 
     toggleCocktailModal = (postId) => {
@@ -431,7 +461,7 @@ export default class Cocktails extends React.Component {
                  text = "Search for a flavour profile";
                  break;
             default: 
-                 text = "Search for anything";
+                 text = "";
                  break;
             
         }
@@ -441,6 +471,12 @@ export default class Cocktails extends React.Component {
             searchBarText: text
         })
     }
+
+    clearFilter = () => {
+        this.loadPosts();
+    }
+
+    
 
     
 
@@ -454,7 +490,9 @@ export default class Cocktails extends React.Component {
                        filter={this.state.filter}
                        placeholder={this.state.searchBarText}
                        onUpdateField={this.onUpdateField} 
-                       search={this.state.search}/>
+                       search={this.state.search}
+                       submitSearch={this.searchPosts}
+                       clearFilter={this.clearFilter}/>
                        
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>

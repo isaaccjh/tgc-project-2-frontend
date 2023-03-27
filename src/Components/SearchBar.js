@@ -17,7 +17,7 @@ export default class SearchBar extends React.Component {
                     <Dropdown.Item onClick={() => this.props.searchFilter("Ingredients")}>Ingredients</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Glass Type")}>Glass Type</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Flavour Profiles")}>Flavour Profiles</Dropdown.Item>
-                    <Dropdown.Item onClick={() => this.props.searchFilter("Filter")}>None</Dropdown.Item>
+                    <Dropdown.Item onClick={this.props.clearFilter}>Clear</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <Form.Control
@@ -26,7 +26,7 @@ export default class SearchBar extends React.Component {
                 value={this.props.search}
                 name="search"
             />
-            <Button variant="secondary" ><AiOutlineSearch /></Button>
+            <Button variant="secondary" onClick={this.props.submitSearch} ><AiOutlineSearch /></Button>
         </InputGroup>)
     }
 
