@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Row, Col } from "react-bootstrap";
 import { ImCancelCircle } from "react-icons/im";
+import { validateName, validateSelect, validateURL } from "../Components/validations"
 
 
 
@@ -21,7 +22,7 @@ export default class NewCocktail extends React.Component {
                     <Form>
                         <Row>
                             <Col>
-                                <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" onChange={this.props.onUpdateField} />
+                                <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" onChange={this.props.onUpdateField} required={true}/>
                             </Col>
                         </Row>
                         <Row className="mt-2">

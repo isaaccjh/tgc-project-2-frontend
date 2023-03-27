@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
 
+
 export default class Cocktails extends React.Component {
     state = {
         posts: [],
@@ -322,6 +323,8 @@ export default class Cocktails extends React.Component {
     }
 
     submitCocktailForm = async () => {
+
+        
 
         const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
 
