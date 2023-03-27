@@ -22,7 +22,10 @@ export default class NewCocktail extends React.Component {
                     <Form>
                         <Row>
                             <Col>
-                                <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" onChange={this.props.onUpdateField} required={true}/>
+                                <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" onChange={this.props.onUpdateField} required={true} />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a cocktail name.
+                                </Form.Control.Feedback>
                             </Col>
                         </Row>
                         <Row className="mt-2">
