@@ -5,30 +5,34 @@ import { InputGroup, Form, Button, Dropdown } from "react-bootstrap";
 
 export default class SearchBar extends React.Component {
     state = {
-        
+        filter: this.props.filter,
+        placeholder: this.props.placeholder
     }
 
     render() {
         return (<InputGroup>
 
             <Dropdown>
-                <Dropdown.Toggle variant="secondary" id="dropdown" className="ms-4">
-                    <BsFilter size={22} /> Filter
+                <Dropdown.Toggle variant="secondary" id="dropdown">
+                    <BsFilter size={22} /> {this.props.filter}
                 </Dropdown.Toggle>
     
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Name</Dropdown.Item>
-                    <Dropdown.Item href="#/action-1">Ingredients</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Glass Type</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Flavour Profiles</Dropdown.Item>
+                <Dropdown.Menu >
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Name")}>Name</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Ingredients")}>Ingredients</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Glass Type")}>Glass Type</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Flavour Profiles")}>Flavour Profiles</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Filter")}>None</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <Form.Control
-                placeholder="Search for a cocktail"
+                placeholder={this.props.placeholder}
             />
     
     
-            <Button variant="secondary" className="me-4"><AiOutlineSearch /></Button>
+            <Button variant="secondary" ><AiOutlineSearch /></Button>
         </InputGroup>)
     }
+
+
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import CocktailCard from "../Components/CocktailCard";
+import SearchBar from "../Components/SearchBar";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -43,7 +44,12 @@ export default class Cocktails extends React.Component {
         updatedName: "",
 
         // TO DELETE COCKTAIL POST
-        postToDelete: ""
+        postToDelete: "",
+
+        // FOR SEARCH
+        filter: "Filter",
+        searchBarText: "Search for anything"
+
 
     }
 
@@ -408,12 +414,46 @@ export default class Cocktails extends React.Component {
         }
     }
 
+    searchFilter = (filterItem) => {
+        let text;
+        switch (filterItem) {
+            case "Name":
+                text = "Search for a cocktail";
+                break;
+            case "Ingredients":
+                 text = "Search for an ingredient";
+                 break;
+            case "Glass Type":
+                 text = "Search for a Cocktail Glass";
+                 break;
+            case "Flavour Profiles":
+                 text = "Search for a flavour profile";
+                 break;
+            default: 
+                 text = "Search for anything";
+                 break;
+            
+        }
+
+        this.setState({
+            filter: filterItem,
+            searchBarText: text
+        })
+        
+    }
+
+
     render() {
         return (<div>
-
+            
+            
             <div className="container">
+            <SearchBar searchFilter={this.searchFilter}
+                       filter={this.state.filter}
+                       placeholder={this.state.searchBarText} />
+                       
                 <div className="row">
-                    <button className="mt-3 mx-auto" onClick={this.toggleCocktailForm}>Add New Cocktail</button>
+                    <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
                         closeForm={this.closeCocktailForm}
                         onUpdateField={this.onUpdateField}
