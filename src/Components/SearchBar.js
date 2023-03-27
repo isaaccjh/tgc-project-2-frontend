@@ -4,10 +4,6 @@ import { BsFilter } from "react-icons/bs"
 import { InputGroup, Form, Button, Dropdown } from "react-bootstrap";
 
 export default class SearchBar extends React.Component {
-    state = {
-        filter: this.props.filter,
-        placeholder: this.props.placeholder
-    }
 
     render() {
         return (<InputGroup>
@@ -16,7 +12,6 @@ export default class SearchBar extends React.Component {
                 <Dropdown.Toggle variant="secondary" id="dropdown">
                     <BsFilter size={22} /> {this.props.filter}
                 </Dropdown.Toggle>
-    
                 <Dropdown.Menu >
                     <Dropdown.Item onClick={() => this.props.searchFilter("Name")}>Name</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Ingredients")}>Ingredients</Dropdown.Item>
@@ -27,9 +22,10 @@ export default class SearchBar extends React.Component {
             </Dropdown>
             <Form.Control
                 placeholder={this.props.placeholder}
+                onChange={this.props.onUpdateField}
+                value={this.props.search}
+                name="search"
             />
-    
-    
             <Button variant="secondary" ><AiOutlineSearch /></Button>
         </InputGroup>)
     }

@@ -48,7 +48,8 @@ export default class Cocktails extends React.Component {
 
         // FOR SEARCH
         filter: "Filter",
-        searchBarText: "Search for anything"
+        searchBarText: "Search for anything",
+        search: ""
 
 
     }
@@ -439,8 +440,9 @@ export default class Cocktails extends React.Component {
             filter: filterItem,
             searchBarText: text
         })
-        
     }
+
+    
 
 
     render() {
@@ -450,7 +452,9 @@ export default class Cocktails extends React.Component {
             <div className="container">
             <SearchBar searchFilter={this.searchFilter}
                        filter={this.state.filter}
-                       placeholder={this.state.searchBarText} />
+                       placeholder={this.state.searchBarText}
+                       onUpdateField={this.onUpdateField} 
+                       search={this.state.search}/>
                        
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
