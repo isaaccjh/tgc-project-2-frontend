@@ -33,7 +33,6 @@ export const validateAlcoholic = x => {
 }
 
 export const validateURL = x => {
-
     if (!x.includes(":") || !x) {
         return "Please enter a valid image URL."
     }
@@ -51,7 +50,4 @@ export const validatePreparation = x => {
     }
 }
 
-export const validateFlavours = x => {
-
-}
 

@@ -19,7 +19,7 @@ export default class NewCocktail extends React.Component {
                     <Modal.Title>Add a new cocktail</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={this.props.validateSubmit}>
+                    <Form onSubmit={(e) => this.props.submitForm(e)}>
                         <Row>
                             <Col>
                                 <Form.Control
@@ -27,7 +27,7 @@ export default class NewCocktail extends React.Component {
                                     isInvalid={this.props.nameError}
                                     name="name"
                                     placeholder="Name of cocktail (e.g. Mint Julep)"
-                                    onChange={(e) => { 
+                                    onChange={(e) => {
                                         this.props.onUpdateField(e);
                                     }}
                                     required
@@ -93,11 +93,14 @@ export default class NewCocktail extends React.Component {
                                                 name="addDistinction"
                                                 onChange={this.props.onUpdateField}
                                                 placeholder="All flavours (e.g. Sour)"
+                                                required
+                                                isInvalid={this.props.distinctionError}
                                             />
                                             <Button variant="outline-secondary" onClick={() => this.props.deleteFlavour(index)}>
                                                 <ImCancelCircle />
                                             </Button>
                                         </InputGroup>
+
                                     </div>
                                 ))}
                                 <Button className="mt-1" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
@@ -112,12 +115,9 @@ export default class NewCocktail extends React.Component {
                                         name="preparation"
                                         onChange={this.props.onUpdateField}
                                         required
-                                        isInvalid={this.props.preparationError}
                                         placeholder="Instructions (Min. 10 characters)"
                                     />
-                                    <Form.Control.Feedback type="invalid">
-                                        {this.props.preparationError}
-                                    </Form.Control.Feedback>
+
                                 </InputGroup>
                             </Col>
                         </Row>
@@ -131,10 +131,11 @@ export default class NewCocktail extends React.Component {
                                         name="imageUrl"
                                         onChange={this.props.onUpdateField}
                                         required
-                                        isInvalid={true}
+                                        isInvalid={this.props.imageUrlError}
+                                        validated={this.props.validated}
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Please provide a valid image URL
+                                        Please provide a valid image URL.
                                     </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>

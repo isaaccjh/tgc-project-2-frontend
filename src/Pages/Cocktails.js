@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation } from "../Components/validations"
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateDistinctions } from "../Components/validations"
 
 
 
@@ -60,7 +60,8 @@ export default class Cocktails extends React.Component {
         alcoholicError: "",
         distinctionError: "",
         preparationError: "",
-        imageUrlError: ""
+        imageUrlError: "",
+        validated:false
     }
 
     // READ FUNCTIONS
@@ -332,8 +333,19 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    submitCocktailForm = async () => {
+    submitCocktailForm = async (e) => {
+        e.preventDefault();
 
+        console.log("submit form reached")
+
+        if (this.state.nameError || 
+            this.state.glassTypeError || 
+            this.state.distinctionError || 
+            this.state.imageUrlError || 
+            this.state.preparationError || 
+            this.state.alcoholicError) {
+            return;
+        }
         
 
         const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
@@ -437,6 +449,12 @@ export default class Cocktails extends React.Component {
             if (e.target.name === "preparation") {
                 this.validatePreparation();
             }
+
+            if (e.target.name === "imageUrl") {
+                this.validateURL();
+            }
+
+            
         })
     }
 
@@ -540,6 +558,13 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    validateURL = () => {
+        const e = validateURL(this.state.imageUrl);
+        this.setState({
+            imageUrlError: e
+        })
+    }
+
 
 
     render() {
@@ -570,6 +595,8 @@ export default class Cocktails extends React.Component {
                         glassTypeError={this.state.glassTypeError}
                         alcoholicError={this.state.alcoholicError}
                         preparationError={this.state.preparationError}
+                        imageUrlError={this.state.imageUrlError}
+                        distinctionError={this.state.distinctionError}
                     />
                     <div className="row">
                         {this.state.posts.map(post => (
