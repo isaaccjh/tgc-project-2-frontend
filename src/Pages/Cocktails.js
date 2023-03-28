@@ -336,88 +336,41 @@ export default class Cocktails extends React.Component {
     submitCocktailForm = async (e) => {
         e.preventDefault();
 
-        console.log("submit form reached")
-
-        if (this.state.nameError || 
-            this.state.glassTypeError || 
-            this.state.distinctionError || 
-            this.state.imageUrlError || 
-            this.state.preparationError || 
-            this.state.alcoholicError) {
-            return;
-        }
+        // if (this.state.nameError || 
+        //     this.state.glassTypeError || 
+        //     this.state.distinctionError || 
+        //     this.state.imageUrlError || 
+        //     this.state.preparationError || 
+        //     this.state.alcoholicError) {
+        //     return;
+        // }
         
-
-        const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
-
-        if (this.state.addDistinction !== "") {
-
-            const newArr = [...filteredArray, this.state.addDistinction]
-            this.setState({
-                distinctions: newArr
-            }, async () => {
-                try {
-                    const response = await axios.post(`${BASE_API}cocktails/new-post`, {
-                        userId: this.state.userId,
-                        alcoholic: this.state.alcoholic,
-                        distinctions: this.state.distinctions,
-                        glassType: this.state.glassType,
-                        imageUrl: this.state.imageUrl,
-                        name: this.state.name,
-                        preparation: this.state.preparation
-                    })
-
-                    console.log("Response:", response.data)
-
-                } catch (e) {
-                    console.log("Error sending data:", e.message)
-                };
-
-                this.setState({
-                    alcoholic: "",
-                    distinctions: [""],
-                    imageUrl: "",
-                    name: "",
-                    glassType: "",
-                    preparation: "",
-                    cocktailFormStatus: false,
-                    addDistinction: ""
-                }, () => this.loadPosts());
-
-
-
+        try {
+            const response = await axios.post(`${BASE_API}cocktails/new-post`, {
+                userId: this.state.userId,
+                alcoholic: this.state.alcoholic,
+                distinctions: this.state.distinctions,
+                glassType: this.state.glassType,
+                imageUrl: this.state.imageUrl,
+                name: this.state.name,
+                preparation: this.state.preparation
             })
-        } else {
-            try {
-                const response = await axios.post(`${BASE_API}cocktails/new-post`, {
-                    userId: this.state.userId,
-                    alcoholic: this.state.alcoholic,
-                    distinctions: this.state.distinctions,
-                    glassType: this.state.glassType,
-                    imageUrl: this.state.imageUrl,
-                    name: this.state.name,
-                    preparation: this.state.preparation
-                })
 
-                console.log("Response:", response.data)
+            console.log("Response:", response.data)
 
-            } catch (e) {
-                console.log("Error sending data:", e.message)
-            };
-
-            this.setState({
-                alcoholic: "",
-                distinctions: [""],
-                imageUrl: "",
-                name: "",
-                glassType: "",
-                preparation: "",
-                cocktailFormStatus: false,
-                addDistinction: ""
-            }, () => this.loadPosts());
+        } catch (e) {
+            console.log("Error sending data:", e.message)
         }
-        console.log("Hello")
 
+        this.setState({
+            alcoholic: "",
+            distinctions: [],
+            imageUrl: "",
+            name: "",
+            glassType: "",
+            preparation: "",
+            cocktailFormStatus: false
+        }, () => this.loadPosts())
 
     }
 
@@ -489,6 +442,8 @@ export default class Cocktails extends React.Component {
     }
 
     updateDistinctions = (e) => {
+
+
         this.setState({
             distinctions: e.map(x => x.value)
         })

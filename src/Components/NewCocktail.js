@@ -122,31 +122,7 @@ export default class NewCocktail extends React.Component {
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
-                        <Row className="mt-3">
-                            <Col>
-                                <Form.Label>Ingredients: </Form.Label>
-                                {this.props.distinctions.map((flavour, index, array) => (
-                                    <div key={index}>
-                                        <InputGroup className="mb-1">
-                                            <InputGroup.Text>Flavour</InputGroup.Text>
-                                            <Form.Control
-                                                defaultValue={array[index + 1]}
-                                                name="addDistinction"
-                                                onChange={this.props.onUpdateField}
-                                                placeholder="All flavours (e.g. Sour)"
-                                                required
-                                                isInvalid={this.props.distinctionError}
-                                            />
-                                            <Button variant="outline-secondary" onClick={() => this.props.deleteFlavour(index)}>
-                                                <ImCancelCircle />
-                                            </Button>
-                                        </InputGroup>
-
-                                    </div>
-                                ))}
-                                <Button className="mt-1" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
-                            </Col>
-                        </Row>
+                                    {/*INGREDIENTS SECTION BELOW */}
                         <Row className="mt-4">
                             <Col>
                             <Form.Label>Flavour Profiles:</Form.Label>
