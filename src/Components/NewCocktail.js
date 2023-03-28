@@ -3,9 +3,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Feedback } from "react-bootstrap";
 import { ImCancelCircle } from "react-icons/im";
-import { validateName, validateSelect, validateURL } from "../Components/validations"
 
 
 
@@ -14,23 +13,39 @@ export default class NewCocktail extends React.Component {
 
     render() {
         return (<div>
+
             <Modal show={this.props.formStatus} centered="true" animation={true} backdrop="static">
                 <Modal.Header>
                     <Modal.Title>Add a new cocktail</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={this.props.validateSubmit}>
                         <Row>
                             <Col>
-                                <Form.Control name="name" placeholder="Name of cocktail (e.g. Mint Julep)" onChange={this.props.onUpdateField} required={true} />
+                                <Form.Control
+                                    tooltip={false}
+                                    isInvalid={this.props.nameError}
+                                    name="name"
+                                    placeholder="Name of cocktail (e.g. Mint Julep)"
+                                    onChange={(e) => { 
+                                        this.props.onUpdateField(e);
+                                    }}
+                                    required
+                                    type="text"
+                                />
                                 <Form.Control.Feedback type="invalid">
-                                    Please provide a cocktail name.
+                                    {this.props.nameError}
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
                         <Row className="mt-2">
                             <Col>
-                                <Form.Select name="glassType" onChange={this.props.onUpdateField}>
+                                <Form.Select
+                                    name="glassType"
+                                    onChange={this.props.onUpdateField}
+                                    required
+                                    isInvalid={true}
+                                >
                                     <option>Glass Type</option>
                                     <option value="Highball Glass">Highball</option>
                                     <option value="Lowball Glass">Lowball</option>
@@ -46,13 +61,24 @@ export default class NewCocktail extends React.Component {
                                     <option value="Punch Cup">Punch Cup</option>
                                     <option value="Julep Cup">Julep Cup</option>
                                 </Form.Select>
+                                <Form.Control.Feedback type="invalid">
+                                    Please select a type of glass.
+                                </Form.Control.Feedback>
                             </Col>
                             <Col>
-                                <Form.Select name="alcoholic" onChange={this.props.onUpdateField}>
+                                <Form.Select
+                                    name="alcoholic"
+                                    onChange={this.props.onUpdateField}
+                                    required
+                                    isInvalid={true}
+                                >
                                     <option>Drink Type</option>
                                     <option value="alcoholic">Cocktail</option>
                                     <option value="non-alcoholic">Mocktail</option>
                                 </Form.Select>
+                                <Form.Control.Feedback type="invalid">
+                                    Please select the type of drink.
+                                </Form.Control.Feedback>
                             </Col>
                         </Row>
                         <Row className="mt-2">
@@ -81,7 +107,16 @@ export default class NewCocktail extends React.Component {
                             <Col>
                                 <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
                                 <InputGroup>
-                                    <Form.Control as="textarea" name="preparation" onChange={this.props.onUpdateField} />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="preparation"
+                                        onChange={this.props.onUpdateField}
+                                        required
+                                        isInvalid={true}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Please give preparation instructions
+                                    </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
                         </Row>
@@ -91,13 +126,22 @@ export default class NewCocktail extends React.Component {
                                     <InputGroup.Text>
                                         Image URL
                                     </InputGroup.Text>
-                                    <Form.Control name="imageUrl" onChange={this.props.onUpdateField} />
+                                    <Form.Control
+                                        name="imageUrl"
+                                        onChange={this.props.onUpdateField}
+                                        required
+                                        isInvalid={true}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Please give provide a valid image URL
+                                    </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
                         </Row>
+                        <Button className="mt-4 me-2" variant="danger" onClick={this.props.closeForm}>Cancel</Button>
+                        <Button type="submit" className="mt-4" variant="primary" >Post</Button>
+
                     </Form>
-                    <Button className="mt-4 me-2" variant="danger" onClick={this.props.closeForm}>Cancel</Button>
-                    <Button className="mt-4" variant="primary" onClick={this.props.submitForm}>Post</Button>
                 </Modal.Body>
             </Modal>
         </div>)

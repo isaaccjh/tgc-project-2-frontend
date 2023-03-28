@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
+import { validateName, validateSelect, validateURL } from "../Components/validations"
+
 
 
 export default class Cocktails extends React.Component {
@@ -50,9 +52,15 @@ export default class Cocktails extends React.Component {
         // FOR SEARCH
         filter: "Name",
         searchBarText: "Search for a cocktail",
-        search: ""
+        search: "",
 
-
+        // FOR VALIDATION
+        nameError: "",
+        glassTypeError: "",
+        alcoholicError: "",
+        distinctionError: "",
+        preparationError: "",
+        imageUrlError: ""
     }
 
     // READ FUNCTIONS
@@ -300,6 +308,8 @@ export default class Cocktails extends React.Component {
         this.loadPosts()
     }
 
+    
+
 
 
     //  CREATE FUNCTIONS
@@ -408,7 +418,22 @@ export default class Cocktails extends React.Component {
         }
     }
 
-    onUpdateField = e => this.setState({ [e.target.name]: e.target.value });
+    onUpdateField = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        }, () => {
+            if (e.target.name === "name") {
+                this.validateName();
+            }
+        })
+    }
+
+    validateName = () => {
+        const e = validateName(this.state.name);
+        this.setState({
+            nameError: e
+        })
+    }
 
     updateFlavour = (e, index) => {
         let arr = [...this.state.updatedDistinctions]
@@ -480,7 +505,22 @@ export default class Cocktails extends React.Component {
     }
 
     
+    // HANDLE VALIDATION
+    validateSubmit = e => {
+        e.preventDefault();
 
+        const nameError = validateName(this.state.name)
+        if (this.state.name) {
+            this.setState({
+                nameError: nameError
+            })
+        } else {
+            this.setState({
+                nameError: ""
+            })
+        }
+        console.log("called here")
+    }
     
 
 
@@ -507,6 +547,8 @@ export default class Cocktails extends React.Component {
                         addDistinction={this.addDistinction}
                         distinctions={this.state.distinctions}
                         deleteFlavour={this.deleteFlavourDistinction}
+                        validateSubmit={this.validateSubmit}
+                        nameError={this.state.nameError}
                     />
                     <div className="row">
                         {this.state.posts.map(post => (
