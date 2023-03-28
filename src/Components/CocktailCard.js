@@ -10,7 +10,7 @@ import { ImCancelCircle } from "react-icons/im";
 export default function CocktailCard(props) {
 
     return <div>
-        <Card border="primary" className="shadow" style={{ "width": "18rem" }}>
+        <Card border="none" className="shadow" style={{ "width": "18rem" }}>
             <Card.Img style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>

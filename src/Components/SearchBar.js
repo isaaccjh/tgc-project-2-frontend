@@ -9,7 +9,7 @@ export default class SearchBar extends React.Component {
         return (<InputGroup>
 
             <Dropdown>
-                <Dropdown.Toggle variant="secondary" id="dropdown">
+                <Dropdown.Toggle variant="dark" id="dropdown">
                     <BsFilter size={22} /> {this.props.filter}
                 </Dropdown.Toggle>
                 <Dropdown.Menu >
@@ -26,7 +26,7 @@ export default class SearchBar extends React.Component {
                 value={this.props.search}
                 name="search"
             />
-            <Button variant="secondary" onClick={this.props.submitSearch} ><AiOutlineSearch /></Button>
+            <Button variant="dark" onClick={this.props.submitSearch} ><AiOutlineSearch /></Button>
         </InputGroup>)
     }
 
