@@ -44,7 +44,7 @@ export default class NewCocktail extends React.Component {
                                     name="glassType"
                                     onChange={this.props.onUpdateField}
                                     required
-                                    isInvalid={true}
+                                    isInvalid={this.props.glassTypeError}
                                 >
                                     <option>Glass Type</option>
                                     <option value="Highball Glass">Highball</option>
@@ -70,7 +70,7 @@ export default class NewCocktail extends React.Component {
                                     name="alcoholic"
                                     onChange={this.props.onUpdateField}
                                     required
-                                    isInvalid={true}
+                                    isInvalid={this.props.alcoholicError}
                                 >
                                     <option>Drink Type</option>
                                     <option value="alcoholic">Cocktail</option>
@@ -112,10 +112,11 @@ export default class NewCocktail extends React.Component {
                                         name="preparation"
                                         onChange={this.props.onUpdateField}
                                         required
-                                        isInvalid={true}
+                                        isInvalid={this.props.preparationError}
+                                        placeholder="Instructions (Min. 10 characters)"
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Please give preparation instructions
+                                        {this.props.preparationError}
                                     </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
@@ -133,7 +134,7 @@ export default class NewCocktail extends React.Component {
                                         isInvalid={true}
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Please give provide a valid image URL
+                                        Please provide a valid image URL
                                     </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>

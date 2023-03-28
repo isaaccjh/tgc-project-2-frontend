@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateSelect, validateURL } from "../Components/validations"
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation } from "../Components/validations"
 
 
 
@@ -425,13 +425,18 @@ export default class Cocktails extends React.Component {
             if (e.target.name === "name") {
                 this.validateName();
             }
-        })
-    }
 
-    validateName = () => {
-        const e = validateName(this.state.name);
-        this.setState({
-            nameError: e
+            if (e.target.name === "glassType") {
+                this.validateGlass();
+            }
+
+            if (e.target.name === "alcoholic") {
+                this.validateAlcoholic();
+            }
+            
+            if (e.target.name === "preparation") {
+                this.validatePreparation();
+            }
         })
     }
 
@@ -506,22 +511,35 @@ export default class Cocktails extends React.Component {
 
     
     // HANDLE VALIDATION
-    validateSubmit = e => {
-        e.preventDefault();
 
-        const nameError = validateName(this.state.name)
-        if (this.state.name) {
-            this.setState({
-                nameError: nameError
-            })
-        } else {
-            this.setState({
-                nameError: ""
-            })
-        }
-        console.log("called here")
+    validateName = () => {
+        const e = validateName(this.state.name);
+        this.setState({
+            nameError: e
+        })
     }
-    
+
+    validateGlass = () => {
+        const e = validateGlass(this.state.glassType);
+        this.setState({
+            glassTypeError: e
+        })
+    }
+
+    validateAlcoholic = () => {
+        const e = validateAlcoholic(this.state.alcoholic);
+        this.setState({
+            alcoholicError: e
+        })
+    }
+
+    validatePreparation = () => {
+        const e = validatePreparation(this.state.preparation);
+        this.setState({
+            preparationError: e
+        })
+    }
+
 
 
     render() {
@@ -549,6 +567,9 @@ export default class Cocktails extends React.Component {
                         deleteFlavour={this.deleteFlavourDistinction}
                         validateSubmit={this.validateSubmit}
                         nameError={this.state.nameError}
+                        glassTypeError={this.state.glassTypeError}
+                        alcoholicError={this.state.alcoholicError}
+                        preparationError={this.state.preparationError}
                     />
                     <div className="row">
                         {this.state.posts.map(post => (
