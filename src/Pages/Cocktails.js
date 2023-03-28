@@ -22,7 +22,7 @@ export default class Cocktails extends React.Component {
         // FOR COCKTAIL CREATION:
         userId: "6411699375602770754977c4",
         alcoholic: "",
-        distinctions: [""],
+        distinctions: [],
         imageUrl: "",
         name: "",
         glassType: "",
@@ -453,47 +453,8 @@ export default class Cocktails extends React.Component {
             if (e.target.name === "imageUrl") {
                 this.validateURL();
             }
-
             
         })
-    }
-
-    updateFlavour = (e, index) => {
-        let arr = [...this.state.updatedDistinctions]
-        arr[index] = e.target.value
-
-        this.setState({
-            updatedDistinctions: arr
-        }
-        )
-    }
-
-    addDistinction = () => {
-        const filteredArray = this.state.distinctions.filter(distinction => distinction !== "")
-
-        if (!this.state.distinctions.includes(this.state.addDistinction)) {
-            this.setState({
-                distinctions: [...filteredArray, this.state.addDistinction, ""],
-                addDistinction: ""
-            })
-        }
-    }
-
-    addToUpdatedDistinction = () => {
-        const filteredArray = this.state.updatedDistinctions.filter(x => x !== "")
-        console.log("1 step after filter:", filteredArray)
-
-        if (!this.state.updatedDistinctions.includes(this.state.addDistinction) && !(this.state.addDistinction)) {
-            this.setState({
-                updatedDistinctions: [...filteredArray, this.state.addDistinction],
-                addDistinction: ""
-            }, () => console.log(this.state.updatedDistinctions))
-        } else {
-            this.setState({
-                updatedDistinctions: [...filteredArray, this.state.addDistinction],
-                addDistinction: ""
-            }, () => console.log("hello"))
-        }
     }
 
     searchFilter = (filterItem) => {
@@ -525,6 +486,12 @@ export default class Cocktails extends React.Component {
 
     clearFilter = () => {
         this.loadPosts();
+    }
+
+    updateDistinctions = (e) => {
+        this.setState({
+            distinctions: e.map(x => x.value)
+        })
     }
 
     
@@ -597,6 +564,7 @@ export default class Cocktails extends React.Component {
                         preparationError={this.state.preparationError}
                         imageUrlError={this.state.imageUrlError}
                         distinctionError={this.state.distinctionError}
+                        updateDistinctions={this.updateDistinctions}
                     />
                     <div className="row">
                         {this.state.posts.map(post => (

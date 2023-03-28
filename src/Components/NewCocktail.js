@@ -5,10 +5,51 @@ import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Row, Col, Feedback } from "react-bootstrap";
 import { ImCancelCircle } from "react-icons/im";
+import CreatableSelect from "react-select/creatable";
 
 
 
 export default class NewCocktail extends React.Component {
+
+    flavourProfiles = [
+        {
+            value: "Boozy",
+            label: "Boozy"
+        },
+        {
+            value: "Sweet",
+            label: "Sweet"
+        },
+        {
+            value: "Sour",
+            label: "Sour"
+        },
+        {
+            value: "Bitter",
+            label: "Bitter"
+        },
+        {
+            value: "Umami",
+            label: "Umami"
+        },
+        {
+            value: "Salty",
+            label: "Salty"
+        },
+        {
+            value: "Astringent",
+            label: "Astringent"
+        },
+        {
+            value: "Hot",
+            label: "Hot"
+        },
+        {
+            value: "Cold",
+            label: "Cold"
+        },
+
+    ]
 
 
     render() {
@@ -81,9 +122,9 @@ export default class NewCocktail extends React.Component {
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
-                        <Row className="mt-2">
+                        <Row className="mt-3">
                             <Col>
-                                <Form.Label>Flavour Profiles: </Form.Label>
+                                <Form.Label>Ingredients: </Form.Label>
                                 {this.props.distinctions.map((flavour, index, array) => (
                                     <div key={index}>
                                         <InputGroup className="mb-1">
@@ -104,6 +145,16 @@ export default class NewCocktail extends React.Component {
                                     </div>
                                 ))}
                                 <Button className="mt-1" size="sm" onClick={this.props.addDistinction}>Add Flavour</Button>
+                            </Col>
+                        </Row>
+                        <Row className="mt-4">
+                            <Col>
+                            <Form.Label>Flavour Profiles:</Form.Label>
+                                <CreatableSelect
+                                    isMulti
+                                    options={this.flavourProfiles}
+                                    onChange={this.props.updateDistinctions}
+                                />
                             </Col>
                         </Row>
                         <Row>
@@ -142,7 +193,6 @@ export default class NewCocktail extends React.Component {
                         </Row>
                         <Button className="mt-4 me-2" variant="danger" onClick={this.props.closeForm}>Cancel</Button>
                         <Button type="submit" className="mt-4" variant="primary" >Post</Button>
-
                     </Form>
                 </Modal.Body>
             </Modal>
