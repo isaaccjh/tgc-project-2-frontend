@@ -5,9 +5,49 @@ import Button from "react-bootstrap/Button";
 import { Nav, Accordion, Row, Col, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { ImCancelCircle } from "react-icons/im";
+import CreatableSelect from "react-select/creatable";
 
 
 export default function CocktailCard(props) {
+   const flavourProfiles = [
+        {
+            value: "Boozy",
+            label: "Boozy"
+        },
+        {
+            value: "Sweet",
+            label: "Sweet"
+        },
+        {
+            value: "Sour",
+            label: "Sour"
+        },
+        {
+            value: "Bitter",
+            label: "Bitter"
+        },
+        {
+            value: "Umami",
+            label: "Umami"
+        },
+        {
+            value: "Salty",
+            label: "Salty"
+        },
+        {
+            value: "Astringent",
+            label: "Astringent"
+        },
+        {
+            value: "Hot",
+            label: "Hot"
+        },
+        {
+            value: "Cold",
+            label: "Cold"
+        },
+
+    ]
 
     return <div>
         <Card border="none" className="shadow" style={{ "width": "18rem" }}>
@@ -15,7 +55,7 @@ export default function CocktailCard(props) {
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    By: {props.user.username}
+                    {/* By: {props.user.username} */}
                 </Card.Text>
                 <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
                 <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
@@ -126,29 +166,17 @@ export default function CocktailCard(props) {
                             </Form.Select>
                         </Col>
                     </Row>
-                    <Row className="mt-2">
-                        <Col>
-                            <Form.Label>Flavour Profiles: </Form.Label>
-                            {props.updatedDistinctions.map((flavour, index, array) => (
-                                <div key={flavour}>
-                                    <InputGroup className="mb-1">
-                                        <InputGroup.Text>Flavour</InputGroup.Text>
-                                        <Form.Control
-                                            defaultValue={flavour}
-                                            name="addDistinction"
-                                            onChange={flavour === "" ? props.onUpdateField : (e) => props.updateFlavour(e, index)}
-                                            placeholder="All flavours (e.g. Sour)"
-                                            type="text"
-                                        />
-                                        <Button variant="outline-secondary" onClick={() => props.deleteFlavour(array[index])}>
-                                            < ImCancelCircle />
-                                        </Button>
-                                    </InputGroup>
-                                </div>
-                            ))}
-                            <Button className="mt-1" size="sm" onClick={props.addDistinction}>Add Flavour</Button>
-                        </Col>
-                    </Row>
+                    <Row className="mt-4">
+                            <Col>
+                            <Form.Label>Flavour Profiles:</Form.Label>
+                                <CreatableSelect
+                                    isMulti
+                                    options={flavourProfiles}
+                                    defaultValue={props.updatedDistinctions}
+                                    onChange={props.updateDistinctions}
+                                />
+                            </Col>
+                        </Row>
                     <Row>
                         <Col>
                             <Form.Label className="mt-3">Preparation Instructions:</Form.Label>

@@ -122,14 +122,14 @@ export default class NewCocktail extends React.Component {
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
-                                    {/*INGREDIENTS SECTION BELOW */}
+                                    {/*INGREDIENTS SECTION HERE */}
                         <Row className="mt-4">
                             <Col>
                             <Form.Label>Flavour Profiles:</Form.Label>
                                 <CreatableSelect
                                     isMulti
                                     options={this.flavourProfiles}
-                                    onChange={this.props.updateDistinctions}
+                                    onChange={this.props.createDistinctions}
                                 />
                             </Col>
                         </Row>
