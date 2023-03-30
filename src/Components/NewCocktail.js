@@ -6,6 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Row, Col, Feedback } from "react-bootstrap";
 import { ImCancelCircle } from "react-icons/im";
 import CreatableSelect from "react-select/creatable";
+import Select from "react-select";
 
 
 
@@ -123,7 +124,39 @@ export default class NewCocktail extends React.Component {
                             </Col>
                         </Row>
                         {/*INGREDIENTS SECTION HERE */}
-                        <Row className="mt-4">
+                        <Row className="mt-2">
+                            <Col>
+                                <Form.Label>Ingredients:</Form.Label>
+                                <ul>
+                                </ul>
+                                <InputGroup className="mb-2">
+                                    <Col xs={3} className="me-4">
+                                        <Form.Control
+                                            placeholder="Amount"
+                                            name="measurements"
+                                            onChange={this.props.onUpdateField}
+                                            value={this.props.measurements}
+                                        />
+                                    </Col>
+                                    <Col xs={8}>
+                                        <Select
+                                            options={this.props.ingredientName}
+                                            placeholder="Select Ingredient"
+                                            onChange={this.props.onChooseIngredient}
+                                            defaultValue={null}
+                                        />
+                                    </Col>
+                                    <Button
+                                        variant="secondary"
+                                        className="rounded mt-2 btn btn-sm"
+                                        onClick={this.props.addIngredient}
+                                    >
+                                        Add Ingredient
+                                    </Button>
+                                </InputGroup>
+                            </Col>
+                        </Row>
+                        <Row className="mt-2">
                             <Col>
                                 <Form.Label>Flavour Profiles:</Form.Label>
                                 <CreatableSelect

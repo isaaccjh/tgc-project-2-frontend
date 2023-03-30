@@ -28,7 +28,14 @@ export default class Cocktails extends React.Component {
         glassType: "",
         preparation: "",
         ingredients: [],
-        ingredientList: [],
+
+
+        // FOR CLEANING UP INGREDIENT
+        ingredientId: [],
+        ingredientName: [],
+        selectedIngredient: "",
+        measurements: "",
+        
 
         // TO READ COCKTAIL POSTS
         viewImageUrl: "",
@@ -82,9 +89,13 @@ export default class Cocktails extends React.Component {
 
     loadIngredients = async () => {
         const response = await axios.get(`${BASE_API}cocktails/ingredients`);
+        const cleanedIngredientList = response.data.map(i => {
+            return { value: i.name, label: i.name}
+        })
         this.setState({
-            ingredientList: response.data
-        }, () => console.log(this.state.ingredientList))
+            ingredientName: cleanedIngredientList,
+            ingredientId: response.data
+        })
     }
 
     searchPosts = async () => {
@@ -108,7 +119,8 @@ export default class Cocktails extends React.Component {
 
         const response = await axios.get(`${BASE_API}cocktails?${finalQuery}`);
         this.setState({
-            posts: response.data
+            posts: response.data,
+            search: ""
         })
     }
 
@@ -289,7 +301,8 @@ submitCocktailForm = async (e) => {
             glassType: this.state.glassType,
             imageUrl: this.state.imageUrl,
             name: this.state.name,
-            preparation: this.state.preparation
+            preparation: this.state.preparation,
+            ingredients: this.state.ingredients
         })
 
         console.log("Response:", response.data)
@@ -305,6 +318,7 @@ submitCocktailForm = async (e) => {
         name: "",
         glassType: "",
         preparation: "",
+        ingredients: [],
         cocktailFormStatus: false
     }, () => this.loadPosts())
 
@@ -389,6 +403,42 @@ updateDistinctions = (e) => {
     })
 }
 
+onChooseIngredient = (e) => {
+    this.setState({
+        selectedIngredient: e.value
+    })
+
+    console.log(this.state.ingredientId)
+}
+
+// NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
+
+addIngredient = (e) => {
+
+    if (!this.state.selectedIngredient || !this.state.measurements) {
+        return;
+    }
+
+
+    const newIngredient = this.state.ingredientId.find(i => i.name === this.state.selectedIngredient )
+    
+    const ingredientToAdd = {
+            "ingredientId": {"$oid": `${newIngredient._id}`},
+            "measurements": `${this.state.measurements}`
+    }
+
+    this.setState({
+        ingredients: [...this.state.ingredients, ingredientToAdd ]
+    }, () => {
+        this.setState({
+            selectedIngredient: "",
+            measurements: ""
+        })
+    })
+}
+
+
+
 
 
 // HANDLE VALIDATION
@@ -462,6 +512,10 @@ render() {
                     imageUrlError={this.state.imageUrlError}
                     distinctionError={this.state.distinctionError}
                     createDistinctions={this.createDistinctions}
+                    ingredientName={this.state.ingredientName}
+                    measurements={this.state.measurements}
+                    onChooseIngredient={this.onChooseIngredient}
+                    addIngredient={this.addIngredient}
                 />
                 <div className="row">
                     {this.state.posts.map(post => (
