@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateDistinctions } from "../Components/validations"
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation } from "../Components/validations"
 
 
 
@@ -27,6 +27,8 @@ export default class Cocktails extends React.Component {
         name: "",
         glassType: "",
         preparation: "",
+        ingredients: [],
+        ingredientList: [],
 
         // TO READ COCKTAIL POSTS
         viewImageUrl: "",
@@ -76,6 +78,13 @@ export default class Cocktails extends React.Component {
         this.setState({
             users: response.data
         });
+    }
+
+    loadIngredients = async () => {
+        const response = await axios.get(`${BASE_API}cocktails/ingredients`);
+        this.setState({
+            ingredientList: response.data
+        }, () => console.log(this.state.ingredientList))
     }
 
     searchPosts = async () => {
@@ -263,14 +272,14 @@ closeCocktailForm = () => {
 submitCocktailForm = async (e) => {
     e.preventDefault();
 
-    // if (this.state.nameError || 
-    //     this.state.glassTypeError || 
-    //     this.state.distinctionError || 
-    //     this.state.imageUrlError || 
-    //     this.state.preparationError || 
-    //     this.state.alcoholicError) {
-    //     return;
-    // }
+    if (this.state.nameError || 
+        this.state.glassTypeError || 
+        this.state.distinctionError || 
+        this.state.imageUrlError || 
+        this.state.preparationError || 
+        this.state.alcoholicError) {
+        return;
+    }
 
     try {
         const response = await axios.post(`${BASE_API}cocktails/new-post`, {
@@ -305,6 +314,7 @@ componentDidMount = () => {
     try {
         this.loadPosts();
         this.loadUsers();
+        this.loadIngredients();
     } catch (e) {
         console.log("Error fetching data:", e.message)
     }
@@ -314,26 +324,25 @@ onUpdateField = e => {
     this.setState({
         [e.target.name]: e.target.value
     }, () => {
-        if (e.target.name === "name") {
-            this.validateName();
+        if (e.target.name === "name" || e.target.name === "updatedName") {
+            this.validateName(this.state[e.target.name]);
         }
 
-        if (e.target.name === "glassType") {
-            this.validateGlass();
+        if (e.target.name === "glassType" || e.target.name === "updatedGlassType") {
+            this.validateGlass(this.state[e.target.name]);
         }
 
-        if (e.target.name === "alcoholic") {
-            this.validateAlcoholic();
+        if (e.target.name === "alcoholic" || e.target.name === "updatedAlcoholic") {
+            this.validateAlcoholic(this.state[e.target.name]);
         }
 
-        if (e.target.name === "preparation") {
-            this.validatePreparation();
+        if (e.target.name === "preparation" || e.target.name === "updatedPreparation") {
+            this.validatePreparation(this.state[e.target.name]);
         }
 
-        if (e.target.name === "imageUrl") {
-            this.validateURL();
+        if (e.target.name === "imageUrl" || e.target.name === "updatedImageUrl") {
+            this.validateURL(this.state[e.target.name]);
         }
-
     })
 }
 
@@ -384,40 +393,41 @@ updateDistinctions = (e) => {
 
 // HANDLE VALIDATION
 
-validateName = () => {
-    const e = validateName(this.state.name);
+validateName = (name) => {
+    const e = validateName(name);
     this.setState({
         nameError: e
     })
 }
 
-validateGlass = () => {
-    const e = validateGlass(this.state.glassType);
+validateGlass = (glassType) => {
+    const e = validateGlass(glassType);
     this.setState({
         glassTypeError: e
     })
 }
 
-validateAlcoholic = () => {
-    const e = validateAlcoholic(this.state.alcoholic);
+validateAlcoholic = (alcoholic) => {
+    const e = validateAlcoholic(alcoholic);
     this.setState({
         alcoholicError: e
     })
 }
 
-validatePreparation = () => {
-    const e = validatePreparation(this.state.preparation);
+validatePreparation = (preparation) => {
+    const e = validatePreparation(preparation);
     this.setState({
         preparationError: e
     })
 }
 
-validateURL = () => {
-    const e = validateURL(this.state.imageUrl);
+validateURL = (url) => {
+    const e = validateURL(url);
     this.setState({
         imageUrlError: e
     })
 }
+
 
 
 
@@ -480,6 +490,13 @@ render() {
                                 updatedGlassType={this.state.updatedGlassType}
                                 updatedPreparation={this.state.updatedPreparation}
                                 updateDistinctions={this.updateDistinctions}
+                                nameError={this.state.nameError}
+                                glassTypeError={this.state.glassTypeError}
+                                alcoholicError={this.state.alcoholicError}
+                                preparationError={this.state.preparationError}
+                                imageUrlError={this.state.imageUrlError}
+                                distinctionError={this.state.distinctionError}
+                                createDistinctions={this.createDistinctions}
                                 // FUNCTIONS
                                 onUpdateField={this.onUpdateField}
                                 deletePost={() => this.deletePost(post._id)}

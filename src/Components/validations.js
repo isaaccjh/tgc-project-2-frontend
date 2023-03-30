@@ -33,11 +33,15 @@ export const validateAlcoholic = x => {
 }
 
 export const validateURL = x => {
-    if (!x.includes(":") || !x) {
+    if (!x) {
+        return "Please enter an image URL."
+    }
+
+    if (!x.includes(":")) {
         return "Please enter a valid image URL."
     }
 
-
+    return "";
 }
 
 export const validatePreparation = x => {
@@ -48,6 +52,9 @@ export const validatePreparation = x => {
     if (x.length < 10) {
         return "Please provide instructions more than 10 characters."
     }
+
+    return "";
 }
+
 
 

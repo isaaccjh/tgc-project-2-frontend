@@ -9,7 +9,7 @@ import CreatableSelect from "react-select/creatable";
 
 
 export default function CocktailCard(props) {
-   const flavourProfiles = [
+    const flavourProfiles = [
         {
             value: "Boozy",
             label: "Boozy"
@@ -55,7 +55,7 @@ export default function CocktailCard(props) {
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    {/* By: {props.user.username} */}
+                    By: {props.user.username}
                 </Card.Text>
                 <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
                 <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
@@ -136,12 +136,26 @@ export default function CocktailCard(props) {
                 <Form>
                     <Row>
                         <Col>
-                            <Form.Control name="updatedName" onChange={props.onUpdateField} value={props.updatedName} />
+                            <Form.Control
+                                name="updatedName"
+                                onChange={props.onUpdateField}
+                                value={props.updatedName}
+                                isInvalid={props.nameError}
+                                required
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                {props.nameError}
+                            </Form.Control.Feedback>
                         </Col>
                     </Row>
                     <Row className="mt-2">
                         <Col>
-                            <Form.Select name="updatedGlassType" onChange={props.onUpdateField} value={props.updatedGlassType}>
+                            <Form.Select name="updatedGlassType"
+                                onChange={props.onUpdateField}
+                                value={props.updatedGlassType}
+                                required
+                                isInvalid={props.glassTypeError}
+                            >
                                 <option>Glass Type</option>
                                 <option value="Highball Glass">Highball</option>
                                 <option value="Lowball Glass">Lowball</option>
@@ -157,31 +171,51 @@ export default function CocktailCard(props) {
                                 <option value="Punch Cup">Punch Cup</option>
                                 <option value="Julep Cup">Julep Cup</option>
                             </Form.Select>
+                            <Form.Control.Feedback type="invalid">
+                                Please select a type of glass.
+                            </Form.Control.Feedback>
                         </Col>
                         <Col>
-                            <Form.Select name="updatedAlcoholic" onChange={props.onUpdateField} value={props.updatedAlcoholic}>
+                            <Form.Select name="updatedAlcoholic"
+                                onChange={props.onUpdateField}
+                                value={props.updatedAlcoholic}
+                                required
+                                isInvalid={props.alcoholicError}
+                            >
                                 <option>Drink Type</option>
                                 <option value="alcoholic">Cocktail</option>
                                 <option value="non-alcoholic">Mocktail</option>
                             </Form.Select>
+                            <Form.Control.Feedback type="invalid">
+                                Please select the type of drink.
+                            </Form.Control.Feedback>
                         </Col>
                     </Row>
                     <Row className="mt-4">
-                            <Col>
+                        <Col>
                             <Form.Label>Flavour Profiles:</Form.Label>
-                                <CreatableSelect
-                                    isMulti
-                                    options={flavourProfiles}
-                                    defaultValue={props.updatedDistinctions}
-                                    onChange={props.updateDistinctions}
-                                />
-                            </Col>
-                        </Row>
+                            <CreatableSelect
+                                isMulti
+                                options={flavourProfiles}
+                                defaultValue={props.updatedDistinctions}
+                                onChange={props.updateDistinctions}
+                            />
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <Form.Label className="mt-3">Preparation Instructions:</Form.Label>
                             <InputGroup>
-                                <Form.Control as="textarea" name="updatedPreparation" value={props.updatedPreparation} onChange={props.onUpdateField} />
+                                <Form.Control as="textarea"
+                                    name="updatedPreparation"
+                                    value={props.updatedPreparation}
+                                    onChange={props.onUpdateField}
+                                    required
+                                    isInvalid={props.preparationError}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {props.preparationError}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Col>
                     </Row>
@@ -191,7 +225,16 @@ export default function CocktailCard(props) {
                                 <InputGroup.Text>
                                     Image URL
                                 </InputGroup.Text>
-                                <Form.Control name="updatedImageUrl" value={props.updatedImageUrl} onChange={props.onUpdateField} />
+                                <Form.Control
+                                    name="updatedImageUrl"
+                                    value={props.updatedImageUrl}
+                                    onChange={props.onUpdateField}
+                                    required
+                                    isInvalid={props.imageUrlError}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {props.imageUrlError}
+                                </Form.Control.Feedback>
                             </InputGroup>
                         </Col>
                     </Row>

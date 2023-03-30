@@ -122,10 +122,10 @@ export default class NewCocktail extends React.Component {
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
-                                    {/*INGREDIENTS SECTION HERE */}
+                        {/*INGREDIENTS SECTION HERE */}
                         <Row className="mt-4">
                             <Col>
-                            <Form.Label>Flavour Profiles:</Form.Label>
+                                <Form.Label>Flavour Profiles:</Form.Label>
                                 <CreatableSelect
                                     isMulti
                                     options={this.flavourProfiles}
@@ -143,8 +143,11 @@ export default class NewCocktail extends React.Component {
                                         onChange={this.props.onUpdateField}
                                         required
                                         placeholder="Instructions (Min. 10 characters)"
+                                        isInvalid={this.props.preparationError}
                                     />
-
+                                    <Form.Control.Feedback type="invalid">
+                                        {this.props.preparationError}
+                                    </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
                         </Row>
@@ -162,7 +165,7 @@ export default class NewCocktail extends React.Component {
                                         validated={this.props.validated}
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Please provide a valid image URL.
+                                        {this.props.imageUrlError}
                                     </Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
