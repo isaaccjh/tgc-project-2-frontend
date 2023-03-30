@@ -36,7 +36,7 @@ export default class Cocktails extends React.Component {
         selectedIngredient: "",
         displayIngredients: [],
         measurements: "",
-        
+        ingredientsUsed: [],
 
         // TO READ COCKTAIL POSTS
         viewImageUrl: "",
@@ -45,6 +45,7 @@ export default class Cocktails extends React.Component {
         viewGlassType: "",
         viewAlcoholic: "",
         viewPreparation: "",
+        viewIngredients: [],
 
         // TO EDIT COCKTAIL POSTS
         postBeingEdited: "",
@@ -99,6 +100,14 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    loadIngredientsUsed = async () => {
+        const response = await axios.get(`${BASE_API}cocktails/ingredients-used`);
+        
+        this.setState({
+            ingredientsUsed: response.data
+        })
+    }
+
     searchPosts = async () => {
         const filter = this.state.filter.toLowerCase();
         const query = this.state.search;
@@ -128,6 +137,20 @@ export default class Cocktails extends React.Component {
     toggleCocktailModal = (postId) => {
         const postToView = this.state.posts.find(post => post._id === postId)
 
+        const postIngredients = this.state.ingredientsUsed.find(post =>  post.cocktailId === postId)
+
+        console.log(this.state.ingredientId);
+        console.log("post details:", postIngredients);
+        const ingredientArr = []
+        postIngredients.ingredients.forEach(x => {
+            // console.log(x.ingredientId.$oid)
+            const ingredientName = this.state.ingredientId.find(ingredient => ingredient._id === x.ingredientId.$oid)
+            ingredientArr.push({
+                "name": ingredientName.name,
+                "measurements": x.measurements
+            })
+        })
+
         this.setState({
             activeCocktailModal: postId,
             cocktailModal: true,
@@ -136,7 +159,8 @@ export default class Cocktails extends React.Component {
             viewDistinctions: postToView.distinctions,
             viewGlassType: postToView.glassType,
             viewAlcoholic: postToView.alcoholic,
-            viewPreparation: postToView.preparation
+            viewPreparation: postToView.preparation,
+            viewIngredients: ingredientArr
         });
 
     }
@@ -330,6 +354,7 @@ componentDidMount = () => {
         this.loadPosts();
         this.loadUsers();
         this.loadIngredients();
+        this.loadIngredientsUsed();
     } catch (e) {
         console.log("Error fetching data:", e.message)
     }
