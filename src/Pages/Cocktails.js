@@ -34,6 +34,7 @@ export default class Cocktails extends React.Component {
         ingredientId: [],
         ingredientName: [],
         selectedIngredient: "",
+        displayIngredients: [],
         measurements: "",
         
 
@@ -413,6 +414,7 @@ onChooseIngredient = (e) => {
 
 // NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
 
+
 addIngredient = (e) => {
 
     if (!this.state.selectedIngredient || !this.state.measurements) {
@@ -427,9 +429,17 @@ addIngredient = (e) => {
             "measurements": `${this.state.measurements}`
     }
 
+    const displayIngredient = {
+        name: newIngredient.name,
+        measurement: this.state.measurements
+    }
+    console.log("displayIngredient:",displayIngredient)
+
     this.setState({
-        ingredients: [...this.state.ingredients, ingredientToAdd ]
+        ingredients: [...this.state.ingredients, ingredientToAdd ],
+        displayIngredients: [...this.state.displayIngredients, displayIngredient]
     }, () => {
+        console.log(this.state.ingredients)
         this.setState({
             selectedIngredient: "",
             measurements: ""
@@ -516,6 +526,7 @@ render() {
                     measurements={this.state.measurements}
                     onChooseIngredient={this.onChooseIngredient}
                     addIngredient={this.addIngredient}
+                    displayIngredients={this.state.displayIngredients}
                 />
                 <div className="row">
                     {this.state.posts.map(post => (

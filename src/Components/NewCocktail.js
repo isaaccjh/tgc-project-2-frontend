@@ -128,6 +128,15 @@ export default class NewCocktail extends React.Component {
                             <Col>
                                 <Form.Label>Ingredients:</Form.Label>
                                 <ul>
+                                    {this.props.displayIngredients ? 
+                                        this.props.displayIngredients.map(ingredient => {
+                                            return (
+                                                <li>
+                                                    {ingredient.measurement} {ingredient.name}
+                                                </li>
+                                            )
+                                        })
+                                     : null}
                                 </ul>
                                 <InputGroup className="mb-2">
                                     <Col xs={3} className="me-4">
