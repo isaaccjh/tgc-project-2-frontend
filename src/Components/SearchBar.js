@@ -14,6 +14,7 @@ export default class SearchBar extends React.Component {
                 </Dropdown.Toggle>
                 <Dropdown.Menu >
                     <Dropdown.Item onClick={() => this.props.searchFilter("Name")}>Name</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.props.searchFilter("Drink Type")}>Drink Type</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Ingredients")}>Ingredients</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Glass Type")}>Glass Type</Dropdown.Item>
                     <Dropdown.Item onClick={() => this.props.searchFilter("Flavour Profiles")}>Flavour Profiles</Dropdown.Item>

@@ -92,7 +92,7 @@ export default class Cocktails extends React.Component {
     loadIngredients = async () => {
         const response = await axios.get(`${BASE_API}cocktails/ingredients`);
         const cleanedIngredientList = response.data.map(i => {
-            return { value: i.name, label: i.name}
+            return { value: i.name, label: i.name }
         })
         this.setState({
             ingredientName: cleanedIngredientList,
@@ -102,10 +102,26 @@ export default class Cocktails extends React.Component {
 
     loadIngredientsUsed = async () => {
         const response = await axios.get(`${BASE_API}cocktails/ingredients-used`);
-        
+
         this.setState({
             ingredientsUsed: response.data
         })
+    }
+
+
+
+    getCards = async () => {
+        const API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImRlNzg2MTZhLWVjOTQtNDA1Zi1iNDM1LWJkYjlkOTg1ODE4MCIsImlhdCI6MTY4MDI0Mjc0OCwic3ViIjoiZGV2ZWxvcGVyLzk2Y2E3YjUyLTI4YjAtNTgwOC1lMmNlLTkyYzczNGIwYzE5OSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxMTEuNjUuNTYuMjU0Il0sInR5cGUiOiJjbGllbnQifV19.3JOpivt7Zt_Fc4nes8Wnn6Z6anNuw9LrFWJLR2wmXGVmRW3J0H-MWqFK58lbIS6mGOEg4G35Fu149w3U0yPXgQ';
+        const URL = 'https://api.clashroyale.com/v1/cards';
+
+        const headers = {
+            'Authorization': `Bearer ${API_KEY}`,
+            'Accept': 'application/json',
+        };
+
+        const response = await axios.get(URL, {headers})
+
+        console.log(response.data);
     }
 
     searchPosts = async () => {
@@ -123,6 +139,9 @@ export default class Cocktails extends React.Component {
             case "flavour profiles":
                 finalQuery = `distinction=${query}`
                 break;
+            case "drink type":
+                finalQuery = `alcoholic=${query}`
+                break;
             default:
                 finalQuery = null
         }
@@ -137,10 +156,8 @@ export default class Cocktails extends React.Component {
     toggleCocktailModal = (postId) => {
         const postToView = this.state.posts.find(post => post._id === postId)
 
-        const postIngredients = this.state.ingredientsUsed.find(post =>  post.cocktailId === postId)
+        const postIngredients = this.state.ingredientsUsed.find(post => post.cocktailId === postId)
 
-        console.log(this.state.ingredientId);
-        console.log("post details:", postIngredients);
         const ingredientArr = []
         postIngredients.ingredients.forEach(x => {
             // console.log(x.ingredientId.$oid)
@@ -286,327 +303,333 @@ export default class Cocktails extends React.Component {
 
 
 
-//  CREATE FUNCTIONS
-toggleCocktailForm = () => {
-    this.setState({
-        cocktailFormStatus: true
-    });
-}
-
-closeCocktailForm = () => {
-    this.setState({
-        cocktailFormStatus: false,
-        alcoholic: "",
-        distinctions: [""],
-        imageUrl: "",
-        name: "",
-        glassType: "",
-        preparation: "",
-        addDistinction: "",
-    })
-}
-
-submitCocktailForm = async (e) => {
-    e.preventDefault();
-
-    if (this.state.nameError || 
-        this.state.glassTypeError || 
-        this.state.distinctionError || 
-        this.state.imageUrlError || 
-        this.state.preparationError || 
-        this.state.alcoholicError) {
-        return;
-    }
-
-    try {
-        const response = await axios.post(`${BASE_API}cocktails/new-post`, {
-            userId: this.state.userId,
-            alcoholic: this.state.alcoholic,
-            distinctions: this.state.distinctions,
-            glassType: this.state.glassType,
-            imageUrl: this.state.imageUrl,
-            name: this.state.name,
-            preparation: this.state.preparation,
-            ingredients: this.state.ingredients
-        })
-
-        console.log("Response:", response.data)
-
-    } catch (e) {
-        console.log("Error sending data:", e.message)
-    }
-
-    this.setState({
-        alcoholic: "",
-        distinctions: [],
-        imageUrl: "",
-        name: "",
-        glassType: "",
-        preparation: "",
-        ingredients: [],
-        cocktailFormStatus: false
-    }, () => this.loadPosts())
-
-}
-
-componentDidMount = () => {
-    try {
-        this.loadPosts();
-        this.loadUsers();
-        this.loadIngredients();
-        this.loadIngredientsUsed();
-    } catch (e) {
-        console.log("Error fetching data:", e.message)
-    }
-}
-
-onUpdateField = e => {
-    this.setState({
-        [e.target.name]: e.target.value
-    }, () => {
-        if (e.target.name === "name" || e.target.name === "updatedName") {
-            this.validateName(this.state[e.target.name]);
-        }
-
-        if (e.target.name === "glassType" || e.target.name === "updatedGlassType") {
-            this.validateGlass(this.state[e.target.name]);
-        }
-
-        if (e.target.name === "alcoholic" || e.target.name === "updatedAlcoholic") {
-            this.validateAlcoholic(this.state[e.target.name]);
-        }
-
-        if (e.target.name === "preparation" || e.target.name === "updatedPreparation") {
-            this.validatePreparation(this.state[e.target.name]);
-        }
-
-        if (e.target.name === "imageUrl" || e.target.name === "updatedImageUrl") {
-            this.validateURL(this.state[e.target.name]);
-        }
-    })
-}
-
-searchFilter = (filterItem) => {
-    let text;
-    switch (filterItem) {
-        case "Name":
-            text = "Search for a cocktail";
-            break;
-        case "Ingredients":
-            text = "Search for an ingredient";
-            break;
-        case "Glass Type":
-            text = "Search for a Cocktail Glass";
-            break;
-        case "Flavour Profiles":
-            text = "Search for a flavour profile";
-            break;
-        default:
-            text = "";
-            break;
-
-    }
-
-    this.setState({
-        filter: filterItem,
-        searchBarText: text
-    })
-}
-
-clearFilter = () => {
-    this.loadPosts();
-}
-
-createDistinctions = (e) => {
-    this.setState({
-        distinctions: e.map(x => x.value)
-    })
-}
-
-updateDistinctions = (e) => {
-    this.setState({
-        updatedDistinctions: e.map(x => x.value)
-    })
-}
-
-onChooseIngredient = (e) => {
-    this.setState({
-        selectedIngredient: e.value
-    })
-
-    console.log(this.state.ingredientId)
-}
-
-// NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
-
-
-addIngredient = (e) => {
-
-    if (!this.state.selectedIngredient || !this.state.measurements) {
-        return;
-    }
-
-
-    const newIngredient = this.state.ingredientId.find(i => i.name === this.state.selectedIngredient )
-    
-    const ingredientToAdd = {
-            "ingredientId": {"$oid": `${newIngredient._id}`},
-            "measurements": `${this.state.measurements}`
-    }
-
-    const displayIngredient = {
-        name: newIngredient.name,
-        measurement: this.state.measurements
-    }
-    console.log("displayIngredient:",displayIngredient)
-
-    this.setState({
-        ingredients: [...this.state.ingredients, ingredientToAdd ],
-        displayIngredients: [...this.state.displayIngredients, displayIngredient]
-    }, () => {
-        console.log(this.state.ingredients)
+    //  CREATE FUNCTIONS
+    toggleCocktailForm = () => {
         this.setState({
-            selectedIngredient: "",
-            measurements: ""
+            cocktailFormStatus: true
+        });
+    }
+
+    closeCocktailForm = () => {
+        this.setState({
+            cocktailFormStatus: false,
+            alcoholic: "",
+            distinctions: [""],
+            imageUrl: "",
+            name: "",
+            glassType: "",
+            preparation: "",
+            addDistinction: "",
         })
-    })
-}
+    }
+
+    submitCocktailForm = async (e) => {
+        e.preventDefault();
+
+        if (this.state.nameError ||
+            this.state.glassTypeError ||
+            this.state.distinctionError ||
+            this.state.imageUrlError ||
+            this.state.preparationError ||
+            this.state.alcoholicError) {
+            return;
+        }
+
+        try {
+            const response = await axios.post(`${BASE_API}cocktails/new-post`, {
+                userId: this.state.userId,
+                alcoholic: this.state.alcoholic,
+                distinctions: this.state.distinctions,
+                glassType: this.state.glassType,
+                imageUrl: this.state.imageUrl,
+                name: this.state.name,
+                preparation: this.state.preparation,
+                ingredients: this.state.ingredients
+            })
+
+            console.log("Response:", response.data)
+
+        } catch (e) {
+            console.log("Error sending data:", e.message)
+        }
+
+        this.setState({
+            alcoholic: "",
+            distinctions: [],
+            imageUrl: "",
+            name: "",
+            glassType: "",
+            preparation: "",
+            ingredients: [],
+            cocktailFormStatus: false
+        }, () => this.loadPosts())
+
+    }
+
+    componentDidMount = () => {
+        try {
+            this.loadPosts();
+            this.loadUsers();
+            this.loadIngredients();
+            this.loadIngredientsUsed();
+            this.getCards();
+        } catch (e) {
+            console.log("Error fetching data:", e.message)
+        }
+    }
+
+    onUpdateField = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        }, () => {
+            if (e.target.name === "name" || e.target.name === "updatedName") {
+                this.validateName(this.state[e.target.name]);
+            }
+
+            if (e.target.name === "glassType" || e.target.name === "updatedGlassType") {
+                this.validateGlass(this.state[e.target.name]);
+            }
+
+            if (e.target.name === "alcoholic" || e.target.name === "updatedAlcoholic") {
+                this.validateAlcoholic(this.state[e.target.name]);
+            }
+
+            if (e.target.name === "preparation" || e.target.name === "updatedPreparation") {
+                this.validatePreparation(this.state[e.target.name]);
+            }
+
+            if (e.target.name === "imageUrl" || e.target.name === "updatedImageUrl") {
+                this.validateURL(this.state[e.target.name]);
+            }
+        })
+    }
+
+    searchFilter = (filterItem) => {
+        let text;
+        switch (filterItem) {
+            case "Name":
+                text = "Search for a cocktail";
+                break;
+            case "Ingredients":
+                text = "Search for an ingredient";
+                break;
+            case "Glass Type":
+                text = "Search for a Cocktail Glass";
+                break;
+            case "Flavour Profiles":
+                text = "Search for a flavour profile";
+                break;
+            case "Drink Type":
+                text = "Search for either alcoholic or non-alcoholic";
+                break;
+            default:
+                text = "";
+                break;
+
+        }
+
+
+
+        this.setState({
+            filter: filterItem,
+            searchBarText: text
+        })
+    }
+
+    clearFilter = () => {
+        this.loadPosts();
+    }
+
+    createDistinctions = (e) => {
+        this.setState({
+            distinctions: e.map(x => x.value)
+        })
+    }
+
+    updateDistinctions = (e) => {
+        this.setState({
+            updatedDistinctions: e.map(x => x.value)
+        })
+    }
+
+    onChooseIngredient = (e) => {
+        this.setState({
+            selectedIngredient: e.value
+        })
+
+        console.log(this.state.ingredientId)
+    }
+
+    // NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
+
+
+    addIngredient = (e) => {
+
+        if (!this.state.selectedIngredient || !this.state.measurements) {
+            return;
+        }
+
+
+        const newIngredient = this.state.ingredientId.find(i => i.name === this.state.selectedIngredient)
+
+        const ingredientToAdd = {
+            "ingredientId": { "$oid": `${newIngredient._id}` },
+            "measurements": `${this.state.measurements}`
+        }
+
+        const displayIngredient = {
+            name: newIngredient.name,
+            measurement: this.state.measurements
+        }
+        console.log("displayIngredient:", displayIngredient)
+
+        this.setState({
+            ingredients: [...this.state.ingredients, ingredientToAdd],
+            displayIngredients: [...this.state.displayIngredients, displayIngredient]
+        }, () => {
+            console.log(this.state.ingredients)
+            this.setState({
+                selectedIngredient: "",
+                measurements: ""
+            })
+        })
+    }
 
 
 
 
 
-// HANDLE VALIDATION
+    // HANDLE VALIDATION
 
-validateName = (name) => {
-    const e = validateName(name);
-    this.setState({
-        nameError: e
-    })
-}
+    validateName = (name) => {
+        const e = validateName(name);
+        this.setState({
+            nameError: e
+        })
+    }
 
-validateGlass = (glassType) => {
-    const e = validateGlass(glassType);
-    this.setState({
-        glassTypeError: e
-    })
-}
+    validateGlass = (glassType) => {
+        const e = validateGlass(glassType);
+        this.setState({
+            glassTypeError: e
+        })
+    }
 
-validateAlcoholic = (alcoholic) => {
-    const e = validateAlcoholic(alcoholic);
-    this.setState({
-        alcoholicError: e
-    })
-}
+    validateAlcoholic = (alcoholic) => {
+        const e = validateAlcoholic(alcoholic);
+        this.setState({
+            alcoholicError: e
+        })
+    }
 
-validatePreparation = (preparation) => {
-    const e = validatePreparation(preparation);
-    this.setState({
-        preparationError: e
-    })
-}
+    validatePreparation = (preparation) => {
+        const e = validatePreparation(preparation);
+        this.setState({
+            preparationError: e
+        })
+    }
 
-validateURL = (url) => {
-    const e = validateURL(url);
-    this.setState({
-        imageUrlError: e
-    })
-}
-
-
+    validateURL = (url) => {
+        const e = validateURL(url);
+        this.setState({
+            imageUrlError: e
+        })
+    }
 
 
-render() {
-    return (<div>
 
 
-        <div className="container">
-            <SearchBar searchFilter={this.searchFilter}
-                filter={this.state.filter}
-                placeholder={this.state.searchBarText}
-                onUpdateField={this.onUpdateField}
-                search={this.state.search}
-                submitSearch={this.searchPosts}
-                clearFilter={this.clearFilter} />
+    render() {
+        return (<div>
 
-            <div className="row">
-                <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
-                <NewCocktail formStatus={this.state.cocktailFormStatus}
-                    closeForm={this.closeCocktailForm}
+
+            <div className="container">
+                <SearchBar searchFilter={this.searchFilter}
+                    filter={this.state.filter}
+                    placeholder={this.state.searchBarText}
                     onUpdateField={this.onUpdateField}
-                    submitForm={this.submitCocktailForm}
-                    updateFlavour={this.onUpdateFlavour}
-                    addDistinction={this.addDistinction}
-                    distinctions={this.state.distinctions}
-                    deleteFlavour={this.deleteFlavourDistinction}
-                    validateSubmit={this.validateSubmit}
-                    nameError={this.state.nameError}
-                    glassTypeError={this.state.glassTypeError}
-                    alcoholicError={this.state.alcoholicError}
-                    preparationError={this.state.preparationError}
-                    imageUrlError={this.state.imageUrlError}
-                    distinctionError={this.state.distinctionError}
-                    createDistinctions={this.createDistinctions}
-                    ingredientName={this.state.ingredientName}
-                    measurements={this.state.measurements}
-                    onChooseIngredient={this.onChooseIngredient}
-                    addIngredient={this.addIngredient}
-                    displayIngredients={this.state.displayIngredients}
-                />
-                <div className="row">
-                    {this.state.posts.map(post => (
-                        <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
-                            <CocktailCard
-                                // READ ALL COCKTAIL POSTS
-                                name={post.name}
-                                imageUrl={post.imageUrl}
-                                user={this.state.users.find(user => user._id === post.userId)}
-                                cocktailModalStatus={this.state.cocktailModal}
-                                cocktailModalId={this.state.activeCocktailModal}
-                                // READ SINGLE COCKTAIL POST
-                                toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
-                                closeCocktailModal={this.closeCocktailModal}
-                                viewGlassType={this.state.viewGlassType}
-                                viewAlcoholic={this.state.viewAlcoholic}
-                                viewImageUrl={this.state.viewImageUrl}
-                                viewDistinctions={this.state.viewDistinctions}
-                                viewName={this.state.viewName}
-                                viewPreparation={this.state.viewPreparation}
-                                //UPDATE COCKTAIL POST
-                                updatedName={this.state.updatedName}
-                                updatedImageUrl={this.state.updatedImageUrl}
-                                updatedAlcoholic={this.state.updatedAlcoholic}
-                                updatedDistinctions={this.state.updatedDistinctions}
-                                updatedGlassType={this.state.updatedGlassType}
-                                updatedPreparation={this.state.updatedPreparation}
-                                updateDistinctions={this.updateDistinctions}
-                                nameError={this.state.nameError}
-                                glassTypeError={this.state.glassTypeError}
-                                alcoholicError={this.state.alcoholicError}
-                                preparationError={this.state.preparationError}
-                                imageUrlError={this.state.imageUrlError}
-                                distinctionError={this.state.distinctionError}
-                                createDistinctions={this.createDistinctions}
-                                // FUNCTIONS
-                                onUpdateField={this.onUpdateField}
-                                deletePost={() => this.deletePost(post._id)}
-                                deleteConfirmation={() => this.confirmDelete(post._id)}
-                                cancelDelete={this.cancelDelete}
-                                delete={this.state.deleteConfirmation}
-                                postBeingEdited={this.state.postBeingEdited}
-                                beginEdit={() => this.beginEdit(post._id)}
-                                cancelEdit={this.cancelEdit}
-                                deleteFlavour={this.deleteViewFlavourDistinction}
-                                addDistinction={this.addToUpdatedDistinction}
-                                updateFlavour={this.updateFlavour}
-                                confirmEdit={this.confirmEdit}
-                            />
+                    search={this.state.search}
+                    submitSearch={this.searchPosts}
+                    clearFilter={this.clearFilter} />
 
-                        </div>
-                    ))}
+                <div className="row">
+                    <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
+                    <NewCocktail formStatus={this.state.cocktailFormStatus}
+                        closeForm={this.closeCocktailForm}
+                        onUpdateField={this.onUpdateField}
+                        submitForm={this.submitCocktailForm}
+                        updateFlavour={this.onUpdateFlavour}
+                        addDistinction={this.addDistinction}
+                        distinctions={this.state.distinctions}
+                        deleteFlavour={this.deleteFlavourDistinction}
+                        validateSubmit={this.validateSubmit}
+                        nameError={this.state.nameError}
+                        glassTypeError={this.state.glassTypeError}
+                        alcoholicError={this.state.alcoholicError}
+                        preparationError={this.state.preparationError}
+                        imageUrlError={this.state.imageUrlError}
+                        distinctionError={this.state.distinctionError}
+                        createDistinctions={this.createDistinctions}
+                        ingredientName={this.state.ingredientName}
+                        measurements={this.state.measurements}
+                        onChooseIngredient={this.onChooseIngredient}
+                        addIngredient={this.addIngredient}
+                        displayIngredients={this.state.displayIngredients}
+                    />
+                    <div className="row">
+                        {this.state.posts.map(post => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
+                                <CocktailCard
+                                    // READ ALL COCKTAIL POSTS
+                                    name={post.name}
+                                    imageUrl={post.imageUrl}
+                                    user={this.state.users.find(user => user._id === post.userId)}
+                                    cocktailModalStatus={this.state.cocktailModal}
+                                    cocktailModalId={this.state.activeCocktailModal}
+                                    // READ SINGLE COCKTAIL POST
+                                    toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
+                                    closeCocktailModal={this.closeCocktailModal}
+                                    viewGlassType={this.state.viewGlassType}
+                                    viewAlcoholic={this.state.viewAlcoholic}
+                                    viewImageUrl={this.state.viewImageUrl}
+                                    viewDistinctions={this.state.viewDistinctions}
+                                    viewName={this.state.viewName}
+                                    viewPreparation={this.state.viewPreparation}
+                                    //UPDATE COCKTAIL POST
+                                    updatedName={this.state.updatedName}
+                                    updatedImageUrl={this.state.updatedImageUrl}
+                                    updatedAlcoholic={this.state.updatedAlcoholic}
+                                    updatedDistinctions={this.state.updatedDistinctions}
+                                    updatedGlassType={this.state.updatedGlassType}
+                                    updatedPreparation={this.state.updatedPreparation}
+                                    updateDistinctions={this.updateDistinctions}
+                                    nameError={this.state.nameError}
+                                    glassTypeError={this.state.glassTypeError}
+                                    alcoholicError={this.state.alcoholicError}
+                                    preparationError={this.state.preparationError}
+                                    imageUrlError={this.state.imageUrlError}
+                                    distinctionError={this.state.distinctionError}
+                                    createDistinctions={this.createDistinctions}
+                                    // FUNCTIONS
+                                    onUpdateField={this.onUpdateField}
+                                    deletePost={() => this.deletePost(post._id)}
+                                    deleteConfirmation={() => this.confirmDelete(post._id)}
+                                    cancelDelete={this.cancelDelete}
+                                    delete={this.state.deleteConfirmation}
+                                    postBeingEdited={this.state.postBeingEdited}
+                                    beginEdit={() => this.beginEdit(post._id)}
+                                    cancelEdit={this.cancelEdit}
+                                    deleteFlavour={this.deleteViewFlavourDistinction}
+                                    addDistinction={this.addToUpdatedDistinction}
+                                    updateFlavour={this.updateFlavour}
+                                    confirmEdit={this.confirmEdit}
+                                />
+
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>)
-}
+        </div>)
+    }
 }
