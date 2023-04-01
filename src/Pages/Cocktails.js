@@ -109,21 +109,6 @@ export default class Cocktails extends React.Component {
     }
 
 
-
-    getCards = async () => {
-        const API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImRlNzg2MTZhLWVjOTQtNDA1Zi1iNDM1LWJkYjlkOTg1ODE4MCIsImlhdCI6MTY4MDI0Mjc0OCwic3ViIjoiZGV2ZWxvcGVyLzk2Y2E3YjUyLTI4YjAtNTgwOC1lMmNlLTkyYzczNGIwYzE5OSIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxMTEuNjUuNTYuMjU0Il0sInR5cGUiOiJjbGllbnQifV19.3JOpivt7Zt_Fc4nes8Wnn6Z6anNuw9LrFWJLR2wmXGVmRW3J0H-MWqFK58lbIS6mGOEg4G35Fu149w3U0yPXgQ';
-        const URL = 'https://api.clashroyale.com/v1/cards';
-
-        const headers = {
-            'Authorization': `Bearer ${API_KEY}`,
-            'Accept': 'application/json',
-        };
-
-        const response = await axios.get(URL, {headers})
-
-        console.log(response.data);
-    }
-
     searchPosts = async () => {
         const filter = this.state.filter.toLowerCase();
         const query = this.state.search;
@@ -264,6 +249,8 @@ export default class Cocktails extends React.Component {
     }
 
     confirmEdit = async () => {
+        this.updateDistinctionsFormat();
+
         try {
             const response = await axios.put(`${BASE_API}cocktails/edit/${this.state.activeCocktailModal}`, {
                 userId: this.state.userId,
@@ -334,6 +321,8 @@ export default class Cocktails extends React.Component {
             this.state.alcoholicError) {
             return;
         }
+
+        this.updateDistinctionsFormat();
 
         try {
             const response = await axios.post(`${BASE_API}cocktails/new-post`, {
@@ -492,6 +481,12 @@ export default class Cocktails extends React.Component {
                 selectedIngredient: "",
                 measurements: ""
             })
+        })
+    }
+
+    updateDistinctionsFormat = () => {
+        this.setState({
+            updatedDistinctions: this.state.updatedDistinctions.map(x => x.value)
         })
     }
 
