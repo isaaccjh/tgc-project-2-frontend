@@ -361,7 +361,6 @@ export default class Cocktails extends React.Component {
             this.loadUsers();
             this.loadIngredients();
             this.loadIngredientsUsed();
-            this.getCards();
         } catch (e) {
             console.log("Error fetching data:", e.message)
         }
@@ -590,6 +589,7 @@ export default class Cocktails extends React.Component {
                                     viewDistinctions={this.state.viewDistinctions}
                                     viewName={this.state.viewName}
                                     viewPreparation={this.state.viewPreparation}
+                                    viewIngredients={this.state.viewIngredients}
                                     //UPDATE COCKTAIL POST
                                     updatedName={this.state.updatedName}
                                     updatedImageUrl={this.state.updatedImageUrl}
