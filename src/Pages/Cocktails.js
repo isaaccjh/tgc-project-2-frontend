@@ -63,6 +63,8 @@ export default class Cocktails extends React.Component {
         filter: "Name",
         searchBarText: "Search for a cocktail",
         search: "",
+        glassTypeFilter: "",
+        alcoholicFilter: "",
 
         // FOR VALIDATION
         nameError: "",
@@ -127,6 +129,8 @@ export default class Cocktails extends React.Component {
             case "drink type":
                 finalQuery = `alcoholic=${query}`
                 break;
+            case "ingredients":
+                finalQuery = `ingredient=${query}`
             default:
                 finalQuery = null
         }
@@ -351,7 +355,10 @@ export default class Cocktails extends React.Component {
             preparation: "",
             ingredients: [],
             cocktailFormStatus: false
-        }, () => this.loadPosts())
+        }, () => {
+            this.loadPosts();
+            this.loadIngredientsUsed();
+        })
 
     }
 
@@ -448,6 +455,13 @@ export default class Cocktails extends React.Component {
         console.log(this.state.ingredientId)
     }
 
+    handleDropdownFilter = (e) => {
+        e.stopPropagation();
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     // NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
 
 
@@ -488,8 +502,6 @@ export default class Cocktails extends React.Component {
             updatedDistinctions: this.state.updatedDistinctions.map(x => x.value)
         })
     }
-
-
 
 
 
@@ -544,7 +556,10 @@ export default class Cocktails extends React.Component {
                     onUpdateField={this.onUpdateField}
                     search={this.state.search}
                     submitSearch={this.searchPosts}
-                    clearFilter={this.clearFilter} />
+                    clearFilter={this.clearFilter}
+                    alcoholicFilter={this.state.alcoholicFilter}
+                    glassTypeFilter={this.state.glassTypeFilter}
+                    handleDropdownFilter={this.handleDropdownFilter} />
 
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
