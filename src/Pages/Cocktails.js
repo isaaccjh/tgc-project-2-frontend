@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateIngredient } from "../Components/validations"
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateIngredient, validateAddIngredient, validateAddMeasurement } from "../Components/validations"
 import "../index.css"
 
 
@@ -73,6 +73,9 @@ export default class Cocktails extends React.Component {
         distinctionError: "",
         preparationError: "",
         imageUrlError: "",
+        ingredientError: "",
+        addIngredientError: "",
+        addMeasurementError: "",
         validated: false
     }
 
@@ -396,6 +399,10 @@ export default class Cocktails extends React.Component {
             if (e.target.name === "imageUrl" || e.target.name === "updatedImageUrl") {
                 this.validateURL(this.state[e.target.name]);
             }
+
+            if (e.target.name === "measurements" || e.target.name === "updatedMeasurements") {
+                this.validateAddMeasurement(this.state.measurements);
+            }
         })
     }
 
@@ -450,9 +457,9 @@ export default class Cocktails extends React.Component {
     onChooseIngredient = (e) => {
         this.setState({
             selectedIngredient: e.value
+        }, () => { 
+            this.validateAddIngredient(this.state.selectedIngredient)
         })
-
-        console.log(this.state.ingredientId)
     }
 
     handleDropdownFilter = (e) => {
@@ -542,12 +549,28 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    validateIngredients = (i) => {
+    validateIngredient = (i) => {
         const e = validateIngredient(i);
         this.setState({
             ingredientError: e
         })
     }
+
+    validateAddIngredient = x => {
+        const e = validateAddIngredient(x);
+        this.setState({
+            addIngredientError: e
+        })
+    }
+
+    validateAddMeasurement = m => {
+        const e = validateAddMeasurement(m);
+        this.setState({
+            addMeasurementError: e
+        }) 
+    }
+
+
 
 
 
@@ -587,6 +610,9 @@ export default class Cocktails extends React.Component {
                         preparationError={this.state.preparationError}
                         imageUrlError={this.state.imageUrlError}
                         distinctionError={this.state.distinctionError}
+                        addIngredientError={this.state.addIngredientError}
+                        ingredientError={this.state.ingredientError}
+                        addMeasurementError={this.state.addMeasurementError}
                         createDistinctions={this.createDistinctions}
                         ingredientName={this.state.ingredientName}
                         measurements={this.state.measurements}

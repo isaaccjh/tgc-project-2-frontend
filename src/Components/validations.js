@@ -63,13 +63,19 @@ export const validateIngredient = (i) => {
     }
 }
 
-export const validateAddIngredient = (i, m) => {
+export const validateAddIngredient = (i) => {
     if (!i) {
         return "Please seleect an ingredient."
+    } else {
+        return ""
     }
+}
 
+export const validateAddMeasurement = m => {
     if (!m) {
         return "Please enter a measurement."
+    } else {
+        return ""
     }
 }
 

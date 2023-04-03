@@ -128,7 +128,7 @@ export default class NewCocktail extends React.Component {
                             <Col>
                                 <Form.Label>Ingredients:</Form.Label>
                                 <ul>
-                                    {this.props.displayIngredients ? 
+                                    {this.props.displayIngredients ?
                                         this.props.displayIngredients.map(ingredient => {
                                             return (
                                                 <li>
@@ -136,7 +136,7 @@ export default class NewCocktail extends React.Component {
                                                 </li>
                                             )
                                         })
-                                     : null}
+                                        : null}
                                 </ul>
                                 <InputGroup className="mb-2">
                                     <Col xs={3} className="me-4">
@@ -145,7 +145,12 @@ export default class NewCocktail extends React.Component {
                                             name="measurements"
                                             onChange={this.props.onUpdateField}
                                             value={this.props.measurements}
+                                            required
+                                            isInvalid={this.props.addMeasurementError}
                                         />
+                                        <Form.Control.Feedback type="invalid">
+                                            {this.props.addMeasurementError}
+                                        </Form.Control.Feedback>
                                     </Col>
                                     <Col xs={8}>
                                         <Select
