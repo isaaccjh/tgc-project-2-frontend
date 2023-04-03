@@ -1,12 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "../index.css"
 
 
 
 export default function () {
     return (
-        <nav className="mb-2 navbar navbar-expand-lg navbar-light bg-light px-0 py-3">
+        <nav className=" navbar navbar-expand-lg px-0 py-3 navbar-color mb-0">
             <div className="container-xl">
                 <a className="navbar-brand" href="#">
                     <img src="" className="h-8" alt="Cocktail" />

@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation } from "../Components/validations"
-
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateIngredient } from "../Components/validations"
+import "../index.css"
 
 
 export default class Cocktails extends React.Component {
@@ -542,25 +542,34 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    validateIngredients = (i) => {
+        const e = validateIngredient(i);
+        this.setState({
+            ingredientError: e
+        })
+    }
+
 
 
 
     render() {
-        return (<div>
+        return (<div className="main-color">
 
 
-            <div className="container">
-                <SearchBar searchFilter={this.searchFilter}
-                    filter={this.state.filter}
-                    placeholder={this.state.searchBarText}
-                    onUpdateField={this.onUpdateField}
-                    search={this.state.search}
-                    submitSearch={this.searchPosts}
-                    clearFilter={this.clearFilter}
-                    alcoholicFilter={this.state.alcoholicFilter}
-                    glassTypeFilter={this.state.glassTypeFilter}
-                    handleDropdownFilter={this.handleDropdownFilter} />
-
+            <div className="container" >
+                <div>
+                    <SearchBar
+                        searchFilter={this.searchFilter}
+                        filter={this.state.filter}
+                        placeholder={this.state.searchBarText}
+                        onUpdateField={this.onUpdateField}
+                        search={this.state.search}
+                        submitSearch={this.searchPosts}
+                        clearFilter={this.clearFilter}
+                        alcoholicFilter={this.state.alcoholicFilter}
+                        glassTypeFilter={this.state.glassTypeFilter}
+                        handleDropdownFilter={this.handleDropdownFilter} />
+                </div>
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}

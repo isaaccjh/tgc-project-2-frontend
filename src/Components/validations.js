@@ -55,6 +55,25 @@ export const validatePreparation = x => {
 
     return "";
 }
+export const validateIngredient = (i) => {
+    if (!i) {
+        return "You need at least 1 ingredient!"
+    } else {
+        return ""
+    }
+}
+
+export const validateAddIngredient = (i, m) => {
+    if (!i) {
+        return "Please seleect an ingredient."
+    }
+
+    if (!m) {
+        return "Please enter a measurement."
+    }
+}
+
+
 
 
 

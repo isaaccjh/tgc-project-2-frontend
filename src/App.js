@@ -8,8 +8,8 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar />
-        <div className="container">
+        <Navbar id="navbar" />
+        <div id="styling" className="main-color">
           <Cocktails />
         </div>
       </React.Fragment>

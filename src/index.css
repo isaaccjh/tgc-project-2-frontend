@@ -2,4 +2,19 @@
 
 * {
     font-family: 'Poppins', sans-serif;
+    color: #554149
 }
+
+
+
+#styling {
+    height: 100vh
+}
+.navbar-color {
+    background-color: #B4B49C !important;
+}
+
+.main-color {
+    background-color: #EEE6E9 !important;
+}
+
