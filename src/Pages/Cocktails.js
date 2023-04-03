@@ -74,7 +74,6 @@ export default class Cocktails extends React.Component {
         preparationError: "",
         imageUrlError: "",
         ingredientError: "",
-        addIngredientError: "",
         addMeasurementError: "",
         validated: false
     }
@@ -457,8 +456,6 @@ export default class Cocktails extends React.Component {
     onChooseIngredient = (e) => {
         this.setState({
             selectedIngredient: e.value
-        }, () => { 
-            this.validateAddIngredient(this.state.selectedIngredient)
         })
     }
 
@@ -556,12 +553,6 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    validateAddIngredient = x => {
-        const e = validateAddIngredient(x);
-        this.setState({
-            addIngredientError: e
-        })
-    }
 
     validateAddMeasurement = m => {
         const e = validateAddMeasurement(m);
@@ -610,7 +601,6 @@ export default class Cocktails extends React.Component {
                         preparationError={this.state.preparationError}
                         imageUrlError={this.state.imageUrlError}
                         distinctionError={this.state.distinctionError}
-                        addIngredientError={this.state.addIngredientError}
                         ingredientError={this.state.ingredientError}
                         addMeasurementError={this.state.addMeasurementError}
                         createDistinctions={this.createDistinctions}

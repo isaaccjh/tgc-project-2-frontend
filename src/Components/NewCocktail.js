@@ -159,6 +159,7 @@ export default class NewCocktail extends React.Component {
                                             onChange={this.props.onChooseIngredient}
                                             defaultValue={null}
                                         />
+
                                     </Col>
                                     <Button
                                         variant="secondary"
