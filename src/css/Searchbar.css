@@ -1,0 +1,40 @@
+
+#search-container {
+    padding-left: 0 !important;
+}
+
+#filter-box {
+    padding: 15px;
+    border: 2px solid black;
+    background-color: white;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    width: 52%;
+    position:absolute;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#filter-box.visible {
+    opacity: 1;
+}
+
+
+
+
+#filter {
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 0;
+}
+
+#search {
+    border: 2px solid black;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 0;
+}
+

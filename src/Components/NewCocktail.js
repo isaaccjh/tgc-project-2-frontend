@@ -80,7 +80,7 @@ export default class NewCocktail extends React.Component {
                                 </Form.Control.Feedback>
                             </Col>
                         </Row>
-                        <Row className="mt-2">
+                        <Row className="mt-2 mb-2">
                             <Col>
                                 <Form.Select
                                     name="glassType"
@@ -124,7 +124,7 @@ export default class NewCocktail extends React.Component {
                             </Col>
                         </Row>
                         {/*INGREDIENTS SECTION HERE */}
-                        <Row className="mt-2">
+                        <Row>
                             <Col>
                                 <Form.Label>Ingredients:</Form.Label>
                                 <ul>

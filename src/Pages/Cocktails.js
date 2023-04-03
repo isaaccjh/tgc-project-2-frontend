@@ -65,6 +65,7 @@ export default class Cocktails extends React.Component {
         search: "",
         glassTypeFilter: "",
         alcoholicFilter: "",
+        filterBox: true,
 
         // FOR VALIDATION
         nameError: "",
@@ -561,6 +562,12 @@ export default class Cocktails extends React.Component {
         }) 
     }
 
+    toggleFilter = () => {
+        this.setState({
+            filterBox: !this.state.filterBox
+        })
+    }
+
 
 
 
@@ -582,7 +589,11 @@ export default class Cocktails extends React.Component {
                         clearFilter={this.clearFilter}
                         alcoholicFilter={this.state.alcoholicFilter}
                         glassTypeFilter={this.state.glassTypeFilter}
-                        handleDropdownFilter={this.handleDropdownFilter} />
+                        handleDropdownFilter={this.handleDropdownFilter}
+                        ingredientName={this.state.ingredientName}
+                        filterBox={this.state.filterBox}
+                        toggleFilter={this.toggleFilter}
+                         />
                 </div>
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
