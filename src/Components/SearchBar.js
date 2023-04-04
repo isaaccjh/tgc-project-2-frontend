@@ -132,7 +132,7 @@ export default class SearchBar extends React.Component {
                         <button onClick={this.props.AiFillCaretDownclearFilter}>Clear Filter</button>
                     </div>
                     <div>
-                        <button onClick={this.props.closeFilter}>Close</button>
+                        <button onClick={this.props.closeFilter}>Search</button>
                     </div>
                 </div>
 
