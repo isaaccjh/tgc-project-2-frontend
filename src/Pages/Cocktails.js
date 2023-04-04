@@ -65,7 +65,8 @@ export default class Cocktails extends React.Component {
         search: "",
         glassTypeFilter: "",
         alcoholicFilter: "",
-        filterBox: true,
+        distinctionsFilter: "",
+        filterBox: "",
 
         // FOR VALIDATION
         nameError: "",
@@ -438,10 +439,6 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    clearFilter = () => {
-        this.loadPosts();
-    }
-
     createDistinctions = (e) => {
         this.setState({
             distinctions: e.map(x => x.value)
@@ -460,12 +457,6 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    handleDropdownFilter = (e) => {
-        e.stopPropagation();
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
 
     // NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
 
@@ -589,6 +580,7 @@ export default class Cocktails extends React.Component {
                         clearFilter={this.clearFilter}
                         alcoholicFilter={this.state.alcoholicFilter}
                         glassTypeFilter={this.state.glassTypeFilter}
+                        distinctionsFilter={this.state.distinctionsFilter}
                         handleDropdownFilter={this.handleDropdownFilter}
                         ingredientName={this.state.ingredientName}
                         filterBox={this.state.filterBox}
@@ -596,7 +588,7 @@ export default class Cocktails extends React.Component {
                          />
                 </div>
                 <div className="row">
-                    <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 " onClick={this.toggleCocktailForm}>Add New Cocktail</button>
+                    <button className="mt-3 btn btn-primary d-inline-block ms-2 addNew " onClick={this.toggleCocktailForm}>+</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
                         closeForm={this.closeCocktailForm}
                         onUpdateField={this.onUpdateField}

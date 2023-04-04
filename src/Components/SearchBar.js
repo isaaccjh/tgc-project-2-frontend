@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs"
 import { Form } from "react-bootstrap"
 import "../index.css"
@@ -65,15 +65,11 @@ export default class SearchBar extends React.Component {
 
     ]
 
-    state = {
-        filterBox: this.props.filterBox
-    }
-
     render() {
         return (<div>
             <div className="pt-2 d-flex container" id="search-container">
                 <button id="filter" onClick={this.props.toggleFilter}>
-                    <BsFilter size={22} /> Filter
+                    <BsFilter size={22} /> Filter {this.props.filterBox ? <AiFillCaretUp size={17} /> : <AiFillCaretDown size={17} />}
                 </button>
                 <div id="search">
                     Search
@@ -88,9 +84,9 @@ export default class SearchBar extends React.Component {
                         <input
                             className="form-check-input"
                             type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio1"
-                            value="option1"
+                            name="alcoholicFilter"
+                            value="alcoholic"
+                            onChange={this.props.onUpdateField}
                         />
                         <label className="form-check-label">Cocktail</label>
                     </div>
@@ -98,16 +94,22 @@ export default class SearchBar extends React.Component {
                         <input
                             className="form-check-input"
                             type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio2"
-                            value="option2"
+                            name="alcoholicFilter"
+                            value="non-alcoholic"
+                            onChange={this.props.onUpdateField}
                         />
                         <label className="form-check-label">Mocktail</label>
                     </div>
                 </div>
                 <div>
                     <div>Flavour Profiles:</div>
-                    <input type="text" placeholder="" />
+                    <input 
+                        type="text" 
+                        onChange={this.props.onUpdateField}
+                        name="distinctionsFilter"
+                        value={this.props.distinctionsFilter    }
+                    />
+                    <p className="text-muted" style={{"fontSize" : "12px"}}>Please only enter one flavour</p>
                 </div>
                 <div className="mt-2">
                     Glass Type:
@@ -127,7 +129,7 @@ export default class SearchBar extends React.Component {
                 </div>
                 <div className="mt-4 d-flex">
                     <div className="me-2">
-                        <button>Clear Filter</button>
+                        <button onClick={this.props.AiFillCaretDownclearFilter}>Clear Filter</button>
                     </div>
                     <div>
                         <button onClick={this.props.closeFilter}>Close</button>
