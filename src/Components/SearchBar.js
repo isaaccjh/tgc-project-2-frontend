@@ -4,7 +4,8 @@ import { BsFilter } from "react-icons/bs"
 import { Form } from "react-bootstrap"
 import "../index.css"
 import "../css/Searchbar.css"
-import Select from "react-select"
+import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 
 export default class SearchBar extends React.Component {
 
@@ -64,79 +65,55 @@ export default class SearchBar extends React.Component {
         },
 
     ]
+    
+    flavourProfiles = [
+        {
+            value: "Boozy",
+            label: "Boozy"
+        },
+        {
+            value: "Sweet",
+            label: "Sweet"
+        },
+        {
+            value: "Sour",
+            label: "Sour"
+        },
+        {
+            value: "Bitter",
+            label: "Bitter"
+        },
+        {
+            value: "Umami",
+            label: "Umami"
+        },
+        {
+            value: "Salty",
+            label: "Salty"
+        },
+        {
+            value: "Astringent",
+            label: "Astringent"
+        },
+        {
+            value: "Hot",
+            label: "Hot"
+        },
+        {
+            value: "Cold",
+            label: "Cold"
+        },
+
+    ]
+
+
+    state = {
+        toggleFilter: ""
+    }
 
     render() {
         return (<div>
-            <div className="pt-2 d-flex container" id="search-container">
-                <button id="filter" onClick={this.props.toggleFilter}>
-                    <BsFilter size={22} /> Filter {this.props.filterBox ? <AiFillCaretUp size={17} /> : <AiFillCaretDown size={17} />}
-                </button>
-                <div id="search">
-                    Search
-                </div>
-            </div>
-            <div 
-                className={this.props.filterBox ? "container d-block visible" : "container d-block"} 
-                id="filter-box" >
-                <div>
-                   <div>Alcoholic Type:</div>
-                    <div className="form-check form-check-inline">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="alcoholicFilter"
-                            value="alcoholic"
-                            onChange={this.props.onUpdateField}
-                        />
-                        <label className="form-check-label">Cocktail</label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="alcoholicFilter"
-                            value="non-alcoholic"
-                            onChange={this.props.onUpdateField}
-                        />
-                        <label className="form-check-label">Mocktail</label>
-                    </div>
-                </div>
-                <div>
-                    <div>Flavour Profiles:</div>
-                    <input 
-                        type="text" 
-                        onChange={this.props.onUpdateField}
-                        name="distinctionsFilter"
-                        value={this.props.distinctionsFilter    }
-                    />
-                    <p className="text-muted" style={{"fontSize" : "12px"}}>Please only enter one flavour</p>
-                </div>
-                <div className="mt-2">
-                    Glass Type:
-                    <Select
-                        options={this.glassTypes}
-                        placeholder="Glass Type"
-                        defaultValue={null}
-                    />
-                </div>
-                <div className="mt-2">
-                    Ingredient:
-                    <Select
-                        options={this.props.ingredientName}
-                        placeholder="Select Ingredient"
-                        defaultValue={null}
-                    />
-                </div>
-                <div className="mt-4 d-flex">
-                    <div className="me-2">
-                        <button onClick={this.props.AiFillCaretDownclearFilter}>Clear Filter</button>
-                    </div>
-                    <div>
-                        <button onClick={this.props.closeFilter}>Search</button>
-                    </div>
-                </div>
-
-            </div>
+            
         </div>)
     }
 

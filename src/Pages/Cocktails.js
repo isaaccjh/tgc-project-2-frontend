@@ -66,7 +66,6 @@ export default class Cocktails extends React.Component {
         glassTypeFilter: "",
         alcoholicFilter: "",
         distinctionsFilter: "",
-        filterBox: "",
 
         // FOR VALIDATION
         nameError: "",
@@ -553,12 +552,7 @@ export default class Cocktails extends React.Component {
         }) 
     }
 
-    toggleFilter = () => {
-        this.setState({
-            filterBox: !this.state.filterBox
-        })
-    }
-
+    
 
 
 
@@ -583,7 +577,6 @@ export default class Cocktails extends React.Component {
                         distinctionsFilter={this.state.distinctionsFilter}
                         handleDropdownFilter={this.handleDropdownFilter}
                         ingredientName={this.state.ingredientName}
-                        filterBox={this.state.filterBox}
                         toggleFilter={this.toggleFilter}
                          />
                 </div>
