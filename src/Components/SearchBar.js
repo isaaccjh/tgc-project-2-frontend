@@ -3,7 +3,7 @@ import { AiOutlineSearch, AiFillCaretDown, AiFillCaretUp } from "react-icons/ai"
 import { BsFilter } from "react-icons/bs"
 import { Form } from "react-bootstrap"
 import "../index.css"
-import "../css/Searchbar.css"
+
 
 import FilterBox from "./FilterBox";
 
@@ -106,20 +106,20 @@ export default class SearchBar extends React.Component {
 
     ]
 
-
-    state = {
-        toggleFilter: "",
-    }
-
     render() {
         return (<div>
             <div className="input-group pt-2">
-                <button className="btn btn-outline-secondary" type="button">
-                    <BsFilter /> Filter <AiFillCaretDown />
+                <button 
+                    className="btn btn-outline-secondary" 
+                    type="button"
+                    onClick={this.props.toggleFilter}
+                >
+                    <BsFilter /> Filter {this.props.filterState ? <AiFillCaretUp /> : <AiFillCaretDown />}
                 </button>
                 <input type="text" className="form-control" />
                 <button className="btn btn-outline-secondary" type="button"><AiOutlineSearch /></button>
             </div>
+            {this.props.filterState ? 
             <FilterBox 
                 ingredientName={this.props.ingredientName}
                 clearFilter={this.props.clearFilter}
@@ -131,7 +131,7 @@ export default class SearchBar extends React.Component {
                 onUpdateField={this.props.onUpdateField}
                 glassTypeFilter={this.props.glassTypeFilter}
                 handleGlassTypeChange={this.props.handleGlassTypeChange}
-            />
+            /> : null}
         </div>)
     }
 

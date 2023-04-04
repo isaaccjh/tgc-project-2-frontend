@@ -1,10 +1,11 @@
 import React from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
+import "../css/Searchbar.css"
 
 export default function FilterBox(props) {
     return (<div>
-        <div id="filterContainer" className="bg-white p-3 mt-1 border rounded">
+        <div id="filterContainer" className="p-3 mt-1 border rounded">
             <strong style={{ "textDecoration": "underline", "fontSize": "1.1rem" }}>Filters</strong>
             <div className="mt-2">
                 Alcoholic Type:

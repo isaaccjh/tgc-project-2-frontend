@@ -67,6 +67,7 @@ export default class Cocktails extends React.Component {
         alcoholicFilter: "",
         distinctionsFilter: "",
         ingredientsFilter: "",
+        filterState: false,
 
         // FOR VALIDATION
         nameError: "",
@@ -135,6 +136,7 @@ export default class Cocktails extends React.Component {
                 break;
             case "ingredients":
                 finalQuery = `ingredient=${query}`
+                break;
             default:
                 finalQuery = null
         }
@@ -503,13 +505,11 @@ export default class Cocktails extends React.Component {
             name: newIngredient.name,
             measurement: this.state.measurements
         }
-        console.log("displayIngredient:", displayIngredient)
 
         this.setState({
             ingredients: [...this.state.ingredients, ingredientToAdd],
             displayIngredients: [...this.state.displayIngredients, displayIngredient]
         }, () => {
-            console.log(this.state.ingredients)
             this.setState({
                 selectedIngredient: "",
                 measurements: ""
@@ -526,6 +526,12 @@ export default class Cocktails extends React.Component {
     clearFilter = () => {
         this.setState({ 
             glassTypeFilter: ""
+        })
+    }
+
+    toggleFilter = () => {
+        this.setState({
+            filterState: !this.state.filterState
         })
     }
 
@@ -582,6 +588,8 @@ export default class Cocktails extends React.Component {
         }) 
     }
 
+
+
     
 
 
@@ -607,10 +615,11 @@ export default class Cocktails extends React.Component {
                         distinctionsFilter={this.state.distinctionsFilter}
                         handleDropdownFilter={this.handleDropdownFilter}
                         ingredientName={this.state.ingredientName}
-                        toggleFilter={this.toggleFilter}
                         filterDistinctions={this.filterDistinctions}
                         filterIngredients={this.filterIngredients}
                         filterGlassType={this.filterGlassType}
+                        filterState={this.state.filterState}
+                        toggleFilter={this.toggleFilter}
                          />
                 </div>
                 <div className="row">
