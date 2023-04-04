@@ -4,8 +4,8 @@ import { BsFilter } from "react-icons/bs"
 import { Form } from "react-bootstrap"
 import "../index.css"
 import "../css/Searchbar.css"
-import Select from "react-select";
-import CreatableSelect from "react-select/creatable";
+
+import FilterBox from "./FilterBox";
 
 export default class SearchBar extends React.Component {
 
@@ -65,7 +65,7 @@ export default class SearchBar extends React.Component {
         },
 
     ]
-    
+
     flavourProfiles = [
         {
             value: "Boozy",
@@ -108,12 +108,30 @@ export default class SearchBar extends React.Component {
 
 
     state = {
-        toggleFilter: ""
+        toggleFilter: "",
     }
 
     render() {
         return (<div>
-            
+            <div className="input-group pt-2">
+                <button className="btn btn-outline-secondary" type="button">
+                    <BsFilter /> Filter <AiFillCaretDown />
+                </button>
+                <input type="text" className="form-control" />
+                <button className="btn btn-outline-secondary" type="button"><AiOutlineSearch /></button>
+            </div>
+            <FilterBox 
+                ingredientName={this.props.ingredientName}
+                clearFilter={this.props.clearFilter}
+                glassTypes={this.glassTypes}
+                flavourProfiles={this.flavourProfiles}
+                filterDistinctions={this.props.filterDistinctions}
+                filterIngredients={this.props.filterIngredients}
+                filterGlassType={this.props.filterGlassType}
+                onUpdateField={this.props.onUpdateField}
+                glassTypeFilter={this.props.glassTypeFilter}
+                handleGlassTypeChange={this.props.handleGlassTypeChange}
+            />
         </div>)
     }
 

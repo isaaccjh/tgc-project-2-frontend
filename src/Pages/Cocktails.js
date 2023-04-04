@@ -66,6 +66,7 @@ export default class Cocktails extends React.Component {
         glassTypeFilter: "",
         alcoholicFilter: "",
         distinctionsFilter: "",
+        ingredientsFilter: "",
 
         // FOR VALIDATION
         nameError: "",
@@ -450,6 +451,30 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    filterDistinctions = e => {
+        this.setState({
+            distinctionsFilter: e.map(x => x.value)
+        })
+    }
+
+    filterIngredients = e => {
+        this.setState({
+            ingredientsFilter: e.map(x => x.value)
+        })
+    }
+
+    filterGlassType = e => {
+        if (e) {
+            this.setState({
+                glassTypeFilter: e.value
+            })
+        } else {
+            this.setState({
+                glassTypeFilter: ""
+            })
+        }
+    }
+
     onChooseIngredient = (e) => {
         this.setState({
             selectedIngredient: e.value
@@ -498,6 +523,11 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    clearFilter = () => {
+        this.setState({ 
+            glassTypeFilter: ""
+        })
+    }
 
 
     // HANDLE VALIDATION
@@ -578,10 +608,13 @@ export default class Cocktails extends React.Component {
                         handleDropdownFilter={this.handleDropdownFilter}
                         ingredientName={this.state.ingredientName}
                         toggleFilter={this.toggleFilter}
+                        filterDistinctions={this.filterDistinctions}
+                        filterIngredients={this.filterIngredients}
+                        filterGlassType={this.filterGlassType}
                          />
                 </div>
                 <div className="row">
-                    <button className="mt-3 btn btn-primary d-inline-block ms-2 addNew " onClick={this.toggleCocktailForm}>+</button>
+                    <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 rounded-pill addNew " onClick={this.toggleCocktailForm}>+</button>
                     <NewCocktail formStatus={this.state.cocktailFormStatus}
                         closeForm={this.closeCocktailForm}
                         onUpdateField={this.onUpdateField}
