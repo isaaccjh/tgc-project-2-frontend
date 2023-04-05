@@ -409,37 +409,6 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    searchFilter = (filterItem) => {
-        let text;
-        switch (filterItem) {
-            case "Name":
-                text = "Search for a cocktail";
-                break;
-            case "Ingredients":
-                text = "Search for an ingredient";
-                break;
-            case "Glass Type":
-                text = "Search for a Cocktail Glass";
-                break;
-            case "Flavour Profiles":
-                text = "Search for a flavour profile";
-                break;
-            case "Drink Type":
-                text = "Search for either alcoholic or non-alcoholic";
-                break;
-            default:
-                text = "";
-                break;
-
-        }
-
-
-
-        this.setState({
-            filter: filterItem,
-            searchBarText: text
-        })
-    }
 
     createDistinctions = (e) => {
         this.setState({
