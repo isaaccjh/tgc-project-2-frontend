@@ -116,7 +116,14 @@ export default class SearchBar extends React.Component {
                 >
                     <BsFilter /> Filter {this.props.filterState ? <AiFillCaretUp /> : <AiFillCaretDown />}
                 </button>
-                <input type="text" className="form-control" />
+
+                {/* Search Bar */}
+
+                <input 
+                    type="text" 
+                    name="filterSearch"
+                    onChange={this.props.onUpdateField}
+                    className="form-control" />
                 <button className="btn btn-outline-secondary" type="button"><AiOutlineSearch /></button>
             </div>
             {this.props.filterState ? 

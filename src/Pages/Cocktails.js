@@ -60,13 +60,11 @@ export default class Cocktails extends React.Component {
         postToDelete: "",
 
         // FOR SEARCH
-        filter: "Name",
-        searchBarText: "Search for a cocktail",
-        search: "",
         glassTypeFilter: "",
         alcoholicFilter: "",
         distinctionsFilter: "",
         ingredientsFilter: "",
+        searchFilter: "",
         filterState: false,
 
         // FOR VALIDATION
@@ -526,13 +524,7 @@ export default class Cocktails extends React.Component {
             addMeasurementError: e
         }) 
     }
-
-
-
     
-
-
-
 
 
     render() {
@@ -563,7 +555,9 @@ export default class Cocktails extends React.Component {
                 </div>
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 rounded-pill addNew " onClick={this.toggleCocktailForm}>+</button>
-                    <NewCocktail formStatus={this.state.cocktailFormStatus}
+                    <NewCocktail 
+                        glassType={this.state.glassType}
+                        formStatus={this.state.cocktailFormStatus}
                         closeForm={this.closeCocktailForm}
                         onUpdateField={this.onUpdateField}
                         submitForm={this.submitCocktailForm}

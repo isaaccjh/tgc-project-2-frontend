@@ -87,6 +87,7 @@ export default class NewCocktail extends React.Component {
                                     onChange={this.props.onUpdateField}
                                     required
                                     isInvalid={this.props.glassTypeError}
+                                    value={this.props.glassType}
                                 >
                                     <option>Glass Type</option>
                                     <option value="Highball Glass">Highball</option>
