@@ -116,37 +116,7 @@ export default class Cocktails extends React.Component {
     }
 
 
-    searchPosts = async () => {
-        const filter = this.state.filter.toLowerCase();
-        const query = this.state.search;
 
-        let finalQuery;
-        switch (filter) {
-            case "name":
-                finalQuery = `name=${query}`
-                break;
-            case "glass type":
-                finalQuery = `glassType=${query}`
-                break;
-            case "flavour profiles":
-                finalQuery = `distinction=${query}`
-                break;
-            case "drink type":
-                finalQuery = `alcoholic=${query}`
-                break;
-            case "ingredients":
-                finalQuery = `ingredient=${query}`
-                break;
-            default:
-                finalQuery = null
-        }
-
-        const response = await axios.get(`${BASE_API}cocktails?${finalQuery}`);
-        this.setState({
-            posts: response.data,
-            search: ""
-        })
-    }
 
     toggleCocktailModal = (postId) => {
         const postToView = this.state.posts.find(post => post._id === postId)
