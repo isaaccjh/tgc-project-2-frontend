@@ -8,13 +8,25 @@ export default function FilterBox(props) {
         <div id="filterContainer" className="p-3 mt-1 border rounded">
             <strong style={{ "textDecoration": "underline", "fontSize": "1.1rem" }}>Filters</strong>
             <div className="mt-2">
-                Alcoholic Type:
-                <div className="form-check form-check-inline ms-3">
-                    <input className="form-check-input" type="radio" name="alcoholicFilter" value="alcoholic" onChange={props.onUpdateField}/>
+                <div>Alcoholic Type:</div>
+                <div className="form-check form-check-inline ms-3" id="alcoholicFilter">
+                    <input
+                        className="form-check-input"
+                        type="radio"
+                        name="alcoholicFilter"
+                        checked={props.alcoholicFilter === "alcoholic"}
+                        value="alcoholic"
+                        onChange={props.onUpdateField} />
                     <label className="form-check-label">Cocktail</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="alcoholicFilter" value="non-alcoholic" onChange={props.onUpdateField}/>
+                    <input
+                        className="form-check-input"
+                        type="radio"
+                        name="alcoholicFilter"
+                        checked={props.alcoholicFilter === "non-alcoholic"}
+                        value="non-alcoholic"
+                        onChange={props.onUpdateField} />
                     <label className="form-check-label" >Mocktail</label>
                 </div>
             </div>
@@ -22,9 +34,12 @@ export default function FilterBox(props) {
                 Glass Types:
                 <Select
                     isClearable
-                    options={props.glassTypes}
-                    defaultValue={props.glassTypeFilter}
+                    options={[...props.glassTypes, {
+                        "value": "",
+                        "label": "None"
+                    }]}
                     onChange={props.filterGlassType}
+                    value={props.glassTypeValue}
                 />
             </div>
             <div className="mt-2">

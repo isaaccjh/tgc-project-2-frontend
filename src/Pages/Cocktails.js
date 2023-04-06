@@ -60,12 +60,13 @@ export default class Cocktails extends React.Component {
         postToDelete: "",
 
         // FOR SEARCH
-        glassTypeFilter: "",
+        glassTypeFilter: "None",
         alcoholicFilter: "",
         distinctionsFilter: "",
         ingredientsFilter: "",
         searchFilter: "",
         filterState: false,
+        glassTypeValue : {},
 
         // FOR VALIDATION
         nameError: "",
@@ -405,7 +406,11 @@ export default class Cocktails extends React.Component {
     filterGlassType = e => {
         if (e) {
             this.setState({
-                glassTypeFilter: e.value
+                glassTypeFilter: e.value,
+                glassTypeValue: {
+                    "value": e.value,
+                    "label": e.value
+                }
             })
         } else {
             this.setState({
@@ -462,7 +467,10 @@ export default class Cocktails extends React.Component {
 
     clearFilter = () => {
         this.setState({ 
-            glassTypeFilter: ""
+            glassTypeFilter: "None",
+            distinctionsFilter: "",
+            ingredientsFilter: "",
+            alcoholicFilter: "" 
         })
     }
 
@@ -551,6 +559,7 @@ export default class Cocktails extends React.Component {
                         filterGlassType={this.filterGlassType}
                         filterState={this.state.filterState}
                         toggleFilter={this.toggleFilter}
+                        glassTypeValue={this.state.glassTypeValue}
                          />
                 </div>
                 <div className="row">

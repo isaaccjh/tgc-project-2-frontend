@@ -106,6 +106,8 @@ export default class SearchBar extends React.Component {
 
     ]
 
+    
+
     render() {
         return (<div>
             <div className="input-group pt-2">
@@ -137,7 +139,9 @@ export default class SearchBar extends React.Component {
                 filterGlassType={this.props.filterGlassType}
                 onUpdateField={this.props.onUpdateField}
                 glassTypeFilter={this.props.glassTypeFilter}
+                alcoholicFilter={this.props.alcoholicFilter}
                 handleGlassTypeChange={this.props.handleGlassTypeChange}
+                glassTypeValue={this.props.glassTypeValue}
             /> : null}
         </div>)
     }
