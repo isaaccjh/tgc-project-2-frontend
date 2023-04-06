@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Cocktail Central
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cocktail Central is a community-driven website that allows users to post, share, and discover cocktail recipes from all over the world. Users can create, review, and comment on a wide variety of cocktail recipes that include flavor profiles, ingredients, names, and preparation instructions.
 
-## Available Scripts
+To ensure a safe and enjoyable experience for all users, we have implemented user login and authentication. Our website also features a visually appealing design with a carefully chosen color scheme and adheres to the 5 planes of UI/UX design to provide a seamless user experience.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [UI/UX Design](#uiux-design)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Registration**: New users can register an account by providing a username, email address, and password.
+- **User Login**: Registered users can log in to the website to access their account and post, review, and comment on cocktail recipes.
+- **Cocktail Recipe Submission**: Users can submit their cocktail recipes, including flavor profiles, ingredients, names, and preparation instructions.
+- **Recipe Reviews and Comments**: Users can review and leave comments on other users' cocktail recipes.
+- **Search Functionality**: Users can search for specific cocktails or ingredients to discover new recipes.
+- **Responsive Design**: The website is optimized for various devices and screen sizes to provide a consistent user experience across different platforms.
+- **Color Scheme**: The website features a visually appealing color scheme that complements the theme of cocktails and encourages user interaction.
 
-### `npm test`
+## UI/UX Design
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Our website adheres to the 5 planes of UI/UX design, which include Strategy, Scope, Structure, Skeleton, and Surface, to ensure an optimal user experience.
 
-### `npm run build`
+### Strategy
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The website's main goal is to create a platform for users to share and discover cocktail recipes, fostering a sense of community among cocktail enthusiasts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Scope
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To achieve the website's goal, we have implemented features such as user registration and login, recipe submission, reviews, and comments. In addition, we have designed a search functionality that allows users to find recipes based on keywords, ingredients, or flavor profiles.
 
-### `npm run eject`
+### Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The website is structured with a clear hierarchy, making it easy for users to navigate and access different sections. The main sections include Home, Recipes, Submit a Recipe, and User Profile.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Skeleton
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The layout of the website is designed to be visually appealing and user-friendly. The navigation menu, search bar, and user login options are easily accessible from any page. Recipe pages are organized with clear sections for ingredients, preparation instructions, and user reviews and comments.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Surface
 
-## Learn More
+The visual design of the website, including the color scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Provide installation instructions, including dependencies, for users to get started with the website.
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Provide a step-by-step guide on how to use the website and its various features.
 
-### Analyzing the Bundle Size
+## Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Include information on how to run tests for the website, as well as example test cases.
 
-### Making a Progressive Web App
+(Include the previously provided test cases here.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Include guidelines for users who want to contribute to the website's development, such as bug reports, feature requests, and code contributions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Include information on the website's license, as well as any attributions and credits.
