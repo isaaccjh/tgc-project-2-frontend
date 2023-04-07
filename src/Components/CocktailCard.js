@@ -81,7 +81,7 @@ export default function CocktailCard(props) {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Details</Accordion.Header>
                                 <Accordion.Body>
-                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic ? "cocktail" : "mocktail"} best consumed in a <strong>{props.viewGlassType}</strong>.
+                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic === "alcoholic" ? "cocktail" : "mocktail"} best consumed in a <strong>{props.viewGlassType}</strong>.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">

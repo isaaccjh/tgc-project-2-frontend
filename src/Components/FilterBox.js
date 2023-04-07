@@ -30,7 +30,6 @@ export default function FilterBox(props) {
             <div className="mt-2">
                 Ingredients:
                 <Select
-                    isMulti
                     options={props.ingredientName}
                     defaultValue={null}
                     onChange={props.filterIngredients}

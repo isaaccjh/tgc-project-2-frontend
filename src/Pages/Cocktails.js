@@ -13,6 +13,7 @@ import "../index.css"
 export default class Cocktails extends React.Component {
     state = {
         posts: [],
+        allPosts: [],
         users: [],
         cocktailModal: false,
         activeCocktailModal: "",
@@ -64,7 +65,7 @@ export default class Cocktails extends React.Component {
         alcoholicFilter: "",
         distinctionsFilter: "",
         ingredientsFilter: "",
-        searchFilter: "",
+        nameFilter: "",
         filterState: false,
 
         // FOR VALIDATION
@@ -83,8 +84,9 @@ export default class Cocktails extends React.Component {
     loadPosts = async () => {
         const response = await axios.get(`${BASE_API}cocktails`);
         this.setState({
-            posts: response.data
-        });
+            posts: response.data,
+            allPosts: response.data
+        }, () => console.log(this.state.posts));
     }
 
     loadUsers = async () => {
@@ -113,7 +115,7 @@ export default class Cocktails extends React.Component {
         })
     }
 
-
+    
 
 
     toggleCocktailModal = (postId) => {
@@ -398,7 +400,7 @@ export default class Cocktails extends React.Component {
 
     filterIngredients = e => {
         this.setState({
-            ingredientsFilter: e.map(x => x.value)
+            ingredientsFilter: e.value
         })
     }
 
@@ -423,6 +425,27 @@ export default class Cocktails extends React.Component {
 
     // NEED TO DISPLAY INGREDIENT USING LIST RENDERING, CREATE FUNCTIONS HERE
 
+    searchPosts = () => {
+        let filteredPost = this.state.allPosts
+
+        if (this.state.nameFilter) {
+            filteredPost = filteredPost.filter(post => post.name === this.state.nameFilter)
+        }
+
+        if (this.state.alcoholicFilter) {
+            filteredPost = filteredPost.filter(post => post.alcoholic === this.state.alcoholicFilter)
+        }
+
+        if (this.state.glassTypeFilter) {
+            filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter ) 
+        }
+
+
+
+        this.setState({
+            posts: filteredPost
+        })
+    }
 
     addIngredient = (e) => {
 
@@ -462,13 +485,17 @@ export default class Cocktails extends React.Component {
 
     clearFilter = () => {
         this.setState({ 
-            glassTypeFilter: ""
+            posts: this.state.allPosts
         })
     }
 
     toggleFilter = () => {
         this.setState({
-            filterState: !this.state.filterState
+            filterState: !this.state.filterState,
+            alcoholicFilter: "",
+            glassTypeFilter: "",
+            ingredientsFilter: "",
+            distinctionsFilter: ""
         })
     }
 
@@ -539,7 +566,6 @@ export default class Cocktails extends React.Component {
                         placeholder={this.state.searchBarText}
                         onUpdateField={this.onUpdateField}
                         search={this.state.search}
-                        submitSearch={this.searchPosts}
                         clearFilter={this.clearFilter}
                         alcoholicFilter={this.state.alcoholicFilter}
                         glassTypeFilter={this.state.glassTypeFilter}
@@ -551,6 +577,7 @@ export default class Cocktails extends React.Component {
                         filterGlassType={this.filterGlassType}
                         filterState={this.state.filterState}
                         toggleFilter={this.toggleFilter}
+                        searchPosts={this.searchPosts}
                          />
                 </div>
                 <div className="row">

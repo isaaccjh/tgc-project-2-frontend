@@ -109,8 +109,8 @@ export default class SearchBar extends React.Component {
     render() {
         return (<div>
             <div className="input-group pt-2">
-                <button 
-                    className="btn btn-outline-secondary" 
+                <button
+                    className="btn btn-outline-secondary"
                     type="button"
                     onClick={this.props.toggleFilter}
                 >
@@ -119,26 +119,31 @@ export default class SearchBar extends React.Component {
 
                 {/* Search Bar */}
 
-                <input 
-                    type="text" 
-                    name="filterSearch"
+                <input
+                    type="text"
+                    name="nameFilter"
                     onChange={this.props.onUpdateField}
                     className="form-control" />
-                <button className="btn btn-outline-secondary" type="button"><AiOutlineSearch /></button>
+                <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={this.props.searchPosts}>
+                    <AiOutlineSearch />
+                </button>
             </div>
-            {this.props.filterState ? 
-            <FilterBox 
-                ingredientName={this.props.ingredientName}
-                clearFilter={this.props.clearFilter}
-                glassTypes={this.glassTypes}
-                flavourProfiles={this.flavourProfiles}
-                filterDistinctions={this.props.filterDistinctions}
-                filterIngredients={this.props.filterIngredients}
-                filterGlassType={this.props.filterGlassType}
-                onUpdateField={this.props.onUpdateField}
-                glassTypeFilter={this.props.glassTypeFilter}
-                handleGlassTypeChange={this.props.handleGlassTypeChange}
-            /> : null}
+            {this.props.filterState ?
+                <FilterBox
+                    ingredientName={this.props.ingredientName}
+                    clearFilter={this.props.clearFilter}
+                    glassTypes={this.glassTypes}
+                    flavourProfiles={this.flavourProfiles}
+                    filterDistinctions={this.props.filterDistinctions}
+                    filterIngredients={this.props.filterIngredients}
+                    filterGlassType={this.props.filterGlassType}
+                    onUpdateField={this.props.onUpdateField}
+                    glassTypeFilter={this.props.glassTypeFilter}
+                    handleGlassTypeChange={this.props.handleGlassTypeChange}
+                /> : null}
         </div>)
     }
 
