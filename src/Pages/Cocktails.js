@@ -64,10 +64,10 @@ export default class Cocktails extends React.Component {
         glassTypeFilter: "None",
         alcoholicFilter: "",
         distinctionsFilter: "",
-        ingredientsFilter: "",
+        ingredientsFilter: [],
         nameFilter: "",
         filterState: false,
-        glassTypeValue : {},
+        glassTypeValue: {},
 
         // FOR VALIDATION
         nameError: "",
@@ -116,7 +116,7 @@ export default class Cocktails extends React.Component {
         })
     }
 
-    
+
 
 
     toggleCocktailModal = (postId) => {
@@ -401,7 +401,7 @@ export default class Cocktails extends React.Component {
 
     filterIngredients = e => {
         this.setState({
-            ingredientsFilter: e.value
+            ingredientsFilter: e.map(e => e.value)
         })
     }
 
@@ -435,7 +435,7 @@ export default class Cocktails extends React.Component {
 
         if (this.state.nameFilter) {
             const regex = new RegExp(this.state.nameFilter, "i")
-            filteredPost = filteredPost.filter(post => regex.test(post.name) )
+            filteredPost = filteredPost.filter(post => regex.test(post.name))
         }
 
         if (this.state.alcoholicFilter) {
@@ -443,20 +443,29 @@ export default class Cocktails extends React.Component {
         }
 
         if (this.state.glassTypeFilter) {
-            filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter ) 
+            filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter)
         }
 
-        // if (this.state.ingredientsFilter)
+        if (this.state.ingredientsFilter) {
+            const searchedIngredient = this.state.ingredientsFilter.map(filter => {
+                return (
+                    this.state.ingredientId.find(ingredient => ingredient.name === filter)
+                )
+            })
+
+            console.log("searched:", searchedIngredient)
+
+        }
 
 
 
         this.setState({
             posts: filteredPost
-        }, () =>  console.log("posts:",this.state.posts))
+        }, () => console.log("posts:", this.state.posts))
 
         console.log("filteredPost:", filteredPost);
-        console.log("nameFilter:",this.state.nameFilter)
-       
+        console.log("nameFilter:", this.state.nameFilter)
+
     }
 
     addIngredient = (e) => {
@@ -496,12 +505,12 @@ export default class Cocktails extends React.Component {
     }
 
     clearFilter = () => {
-        this.setState({ 
+        this.setState({
             glassTypeFilter: "None",
             distinctionsFilter: "",
-            ingredientsFilter: "",
+            ingredientsFilter: [],
             alcoholicFilter: "",
-            nameFilter:"",
+            nameFilter: "",
             posts: this.state.allPosts
         })
     }
@@ -511,7 +520,7 @@ export default class Cocktails extends React.Component {
             filterState: !this.state.filterState,
             alcoholicFilter: "",
             glassTypeFilter: "",
-            ingredientsFilter: "",
+            ingredientsFilter: [],
             distinctionsFilter: ""
         })
     }
@@ -566,9 +575,9 @@ export default class Cocktails extends React.Component {
         const e = validateAddMeasurement(m);
         this.setState({
             addMeasurementError: e
-        }) 
+        })
     }
-    
+
 
 
     render() {
@@ -596,11 +605,11 @@ export default class Cocktails extends React.Component {
                         toggleFilter={this.toggleFilter}
                         searchPosts={this.searchPosts}
                         nameFilter={this.state.nameFilter}
-                         />
+                    />
                 </div>
                 <div className="row">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 rounded-pill addNew " onClick={this.toggleCocktailForm}>+</button>
-                    <NewCocktail 
+                    <NewCocktail
                         glassType={this.state.glassType}
                         formStatus={this.state.cocktailFormStatus}
                         closeForm={this.closeCocktailForm}
