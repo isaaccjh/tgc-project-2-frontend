@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import BASE_API from "../Components/BASE_API";
 import NewCocktail from "../Components/NewCocktail";
-import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateIngredient, validateAddIngredient, validateAddMeasurement } from "../Components/validations"
+import { validateName, validateGlass, validateAlcoholic, validateURL, validatePreparation, validateIngredient, validateAddMeasurement } from "../Components/validations"
 import "../index.css"
 
 
