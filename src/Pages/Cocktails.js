@@ -451,24 +451,35 @@ export default class Cocktails extends React.Component {
             filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter)
         }
 
-        if (this.state.ingredientsFilter) {
-            const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
-                return (
-                    this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
-                )
-            })
+        // if (this.state.ingredientsFilter) {
+        //     const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
+        //         return (
+        //             this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
+        //         )
+        //     })
 
-            console.log(this.state.ingredientsUsed)
-            
+        //     const searchedIngredientPosts = searchedIngredientId.map(id => {
+        //         return (
+        //             this.state.ingredientsUsed.forEach(post => {
+        //                 console.log(post)
+        //                 post.ingredients.find(ingredient => ingredient.ingredientId.$oid === id)
+        //             })
+        //         )
+        //     })
 
-        }
+        //     console.log(searchedIngredientPosts)
+
+        //     console.log("sampleIngredient:", this.state.ingredientsUsed[0].ingredients[0].ingredientId.$oid)
+
+
+        // }
 
 
 
         this.setState({
             posts: filteredPost
-        } )
-        console.log("filteredPost:", filteredPost);
+        })
+        // console.log("filteredPost:", filteredPost);
 
     }
 
