@@ -116,6 +116,12 @@ export default class Cocktails extends React.Component {
         })
     }
 
+    loadAll = () => {
+        this.loadIngredientsUsed();
+        this.loadPosts();
+        this.loadUsers();
+    }
+
 
 
 
@@ -256,7 +262,7 @@ export default class Cocktails extends React.Component {
                 updatedAlcoholic: "",
                 updatedPreparation: "",
                 updatedName: "",
-            }, () => this.loadPosts());
+            }, () => this.loadAll());
 
             console.log("Response:", response.data)
 
@@ -264,7 +270,7 @@ export default class Cocktails extends React.Component {
             console.log("Error sending data:", e.message)
         };
 
-        this.loadPosts()
+        this.loadAll()
     };
 
 
@@ -333,8 +339,7 @@ export default class Cocktails extends React.Component {
             ingredients: [],
             cocktailFormStatus: false
         }, () => {
-            this.loadPosts();
-            this.loadIngredientsUsed();
+            this.loadAll()
         })
 
     }
@@ -447,13 +452,14 @@ export default class Cocktails extends React.Component {
         }
 
         if (this.state.ingredientsFilter) {
-            const searchedIngredient = this.state.ingredientsFilter.map(filter => {
+            const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
                 return (
                     this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
                 )
             })
 
-            console.log("searched:", searchedIngredient)
+            console.log(this.state.ingredientsUsed)
+            
 
         }
 
@@ -461,10 +467,8 @@ export default class Cocktails extends React.Component {
 
         this.setState({
             posts: filteredPost
-        }, () => console.log("posts:", this.state.posts))
-
+        } )
         console.log("filteredPost:", filteredPost);
-        console.log("nameFilter:", this.state.nameFilter)
 
     }
 
