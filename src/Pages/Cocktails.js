@@ -449,7 +449,7 @@ export default class Cocktails extends React.Component {
         if (this.state.ingredientsFilter) {
             const searchedIngredient = this.state.ingredientsFilter.map(filter => {
                 return (
-                    this.state.ingredientId.find(ingredient => ingredient.name === filter)
+                    this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
                 )
             })
 
