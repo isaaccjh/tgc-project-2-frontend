@@ -87,7 +87,7 @@ export default class Cocktails extends React.Component {
         this.setState({
             posts: response.data,
             allPosts: response.data
-        }, () => console.log(this.state.posts));
+        });
     }
 
     loadUsers = async () => {
@@ -132,7 +132,6 @@ export default class Cocktails extends React.Component {
 
         const ingredientArr = []
         postIngredients.ingredients.forEach(x => {
-            // console.log(x.ingredientId.$oid)
             const ingredientName = this.state.ingredientId.find(ingredient => ingredient._id === x.ingredientId.$oid)
             ingredientArr.push({
                 "name": ingredientName.name,
@@ -185,8 +184,6 @@ export default class Cocktails extends React.Component {
         this.setState({
             deleteConfirmation: false
         })
-
-        console.log(this.state.postToDelete);
     }
 
     confirmDelete = (postId) => {
@@ -194,8 +191,6 @@ export default class Cocktails extends React.Component {
             deleteConfirmation: true,
             postToDelete: postId
         })
-
-        console.log(postId);
     }
 
     cancelDelete = () => {
@@ -250,7 +245,7 @@ export default class Cocktails extends React.Component {
                 dateAdded: new Date(),
                 liked: 0,
                 saved: 0
-            }, () => console.log(this.state.distinctions))
+            })
 
             this.setState({
                 activeCocktailModal: "",
@@ -451,28 +446,28 @@ export default class Cocktails extends React.Component {
             filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter)
         }
 
-        // if (this.state.ingredientsFilter) {
-        //     const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
-        //         return (
-        //             this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
-        //         )
-        //     })
+        if (this.state.ingredientsFilter) {
+            const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
+                return (
+                    this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
+                )
+            })
 
-        //     const searchedIngredientPosts = searchedIngredientId.map(id => {
-        //         return (
-        //             this.state.ingredientsUsed.forEach(post => {
-        //                 console.log(post)
-        //                 post.ingredients.find(ingredient => ingredient.ingredientId.$oid === id)
-        //             })
-        //         )
-        //     })
+            const searchedIngredientPosts = searchedIngredientId.map(id => {
+                return (
+                    this.state.ingredientsUsed.forEach(post => {
+                        console.log(post)
+                        post.ingredients.find(ingredient => ingredient.ingredientId.$oid === id)
+                    })
+                )
+            })
 
-        //     console.log(searchedIngredientPosts)
+            console.log("searchedPosts:",searchedIngredientPosts)
 
-        //     console.log("sampleIngredient:", this.state.ingredientsUsed[0].ingredients[0].ingredientId.$oid)
+            console.log("sampleIngredient:", this.state.ingredientsUsed[0].ingredients[0].ingredientId.$oid)
 
 
-        // }
+        }
 
 
 
