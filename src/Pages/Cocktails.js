@@ -434,7 +434,8 @@ export default class Cocktails extends React.Component {
         let filteredPost = this.state.allPosts
 
         if (this.state.nameFilter) {
-            filteredPost = filteredPost.filter(post => post.name === this.state.nameFilter)
+            const regex = new RegExp(this.state.nameFilter, "i")
+            filteredPost = filteredPost.filter(post => regex.test(post.name) )
         }
 
         if (this.state.alcoholicFilter) {
@@ -445,11 +446,17 @@ export default class Cocktails extends React.Component {
             filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter ) 
         }
 
+        // if (this.state.ingredientsFilter)
+
 
 
         this.setState({
             posts: filteredPost
-        })
+        }, () =>  console.log("posts:",this.state.posts))
+
+        console.log("filteredPost:", filteredPost);
+        console.log("nameFilter:",this.state.nameFilter)
+       
     }
 
     addIngredient = (e) => {
@@ -493,7 +500,9 @@ export default class Cocktails extends React.Component {
             glassTypeFilter: "None",
             distinctionsFilter: "",
             ingredientsFilter: "",
-            alcoholicFilter: "" 
+            alcoholicFilter: "",
+            nameFilter:"",
+            posts: this.state.allPosts
         })
     }
 
@@ -586,6 +595,7 @@ export default class Cocktails extends React.Component {
                         filterState={this.state.filterState}
                         toggleFilter={this.toggleFilter}
                         searchPosts={this.searchPosts}
+                        nameFilter={this.state.nameFilter}
                          />
                 </div>
                 <div className="row">

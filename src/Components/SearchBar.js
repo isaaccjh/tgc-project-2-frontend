@@ -106,7 +106,7 @@ export default class SearchBar extends React.Component {
 
     ]
 
-    
+
 
     render() {
         return (<div>
@@ -125,13 +125,14 @@ export default class SearchBar extends React.Component {
                     type="text"
                     name="nameFilter"
                     onChange={this.props.onUpdateField}
-                    className="form-control" />
+                    className="form-control" 
+                    value={this.props.nameFilter}
+                    />
                 <button
                     className="btn btn-outline-secondary"
                     type="button"
-                    onClick={this.props.searchPosts}>
-                    <AiOutlineSearch />
-                </button>
+                    onClick={this.props.searchPosts}
+                    ><AiOutlineSearch /></button>
             </div>
             {this.props.filterState ?
                 <FilterBox
@@ -144,8 +145,9 @@ export default class SearchBar extends React.Component {
                     filterGlassType={this.props.filterGlassType}
                     onUpdateField={this.props.onUpdateField}
                     glassTypeFilter={this.props.glassTypeFilter}
-                    handleGlassTypeChange={this.props.handleGlassTypeChange}
                     alcoholicFilter={this.props.alcoholicFilter}
+                    handleGlassTypeChange={this.props.handleGlassTypeChange}
+                    glassTypeValue={this.props.glassTypeValue}
                 /> : null}
         </div>)
     }
