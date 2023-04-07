@@ -3,8 +3,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Row, Col, Feedback } from "react-bootstrap";
-import { ImCancelCircle } from "react-icons/im";
+import { Row, Col } from "react-bootstrap";
 import CreatableSelect from "react-select/creatable";
 import Select from "react-select";
 
