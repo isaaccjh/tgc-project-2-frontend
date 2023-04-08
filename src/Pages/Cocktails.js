@@ -447,22 +447,22 @@ export default class Cocktails extends React.Component {
         }
 
         if (this.state.ingredientsFilter) {
-            const searchedIngredientId = this.state.ingredientsFilter.map(filter => {
+            const searchedIngredients = this.state.ingredientsFilter.map(filter => {
                 return (
-                    this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
+                    this.state.ingredientId.find(ingredient => ingredient.name === filter)
                 )
             })
 
-            const searchedIngredientPosts = searchedIngredientId.map(id => {
-                return (
-                    this.state.ingredientsUsed.forEach(post => {
-                        console.log(post)
-                        post.ingredients.find(ingredient => ingredient.ingredientId.$oid === id)
-                    })
-                )
-            })
+            console.log("searched ingredients:", searchedIngredients)
+            console.log("ingredients usage posts:", this.state.ingredientsUsed)
+            // find all the posts with the object id of both ingredients inside
+            for (let post of this.state.ingredientsUsed){
+                for (let ingredient of post.ingredients){
+                    console.log(post._id, ingredient.ingredientId)
+                }
+            }
 
-            console.log("searchedPosts:",searchedIngredientPosts)
+            
 
             console.log("sampleIngredient:", this.state.ingredientsUsed[0].ingredients[0].ingredientId.$oid)
 
