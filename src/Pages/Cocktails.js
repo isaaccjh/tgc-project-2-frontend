@@ -453,7 +453,6 @@ export default class Cocktails extends React.Component {
                 )
             })
 
-            console.log("searched ingredients:", searchedIngredientsId)
 
             const restructure = this.state.ingredientsUsed.map(posts => {
                 return (
@@ -465,21 +464,21 @@ export default class Cocktails extends React.Component {
                     })
                 )
             })
-            
+
             for (let i = 0; i < searchedIngredientsId.length; i++) {
-            const test = restructure.map(post => {
-                return post.find(ingredient => ingredient.ingredientId === searchedIngredientsId[i])?.postId
-            } )
-            const postWithIngredients = test.filter(val => val !== undefined)
+                const test = restructure.map(post => {
+                    return post.find(ingredient => ingredient.ingredientId === searchedIngredientsId[i])?.postId
+                })
+                const postWithIngredients = test.filter(val => val !== undefined)
 
-            const newPost = postWithIngredients.flatMap(postId => {
-                return (
-                    filteredPost.filter(post => post._id === postId)
-                )
-            })
+                const newPost = postWithIngredients.flatMap(postId => {
+                    return (
+                        filteredPost.filter(post => post._id === postId)
+                    )
+                })
 
-            filteredPost = newPost
-        }
+                filteredPost = newPost
+            }
         }
 
 
@@ -487,7 +486,6 @@ export default class Cocktails extends React.Component {
         this.setState({
             posts: filteredPost
         })
-        console.log("filteredPost:", filteredPost);
 
         return "";
 
@@ -609,7 +607,7 @@ export default class Cocktails extends React.Component {
         return (<div className="main-color">
 
 
-            <div className="container" >
+            <div className="container-fluid" >
                 <div>
                     <SearchBar
                         searchFilter={this.searchFilter}
@@ -632,7 +630,7 @@ export default class Cocktails extends React.Component {
                         nameFilter={this.state.nameFilter}
                     />
                 </div>
-                <div className="row">
+                <div className="row justify-content-center">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 rounded-pill addNew " onClick={this.toggleCocktailForm}>+</button>
                     <NewCocktail
                         glassType={this.state.glassType}
@@ -660,9 +658,9 @@ export default class Cocktails extends React.Component {
                         addIngredient={this.addIngredient}
                         displayIngredients={this.state.displayIngredients}
                     />
-                    <div className="row">
+                    <div className="row" id="card-display">
                         {this.state.posts.map(post => (
-                            <div className="col-sm-12 col-md-6 col-lg-4 mt-3" key={post._id}>
+                            <div className="col-sm-12 col-md-6 col-lg-4 mt-3 justify-content-center" key={post._id}>
                                 <CocktailCard
                                     // READ ALL COCKTAIL POSTS
                                     name={post.name}
