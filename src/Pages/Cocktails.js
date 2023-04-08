@@ -447,27 +447,32 @@ export default class Cocktails extends React.Component {
         }
 
         if (this.state.ingredientsFilter) {
-            const searchedIngredients = this.state.ingredientsFilter.map(filter => {
+            const searchedIngredientsId = this.state.ingredientsFilter.map(filter => {
                 return (
-                    this.state.ingredientId.find(ingredient => ingredient.name === filter)
+                    this.state.ingredientId.find(ingredient => ingredient.name === filter)._id
                 )
             })
 
-            console.log("searched ingredients:", searchedIngredients)
+            console.log("searched ingredients:", searchedIngredientsId)
 
+            const arr = [];
             const restructure = this.state.ingredientsUsed.map(posts => {
                 return (
                     posts.ingredients.map(ingredient => {
-                        return (
-                            ingredient.ingredientId.$oid
-                        )
+                        return {
+                            postId: posts._id,
+                            ingredientId: ingredient.ingredientId.$oid
+                        }
                     })
                 )
             })
+            console.log("restructure:", restructure)
 
-            
-
-
+            const test = restructure.map(post => {
+                return post.find(ingredient => ingredient.ingredientId === '64117a939ab5bb55ed74649c')?.postId
+            } )
+            const postWithIngredients = test.filter(val => val !== undefined)
+            console.log(postWithIngredients)
         }
 
 
@@ -476,6 +481,8 @@ export default class Cocktails extends React.Component {
             posts: filteredPost
         })
         // console.log("filteredPost:", filteredPost);
+
+        return "";
 
     }
 
