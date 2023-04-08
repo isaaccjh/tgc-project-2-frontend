@@ -465,7 +465,7 @@ export default class Cocktails extends React.Component {
                 )
             })
 
-            console.log("restructure:",restructure);
+            
 
 
         }
