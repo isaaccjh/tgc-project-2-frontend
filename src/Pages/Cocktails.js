@@ -454,17 +454,18 @@ export default class Cocktails extends React.Component {
             })
 
             console.log("searched ingredients:", searchedIngredients)
-            console.log("ingredients usage posts:", this.state.ingredientsUsed)
-            // find all the posts with the object id of both ingredients inside
-            for (let post of this.state.ingredientsUsed){
-                for (let ingredient of post.ingredients){
-                    console.log(post._id, ingredient.ingredientId)
-                }
-            }
 
-            
+            const restructure = this.state.ingredientsUsed.map(posts => {
+                return (
+                    posts.ingredients.map(ingredient => {
+                        return (
+                            ingredient.ingredientId.$oid
+                        )
+                    })
+                )
+            })
 
-            console.log("sampleIngredient:", this.state.ingredientsUsed[0].ingredients[0].ingredientId.$oid)
+            console.log("restructure:",restructure);
 
 
         }
