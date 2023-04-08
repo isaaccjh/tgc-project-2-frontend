@@ -455,24 +455,31 @@ export default class Cocktails extends React.Component {
 
             console.log("searched ingredients:", searchedIngredientsId)
 
-            const arr = [];
             const restructure = this.state.ingredientsUsed.map(posts => {
                 return (
                     posts.ingredients.map(ingredient => {
                         return {
-                            postId: posts._id,
+                            postId: posts.cocktailId,
                             ingredientId: ingredient.ingredientId.$oid
                         }
                     })
                 )
             })
-            console.log("restructure:", restructure)
-
+            
+            for (let i = 0; i < searchedIngredientsId.length; i++) {
             const test = restructure.map(post => {
-                return post.find(ingredient => ingredient.ingredientId === '64117a939ab5bb55ed74649c')?.postId
+                return post.find(ingredient => ingredient.ingredientId === searchedIngredientsId[i])?.postId
             } )
             const postWithIngredients = test.filter(val => val !== undefined)
-            console.log(postWithIngredients)
+
+            const newPost = postWithIngredients.flatMap(postId => {
+                return (
+                    filteredPost.filter(post => post._id === postId)
+                )
+            })
+
+            filteredPost = newPost
+        }
         }
 
 
@@ -480,7 +487,7 @@ export default class Cocktails extends React.Component {
         this.setState({
             posts: filteredPost
         })
-        // console.log("filteredPost:", filteredPost);
+        console.log("filteredPost:", filteredPost);
 
         return "";
 
