@@ -54,7 +54,7 @@ export default function CocktailCard(props) {
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    By: {props.user.username}
+                    {/* By: {props.user.username} */}
                 </Card.Text>
                 <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
                 <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
