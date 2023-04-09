@@ -89,7 +89,16 @@ The visual design of the website, including the colour scheme, typography, and i
 
 ## Limitations and Future Implementation
 
-Provide installation instructions, including dependencies, for users to get started with the website.
+- Future Implementations
+    - User Authentication and registration
+    - User Profile
+    - User Comments and reviews
+    - Save and like function 
+    - Filters will be improved to filter save and like function
+    - Allow users to create ingredients
+- Limitations
+    - Limited in the number of ingredients because I wanted to give each ingredient it's own ID
+
 
 
 ## Testing
@@ -99,15 +108,14 @@ Provide installation instructions, including dependencies, for users to get star
 | **Posting a cocktail recipe** | |
 | Post a cocktail recipe with all required fields | Recipe is successfully added to the website |
 | Post a cocktail recipe without a name | Recipe is not added and user is prompted to enter a name |
-| Post a cocktail recipe without any ingredients | Recipe is not added and user is prompted to enter at least one ingredient |
-| Post a cocktail recipe with an invalid image URL | Recipe is added but the image is not displayed |
+| Post a cocktail recipe without any ingredients | Recipe is not added |
+| Post a cocktail recipe with an invalid image URL | Recipe is not added |
 | **Deleting a cocktail recipe** | |
 | Delete a cocktail recipe | Recipe is removed from the website |
-| Attempt to delete a recipe that does not exist | User is notified that the recipe does not exist |
 | **Editing a cocktail recipe** | |
+| Begin edit of an existing cocktail recipe | Recipe is displayed correctly. Ingredients is not displayed and preparation instructions text area is disabled |
 | Edit the name of an existing cocktail recipe | Recipe name is updated and displayed correctly |
-| Edit the ingredients of an existing cocktail recipe | Recipe ingredients are updated and displayed correctly |
-| Attempt to edit a recipe that does not exist | User is notified that the recipe does not exist |
+| Edit the glass type of an existing cocktail recipe | Recipe glass type is updated and displayed correctly |
 | **Filtering search results** | |
 | Search for cocktails with a specific ingredient | All cocktails with the ingredient are displayed |
 | Search for cocktails with a specific flavour profile | All cocktails with the flavour profile are displayed |

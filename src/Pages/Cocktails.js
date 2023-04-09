@@ -448,6 +448,12 @@ export default class Cocktails extends React.Component {
             filteredPost = filteredPost.filter(post => post.glassType === this.state.glassTypeFilter)
         }
 
+        if (this.state.distinctionsFilter) {
+            for (let i = 0; i < this.state.distinctionsFilter.length; i++) {
+                filteredPost = filteredPost.filter(post => post.distinctions.includes(this.state.distinctionsFilter[i]))
+            }
+        }
+
         if (this.state.ingredientsFilter) {
             const searchedIngredientsId = this.state.ingredientsFilter.map(filter => {
                 return (
