@@ -10,7 +10,7 @@ Cocktail Central is a web application designed to help cocktail enthusiasts all 
 
 With Cocktail Central, users can create their own cocktail recipes and share them with other cocktail enthusiasts. Users can also browse and review other users' cocktail recipes, providing feedback and rating the cocktails they've tried.
 
-Cocktail Central is perfect for both professional mixologists and home bartenders. Professional mixologists can use Cocktail Central to showcase their creativity and connect with other industry professionals. Home bartenders can use Cocktail Central to discover new cocktail recipes, get inspiration for their own creations, and share their favorite drinks with others.
+Cocktail Central is perfect for both professional mixologists and home bartenders. Professional mixologists can use this web application to showcase their creativity and connect with other industry professionals. Home bartenders can use Cocktail Central to discover new cocktail recipes, get inspiration for their own creations, and share their favorite drinks with others.
 
 Cocktail Central features a user-friendly interface and interactive features that make it easy for users to create, share, and discover new cocktails. The app includes a cocktail builder that guides users through the process of creating a cocktail recipe, with fields for ingredients, measurements, instructions, and images. Users can also search for recipes by keyword, or filter by ingredients.
 
