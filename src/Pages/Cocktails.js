@@ -204,12 +204,7 @@ export default class Cocktails extends React.Component {
     beginEdit = (postId) => {
         this.setState({
             postBeingEdited: postId,
-            updatedDistinctions: this.state.viewDistinctions.map(x => {
-                return {
-                    value: x,
-                    label: x
-                }
-            }),
+            updatedDistinctions:this.state.viewDistinctions,
             updatedPreparation: this.state.viewPreparation,
             updatedAlcoholic: this.state.viewAlcoholic,
             updatedName: this.state.viewName,

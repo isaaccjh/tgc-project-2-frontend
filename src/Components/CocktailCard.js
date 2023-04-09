@@ -49,7 +49,7 @@ export default function CocktailCard(props) {
     ]
 
     return <div>
-        <Card border="none" className="shadow" style={{ "width": "18rem","height": "429px"  }}>
+        <Card border="none" className="shadow" style={{ "width": "18rem", "height": "429px" }}>
             <Card.Img style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
@@ -80,7 +80,7 @@ export default function CocktailCard(props) {
                                         {props.viewIngredients ? props.viewIngredients.map((x, index) => {
                                             return (
                                                 <li>
-                                                    {x.name}, {x.measurements} 
+                                                    {x.name}, {x.measurements}
                                                 </li>
                                             )
                                         }) : null}
@@ -188,7 +188,12 @@ export default function CocktailCard(props) {
                             <CreatableSelect
                                 isMulti
                                 options={flavourProfiles}
-                                defaultValue={props.updatedDistinctions}
+                                defaultValue={props.updatedDistinctions.map(x => {
+                                    return {
+                                        value: x,
+                                        label: x
+                                    }
+                                })}
                                 onChange={props.updateDistinctions}
                             />
                         </Col>
@@ -203,6 +208,7 @@ export default function CocktailCard(props) {
                                     onChange={props.onUpdateField}
                                     required
                                     isInvalid={props.preparationError}
+                                    disabled
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {props.preparationError}
