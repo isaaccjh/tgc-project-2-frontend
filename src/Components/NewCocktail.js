@@ -132,7 +132,7 @@ export default class NewCocktail extends React.Component {
                                         this.props.displayIngredients.map(ingredient => {
                                             return (
                                                 <li>
-                                                     {ingredient.name},{ingredient.measurement}
+                                                     {ingredient.name}, {ingredient.measurement}
                                                 </li>
                                             )
                                         })
