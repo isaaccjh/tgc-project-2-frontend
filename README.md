@@ -4,15 +4,28 @@ Cocktail Central is a community-driven website that allows users to post, share,
 
 To ensure a safe and enjoyable experience for all users, we have implemented user login and authentication. Our website also features a visually appealing design with a carefully chosen color scheme and adheres to the 5 planes of UI/UX design to provide a seamless user experience.
 
+# Cocktail Central
+
+Cocktail Central is a web application designed to help cocktail enthusiasts all over the world connect, share, and explore the world of cocktails. 
+
+With Cocktail Central, users can create their own cocktail recipes and share them with other cocktail enthusiasts. Users can also browse and review other users' cocktail recipes, providing feedback and rating the cocktails they've tried.
+
+Cocktail Central is perfect for both professional mixologists and home bartenders. Professional mixologists can use Cocktail Central to showcase their creativity and connect with other industry professionals. Home bartenders can use Cocktail Central to discover new cocktail recipes, get inspiration for their own creations, and share their favorite drinks with others.
+
+Cocktail Central features a user-friendly interface and interactive features that make it easy for users to create, share, and discover new cocktails. The app includes a cocktail builder that guides users through the process of creating a cocktail recipe, with fields for ingredients, measurements, instructions, and images. Users can also search for recipes by keyword, or filter by ingredients.
+
+So if you're looking for a fun and engaging way to discover and create new cocktails, Cocktail Central is the perfect app for you. Join the community today and start exploring the world of cocktails like never before!
+
+
 ## Table of Contents
 
 - [Features](#features)
 - [UI/UX Design](#uiux-design)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Limitations and Future Implementation](#limitations-and-future-implementation)
+- [Website Structure and Usage](#usage)
 - [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
+- [Technologies Used](#technologies-used)
+- [Credits and Acknowledgement](#credits-and-acknowledgement)
 
 ## Features
 
@@ -48,13 +61,10 @@ The layout of the website is designed to be visually appealing and user-friendly
 
 The visual design of the website, including the color scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
 
-## Installation
+## Limitations and Future Implementation
 
 Provide installation instructions, including dependencies, for users to get started with the website.
 
-## Usage
-
-Provide a step-by-step guide on how to use the website and its various features.
 
 ## Testing
 
