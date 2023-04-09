@@ -29,7 +29,7 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 
 Our website adheres to the 5 planes of UI/UX design, which include Strategy, Scope, Structure, Skeleton, and Surface, to ensure an optimal user experience.
 
-### Strategy
+- **Strategy**<
 
 The website's main goal is to create a platform for users to share and discover cocktail recipes, fostering a sense of community among cocktail enthusiasts.
 
