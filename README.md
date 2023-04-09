@@ -10,7 +10,6 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 - [Features](#features)
 - [UI/UX Design](#uiux-design)
 - [Limitations and Future Implementation](#limitations-and-future-implementation)
-- [Website Structure and Usage](#usage)
 - [Testing](#testing)
 - [Technologies Used](#technologies-used)
 - [Credits and Acknowledgement](#credits-and-acknowledgement)
@@ -194,5 +193,7 @@ The visual design of the website, including the colour scheme, typography, and i
 - [ChatGPT](https://chat.openai.com/chat)
     - Used for help with information and typing
     - Also helped with some of the debugging
+- [CreateMockup](https://www.mediageni.com/responsive-website-check/)
+    -Used in creating mockup
 - [Doris](https://github.com/DS-NASA-61)
     - Referred to her completed README.md
