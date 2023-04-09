@@ -45,25 +45,14 @@ The Cocktail Central website is designed as a single-page application to provide
 
 ### **Skeleton**
 
-#### - Interface Design
+- Interface Design
+    - The user interface of Cocktail Central is designed to be visually appealing and easy to use. The app's single-page design ensures that all features are easily accessible from any point, and the navigation menu and search bar are prominent and easy to find. The overall layout is clean and uncluttered, with ample white space and clear visual hierarchy. The design of the recipe pages is also carefully considered, with a clear and intuitive layout that highlights the most important information. Ingredients, preparation instructions, and user reviews and comments are organized into separate sections, making it easy for users to find the information they need.
 
-The user interface of Cocktail Central is designed to be visually appealing and easy to use. The app's single-page design ensures that all features are easily accessible from any point, and the navigation menu and search bar are prominent and easy to find. The overall layout is clean and uncluttered, with ample white space and clear visual hierarchy. 
+- Navigation Design
+    - Navigation in Cocktail Central is designed to be intuitive and user-friendly. The navigation menu is prominently displayed at the top of the page and provides easy access to all the app's features. The menu includes links to create, edit, and view recipes, as well as a search bar to help users find specific recipes or ingredients. In addition, the navigation menu includes options for user authentication, such as login and registration, as well as links to the user's profile and settings. The menu design is consistent throughout the app, providing a seamless user experience.
 
-The design of the recipe pages is also carefully considered, with a clear and intuitive layout that highlights the most important information. Ingredients, preparation instructions, and user reviews and comments are organized into separate sections, making it easy for users to find the information they need.
-
-#### - Navigation Design
-
-Navigation in Cocktail Central is designed to be intuitive and user-friendly. The navigation menu is prominently displayed at the top of the page and provides easy access to all the app's features. The menu includes links to create, edit, and view recipes, as well as a search bar to help users find specific recipes or ingredients.
-
-In addition, the navigation menu includes options for user authentication, such as login and registration, as well as links to the user's profile and settings. The menu design is consistent throughout the app, providing a seamless user experience.
-
-#### - Information Design
-
-Cocktail Central's information design is focused on making it easy for users to find and use the app's features. Recipe pages are designed with a clear and intuitive layout that highlights the most important information, such as ingredients and preparation instructions. User reviews and comments are also displayed prominently, providing valuable feedback and suggestions for improvement.
-
-The search function is a key feature of Cocktail Central's information design, making it easy for users to find specific recipes or ingredients. Users can search by keyword, category, or filter by specific ingredients, allowing them to quickly find the recipes they need.
-
-Overall, Cocktail Central's information design is designed to be simple and intuitive, providing users with the tools they need to create, share, and discover new cocktail recipes. 
+- Information Design
+    - Cocktail Central's information design is focused on making it easy for users to find and use the app's features. Recipe pages are designed with a clear and intuitive layout that highlights the most important information, such as ingredients and preparation instructions. User reviews and comments are also displayed prominently, providing valuable feedback and suggestions for improvement. The search function is a key feature of Cocktail Central's information design, making it easy for users to find specific recipes or ingredients. Users can search by keyword, category, or filter by specific ingredients, allowing them to quickly find the recipes they need. Overall, Cocktail Central's information design is designed to be simple and intuitive, providing users with the tools they need to create, share, and discover new cocktail recipes.
 
 
 
@@ -81,15 +70,15 @@ Cocktail Central uses the font Poppins throughout the app for a modern and clean
 | ----------------- | ------------------------------------------------------------------ |
 | Primary Colour | ![#FF5722](https://via.placeholder.com/10/FF5722?text=+) #FF5722 |
 | Secondary Colour | ![#8BC34A](https://via.placeholder.com/10/8BC34A?text=+) #8BC34A |
-| Background Oclour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
+| Background Colour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
 
 The primary colour is a bright orange colour that is often associated with energy and excitement, fitting for a website about cocktails. 
 
 The secondary colour is a light green colour that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
 
-The background colour is a light gray colour that provides a clean and neutral background, allowing the vibrant Colours of the cocktails to stand out. This Colour can also help reduce eye strain when users are browsing the app for an extended period of time.
+The background colour is a light gray colour that provides a clean and neutral background, allowing the vibrant colours of the cocktails to stand out. This colour can also help reduce eye strain when users are browsing the app for an extended period of time.
 
-The visual design of the website, including the Colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The Colours used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
+The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colours used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
 
 ## Limitations and Future Implementation
 
