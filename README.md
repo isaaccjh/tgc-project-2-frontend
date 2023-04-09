@@ -60,14 +60,33 @@ The Cocktail Central website is designed as a single-page application to provide
 
 The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The Colours used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy. Overall, the font and colour choices in Cocktail Central are designed to be modern, clean, and visually appealing, while also providing a high level of readability and usability for users.
 
+#### - Font
+
+Cocktail Central uses the font Poppins throughout the app for a modern and clean look. The font is also highly readable, even at small sizes, which is important for users who may be browsing the site on mobile devices. 
+
+#### - Colours
+
+
 - Font
     - Cocktail Central uses the font Poppins throughout the app for a modern and clean look. The font is also highly readable, even at small sizes, which is important for users who may be browsing the site on mobile devices. 
-  - Colours
-    - Primary Colour: #FF5722 (bright orange colour that is often associated with energy and excitement, fitting for a website about cocktails)
-    - Secondary Colour: #8BC34A (light green colour that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails)
-    - Background Colour: #F2F2F2 (light gray colour that provides a clean and neutral background, allowing the vibrant colours of the cocktails to stand out. This colour can also help reduce eye strain when users are browsing the app for an extended period of time.)
+
+- Colours
+| Colour             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Colour | ![#FF5722](https://via.placeholder.com/10/FF5722?text=+) #FF5722 |
+| Secondary Colour | ![#8BC34A](https://via.placeholder.com/10/8BC34A?text=+) #8BC34A |
+| Background Colour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
+
+    -The primary colour is a bright orange colour that is often associated with energy and excitement, fitting for a website about cocktails. 
+
+    -The secondary colour is a light green colour that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
+
+    -The background colour is a light gray colour that provides a clean and neutral background, allowing the vibrant colours of the cocktails to stand out. This colour can also help reduce eye strain when users are browsing the app for an extended period of time.
     
 The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience.
+
+
+
 
 ## Limitations and Future Implementation
 
