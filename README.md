@@ -194,6 +194,6 @@ The visual design of the website, including the colour scheme, typography, and i
     - Used for help with information and typing
     - Also helped with some of the debugging
 - [CreateMockup](https://www.mediageni.com/responsive-website-check/)
-    -Used in creating mockup
+    - Used in creating mockup
 - [Doris](https://github.com/DS-NASA-61)
     - Referred to her completed README.md
