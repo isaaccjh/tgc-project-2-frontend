@@ -1,5 +1,7 @@
 # Cocktail Central
 
+![Cocktail Central](./mockup.jpeg)
+
 Cocktail Central is a community-driven website that allows users to post, share, and discover cocktail recipes from all over the world. Users can create, review, and comment on a wide variety of cocktail recipes that include flavor profiles, ingredients, names, and preparation instructions.
 
 To ensure a safe and enjoyable experience for all users, we have implemented user login and authentication. Our website also features a visually appealing design with a carefully chosen Colour scheme and adheres to the 5 planes of UI/UX design to provide a seamless user experience.
@@ -8,6 +10,7 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 ## Table of Contents
 
 - [Features](#features)
+- [Deployment](#deployment)
 - [UI/UX Design](#uiux-design)
 - [Limitations and Future Implementation](#limitations-and-future-implementation)
 - [Testing](#testing)
@@ -20,6 +23,16 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 - **Search Functionality**: Users can search for specific cocktails or ingredients to discover new recipes.
 - **Responsive Design**: The website is optimized for various devices and screen sizes to provide a consistent user experience across different platforms.
 - **Colour Scheme**: The website features a visually appealing Colour scheme that complements the theme of cocktails and encourages user interaction.
+
+## Deployment
+
+- Frontend (React)
+    - The frontend for this website was deployed using [Netlify](https://www.netlify.com/)
+    - The live link for this website can be found [here](https://isaactg02.netlify.app/)
+
+- Backend (Express)
+    - The backend for this website was deployed using [Render](https://render.com/)
+    - The API for this website can be found [here](https://github.com/isaaccjh/sianalr)
 
 ## UI/UX Design
 
