@@ -332,6 +332,9 @@ export default class Cocktails extends React.Component {
             glassType: "",
             preparation: "",
             ingredients: [],
+            displayIngredients: [],
+            measurements: "",
+            selectedIngredient: "",
             cocktailFormStatus: false
         }, () => {
             this.loadAll()
