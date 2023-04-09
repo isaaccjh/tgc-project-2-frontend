@@ -45,13 +45,13 @@ The Cocktail Central website is designed as a single-page application to provide
 
 ### **Skeleton**
 
-#### Interface Design
+#### - Interface Design
 
 The user interface of Cocktail Central is designed to be visually appealing and easy to use. The app's single-page design ensures that all features are easily accessible from any point, and the navigation menu and search bar are prominent and easy to find. The overall layout is clean and uncluttered, with ample white space and clear visual hierarchy. 
 
 The design of the recipe pages is also carefully considered, with a clear and intuitive layout that highlights the most important information. Ingredients, preparation instructions, and user reviews and comments are organized into separate sections, making it easy for users to find the information they need.
 
-#### Navigation Design
+#### - Navigation Design
 
 Navigation in Cocktail Central is designed to be intuitive and user-friendly. The navigation menu is prominently displayed at the top of the page and provides easy access to all the app's features. The menu includes links to create, edit, and view recipes, as well as a search bar to help users find specific recipes or ingredients.
 
