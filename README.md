@@ -70,19 +70,20 @@ Cocktail Central uses the font Poppins throughout the app for a modern and clean
 - Font
     - Cocktail Central uses the font Poppins throughout the app for a modern and clean look. The font is also highly readable, even at small sizes, which is important for users who may be browsing the site on mobile devices. 
 
-- Colours
-| Colour             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Primary Colour | ![#FF5722](https://via.placeholder.com/10/FF5722?text=+) #FF5722 |
-| Secondary Colour | ![#8BC34A](https://via.placeholder.com/10/8BC34A?text=+) #8BC34A |
-| Background Colour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
+- Colour
 
     -The primary colour is a bright orange colour that is often associated with energy and excitement, fitting for a website about cocktails. 
 
     -The secondary colour is a light green colour that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
 
     -The background colour is a light gray colour that provides a clean and neutral background, allowing the vibrant colours of the cocktails to stand out. This colour can also help reduce eye strain when users are browsing the app for an extended period of time.
-    
+
+| Colour             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Colour | ![#FF5722](https://via.placeholder.com/10/FF5722?text=+) #FF5722 |
+| Secondary Colour | ![#8BC34A](https://via.placeholder.com/10/8BC34A?text=+) #8BC34A |
+| Background Colour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
+
 The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience.
 
 
