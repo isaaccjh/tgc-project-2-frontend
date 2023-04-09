@@ -49,7 +49,7 @@ export default function CocktailCard(props) {
 
     ]
 
-    return (<div className="col-sm-12 col-md-6 col-lg-4 mt-3card-style">
+    return (<div className="col-sm-12 col-md-6 col-lg-4 mt-3 card-style">
         <Card border="none" className="shadow mobile" style={{ "width": "100%", "height": "429px" }}>
             <Card.Img style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
