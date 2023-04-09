@@ -80,7 +80,7 @@ export default function CocktailCard(props) {
                                         {props.viewIngredients ? props.viewIngredients.map((x, index) => {
                                             return (
                                                 <li>
-                                                    {x.measurements} {x.name}
+                                                    {x.name}, {x.measurements} 
                                                 </li>
                                             )
                                         }) : null}
