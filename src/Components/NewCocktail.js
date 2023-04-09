@@ -217,8 +217,8 @@ export default class NewCocktail extends React.Component {
                                 </InputGroup>
                             </Col>
                         </Row>
-                        <Button className="mt-4 me-2" variant="danger" onClick={this.props.closeForm}>Cancel</Button>
-                        <Button type="submit" className="mt-4" variant="primary" >Post</Button>
+                        <Button type="submit" className="mt-4 me-2" variant="primary" >Post</Button>
+                        <Button className="mt-4" variant="secondary" onClick={this.props.closeForm}>Cancel</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

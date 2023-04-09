@@ -5,3 +5,7 @@
 #alcoholicFilter {
     margin-left: 0px !important;
 }
+
+.bg-primary, .btn-primary, .border-primary, .primary, .outline-primary  {
+    background-color: #FF5722 !important;
+}

@@ -61,7 +61,7 @@ export default class Cocktails extends React.Component {
         postToDelete: "",
 
         // FOR SEARCH
-        glassTypeFilter: "None",
+        glassTypeFilter: "",
         alcoholicFilter: "",
         distinctionsFilter: "",
         ingredientsFilter: [],
@@ -289,6 +289,9 @@ export default class Cocktails extends React.Component {
 
     submitCocktailForm = async (e) => {
         e.preventDefault();
+
+        this.validateGlass(this.state.glassType);
+        this.validateAlcoholic(this.state.alcoholic)
 
         if (this.state.nameError ||
             this.state.glassTypeError ||

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { Nav, Accordion, Row, Col, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import CreatableSelect from "react-select/creatable";
+import "../index.css"
 
 
 export default function CocktailCard(props) {
@@ -49,15 +50,15 @@ export default function CocktailCard(props) {
     ]
 
     return <div>
-        <Card border="none" className="shadow" style={{ "width": "18rem", "height": "429px" }}>
+        <Card border="none" className="shadow mobile" style={{ "width": "18rem", "height": "429px" }}>
             <Card.Img style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} variant="top" src={props.imageUrl}></Card.Img>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
                     {/* By: {props.user.username} */}
                 </Card.Text>
-                <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
-                <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
+                <Button variant="primary" size="sm" className="me-2 primary" onClick={props.toggleCocktailModal}>View</Button>
+                <Button variant="secondary" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
             </Card.Body>
         </Card>
         <Modal show={props.cocktailModalStatus} animation="true" centered="true" backdrop={true}>

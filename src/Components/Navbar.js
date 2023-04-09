@@ -10,7 +10,7 @@ export default function Navbar () {
         <nav className=" navbar navbar-expand-lg px-0 py-3 navbar-color mb-0">
             <div className="container-xl">
                 <a className="navbar-brand" href="l">
-                    <img src="" className="h-8" alt="Cocktail" />
+                    <img src={require("../Sparkle.png")} id="image" style={{"height":"32px", "width":"32px", "scale": "3.5"}} className="h-8" alt="Cocktail" />
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
