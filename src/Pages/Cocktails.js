@@ -306,7 +306,7 @@ export default class Cocktails extends React.Component {
             return;
         }
 
-        if (this.state.ingredients === [] || !this.state.name || !this.state.glassType || !this.state.distinctions || !this.state.alcoholic || !this.state.imageUrl || !this.state.preparation ) {
+        if (this.state.ingredients === [] || !this.state.name || !this.state.glassType || this.state.distinctions === [] || !this.state.alcoholic || !this.state.imageUrl || !this.state.preparation ) {
             return;
         }
 
