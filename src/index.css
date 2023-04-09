@@ -35,9 +35,6 @@
         margin-left: 20px;
     }
 
-    .mobile {
-        margin-left: 35px;
-    }
 }
 
 @media only screen and (min-width :768px) {
@@ -46,6 +43,11 @@
         float: left !important;
         margin-top: 10px;
     }
+}
+
+
+#card-container {
+    padding: 0px;
 }
 
 

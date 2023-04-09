@@ -641,7 +641,7 @@ export default class Cocktails extends React.Component {
                         nameFilter={this.state.nameFilter}
                     />
                 </div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center mx-auto" id="card-container">
                     <button className="mt-3 btn btn-primary d-inline-block ms-2 w-25 rounded-pill addNew " onClick={this.toggleCocktailForm}>+</button>
                     <NewCocktail
                         glassType={this.state.glassType}
@@ -669,9 +669,9 @@ export default class Cocktails extends React.Component {
                         addIngredient={this.addIngredient}
                         displayIngredients={this.state.displayIngredients}
                     />
-                    <div className="row m-0 p-0" id="card-display">
+                    <div className="row m-3 p-0 g-2" id="card-display">
                         {this.state.posts.map(post => (
-                            <div className="col-sm-12 col-md-6 col-lg-3 mt-3 justify-content-center" key={post._id}>
+                           
                                 <CocktailCard
                                     // READ ALL COCKTAIL POSTS
                                     name={post.name}
@@ -718,8 +718,6 @@ export default class Cocktails extends React.Component {
                                     updateFlavour={this.updateFlavour}
                                     confirmEdit={this.confirmEdit}
                                 />
-
-                            </div>
                         ))}
                     </div>
                 </div>
