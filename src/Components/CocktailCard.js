@@ -71,14 +71,26 @@ export default function CocktailCard(props) {
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>Details</Accordion.Header>
                                 <Accordion.Body>
-                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic === "alcoholic" ? "cocktail" : "mocktail"} best consumed in a <strong>{props.viewGlassType}</strong>.
+                                    <strong>{props.viewName}</strong> is a {props.viewAlcoholic === "alcoholic" ? "cocktail" : "mocktail"} best consumed in a <strong>{props.viewGlassType}</strong>. <br />
+                                    <hr />
+                                    <strong>Flavours:</strong>
+                                    <ul>
+                                        {props.viewDistinctions ? props.viewDistinctions.map(flavour => {
+                                            return (
+                                                <li>
+                                                    {flavour}
+                                                </li>
+                                            )
+                                        }) : null}
+                                    </ul>
+                                    <hr />
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Ingredients</Accordion.Header>
                                 <Accordion.Body>
                                     <ul>
-                                        {props.viewIngredients ? props.viewIngredients.map((x, index) => {
+                                        {props.viewIngredients ? props.viewIngredients.map((x) => {
                                             return (
                                                 <li>
                                                     {x.name}, {x.measurements}
