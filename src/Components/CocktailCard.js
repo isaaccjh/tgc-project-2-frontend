@@ -97,8 +97,8 @@ export default function CocktailCard(props) {
                         </Accordion>
                     </Card.Body>
                 </Card>
-                <Button variant="secondary" onClick={props.beginEdit} className="me-2 mt-3">Edit</Button>
-                <Button variant="danger" onClick={props.closeCocktailModal} className="mt-3">Close</Button>
+                <Button variant="primary" onClick={props.beginEdit} className="me-2 mt-3">Edit</Button>
+                <Button variant="secondary" onClick={props.closeCocktailModal} className="mt-3">Close</Button>
             </Modal.Body>
         </Modal>
 
