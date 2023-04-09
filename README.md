@@ -100,8 +100,74 @@ Include information on how to run tests for the website, as well as example test
 
 ## Technologies Used
 
-Include guidelines for users who want to contribute to the website's development, such as bug reports, feature requests, and code contributions.
+### Backend
+
+- Javascript
+    - Main language in building the backend server.
+    - With this language, handled many of the information processing.
+
+- Nodemon
+    - Used in the development of this web application by automatically restarting the node application when changes are detected
+
+- [Express](https://expressjs.com/)
+    - Used the Express framework for the handling of HTTP requests
+
+- [MongoDB](https://www.mongodb.com/)
+    - Used to store data for website
+    - Used MongoDB's database language to query for items that are being stored in the database
+
+- [MongoDB Node Driver](https://www.mongodb.com/docs/drivers/node/current/)
+
+   - To communicate with MongoDB database
+
+- [cors](https://www.npmjs.com/package/cors)
+
+   - Middleware to enable Cross-Origin Resource Sharing (CORS)
+
+- [dotenv](https://www.npmjs.com/package/dotenv)
+
+   - To allow loading of environment variables from .env file
+
+### Frontend
+
+- HTML
+    - Used along with React to build the skeleton of the website
+
+- CSS
+    - Applied different CSS Styles for added personal touch
+
+- Javascript
+    - Main language used to handle all information for the website.
+    - Used it in customising UI/UX. Applied functions in enhancing the UI/UX
+- [React](https://reactjs.org/)
+    - Framework for the frontend of the website. Used it's components to handle mainly the rendering of the website
+
+- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+
+   - Used for styling website and it's components
+
+- [React Bootstrap](https://react-bootstrap.github.io/)
+
+   - Used for styling website, along with bootstrap to make up for majority of the website styling
+
+- [Axios](https://github.com/axios/axios)
+
+   - Used to communicate with Express server to update data in the database
+
+- [Google Fonts](https://fonts.google.com/)
+
+   - For "Poppins" font that is usedi n website
+
+- [React Icons](https://react-icons.github.io/react-icons)
+
+    - Used for icons displayed in website
+
+
 
 ## Credits and Acknowledgement
 
-Include information on the website's license, as well as any attributions and credits.
+- [ChatGPT](https://chat.openai.com/chat)
+    - Used for help with information and typing
+    - Also helped with some of the debugging
+- [Doris](https://github.com/DS-NASA-61)
+    - Referred to her completed README.md
