@@ -54,7 +54,7 @@ export default function CocktailCard(props) {
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text className="text-muted">
-                    {/* By: {props.user.username} */}
+                    By: {props.user.username}
                 </Card.Text>
                 <Button variant="primary" size="sm" className="me-2" onClick={props.toggleCocktailModal}>View</Button>
                 <Button variant="danger" size="sm" onClick={props.deleteConfirmation}>Delete</Button>
@@ -63,16 +63,6 @@ export default function CocktailCard(props) {
         <Modal show={props.cocktailModalStatus} animation="true" centered="true" backdrop={true}>
             <Modal.Body>
                 <Card>
-                    <Card.Header>
-                        <Nav variant="tabs" defaultActiveKey="#first">
-                            <Nav.Item>
-                                <Nav.Link href="#first">Recipe</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="#link">Comments</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Card.Header>
                     <Card.Body>
                         <Card.Title>{props.viewName}</Card.Title>
                         <Card.Img variant="top" src={props.viewImageUrl} style={{ "maxHeight": "300px", "minHeight": "300px", "objectFit": "cover" }} />
@@ -90,7 +80,7 @@ export default function CocktailCard(props) {
                                         {props.viewIngredients ? props.viewIngredients.map((x, index) => {
                                             return (
                                                 <li>
-                                                    {x.measurements} {x.name} 
+                                                    {x.measurements} {x.name}
                                                 </li>
                                             )
                                         }) : null}

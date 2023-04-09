@@ -145,7 +145,6 @@ export default class NewCocktail extends React.Component {
                                             name="measurements"
                                             onChange={this.props.onUpdateField}
                                             value={this.props.measurements}
-                                            required
                                             isInvalid={this.props.addMeasurementError}
                                         />
                                         <Form.Control.Feedback type="invalid">
