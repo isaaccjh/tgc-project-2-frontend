@@ -658,7 +658,7 @@ export default class Cocktails extends React.Component {
                         addIngredient={this.addIngredient}
                         displayIngredients={this.state.displayIngredients}
                     />
-                    <div className="row" id="card-display">
+                    <div className="row m-0 p-0" id="card-display">
                         {this.state.posts.map(post => (
                             <div className="col-sm-12 col-md-6 col-lg-4 mt-3 justify-content-center" key={post._id}>
                                 <CocktailCard
