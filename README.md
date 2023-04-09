@@ -29,21 +29,21 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 
 Our website adheres to the 5 planes of UI/UX design, which include Strategy, Scope, Structure, Skeleton, and Surface, to ensure an optimal user experience.
 
-- **Strategy**<
+### **Strategy**
 
 The website's main goal is to create a platform for users to share and discover cocktail recipes, fostering a sense of community among cocktail enthusiasts.
 
-### Scope
+### **Scope**
 
 The goal of the website is simple - to allow people from all over the world to find cocktail recipes, as well as connect with fellow Cocktail enthusiasts.
 To achieve the website's goal, we have implemented features such as recipe submission and a search functionality that allows users to find recipes based on it's name, ingredient, drink type, and flavour profile. We plan on implementing more features, such as user registration and login, reviews, and comments in the near future.
 
-### Structure
+### **Structure**
 
 The Cocktail Central website is designed as a single-page application to provide users with a seamless and user-friendly experience. All features, including creating, deleting, editing, and viewing recipes, are integrated onto a single page for convenience. This means that users can access all of the app's features without navigating to different pages, making it easy to find and use the tools they need to create and share cocktail recipes.
 
 
-### Skeleton
+### **Skeleton**
 
 #### Interface Design
 
@@ -67,7 +67,7 @@ Overall, Cocktail Central's information design is designed to be simple and intu
 
 
 
-### Surface
+### **Surface**
 
 The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy. Overall, the font and colour choices in Cocktail Central are designed to be modern, clean, and visually appealing, while also providing a high level of readability and usability for users.
 
