@@ -94,9 +94,26 @@ Provide installation instructions, including dependencies, for users to get star
 
 ## Testing
 
-Include information on how to run tests for the website, as well as example test cases.
+| Test Case Description | Expected Result |
+| ---------------------| ------------------ |
+| **Posting a cocktail recipe** | |
+| Post a cocktail recipe with all required fields | Recipe is successfully added to the website |
+| Post a cocktail recipe without a name | Recipe is not added and user is prompted to enter a name |
+| Post a cocktail recipe without any ingredients | Recipe is not added and user is prompted to enter at least one ingredient |
+| Post a cocktail recipe with an invalid image URL | Recipe is added but the image is not displayed |
+| **Deleting a cocktail recipe** | |
+| Delete a cocktail recipe | Recipe is removed from the website |
+| Attempt to delete a recipe that does not exist | User is notified that the recipe does not exist |
+| **Editing a cocktail recipe** | |
+| Edit the name of an existing cocktail recipe | Recipe name is updated and displayed correctly |
+| Edit the ingredients of an existing cocktail recipe | Recipe ingredients are updated and displayed correctly |
+| Attempt to edit a recipe that does not exist | User is notified that the recipe does not exist |
+| **Filtering search results** | |
+| Search for cocktails with a specific ingredient | All cocktails with the ingredient are displayed |
+| Search for cocktails with a specific flavour profile | All cocktails with the flavour profile are displayed |
+| Filter search results to show only cocktails or mocktails | Only the selected type of recipe is displayed |
+| Filter search results to show only cocktails served in a specific type of glass | Only the selected type of glass is displayed |
 
-(Include the previously provided test cases here.)
 
 ## Technologies Used
 
