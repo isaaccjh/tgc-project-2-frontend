@@ -69,6 +69,20 @@ Overall, Cocktail Central's information design is designed to be simple and intu
 
 ### Surface
 
+The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy. Overall, the font and colour choices in Cocktail Central are designed to be modern, clean, and visually appealing, while also providing a high level of readability and usability for users.
+
+#### Font
+
+Cocktail Central uses the font Poppins throughout the app for a modern and clean look. The font is also highly readable, even at small sizes, which is important for users who may be browsing the site on mobile devices. 
+
+#### Colours
+
+The primary color is a bright orange color that is often associated with energy and excitement, fitting for a website about cocktails. 
+
+The secondary color is a light green color that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
+
+The background color is a light gray color that provides a clean and neutral background, allowing the vibrant colors of the cocktails to stand out. This color can also help reduce eye strain when users are browsing the app for an extended period of time.
+
 The visual design of the website, including the color scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
 
 ## Limitations and Future Implementation
