@@ -2,7 +2,7 @@
 
 Cocktail Central is a community-driven website that allows users to post, share, and discover cocktail recipes from all over the world. Users can create, review, and comment on a wide variety of cocktail recipes that include flavor profiles, ingredients, names, and preparation instructions.
 
-To ensure a safe and enjoyable experience for all users, we have implemented user login and authentication. Our website also features a visually appealing design with a carefully chosen color scheme and adheres to the 5 planes of UI/UX design to provide a seamless user experience.
+To ensure a safe and enjoyable experience for all users, we have implemented user login and authentication. Our website also features a visually appealing design with a carefully chosen Colour scheme and adheres to the 5 planes of UI/UX design to provide a seamless user experience.
 
 
 ## Table of Contents
@@ -23,7 +23,7 @@ To ensure a safe and enjoyable experience for all users, we have implemented use
 - **Recipe Reviews and Comments**: Users can review and leave comments on other users' cocktail recipes.
 - **Search Functionality**: Users can search for specific cocktails or ingredients to discover new recipes.
 - **Responsive Design**: The website is optimized for various devices and screen sizes to provide a consistent user experience across different platforms.
-- **Color Scheme**: The website features a visually appealing color scheme that complements the theme of cocktails and encourages user interaction.
+- **Colour Scheme**: The website features a visually appealing Colour scheme that complements the theme of cocktails and encourages user interaction.
 
 ## UI/UX Design
 
@@ -57,7 +57,7 @@ Navigation in Cocktail Central is designed to be intuitive and user-friendly. Th
 
 In addition, the navigation menu includes options for user authentication, such as login and registration, as well as links to the user's profile and settings. The menu design is consistent throughout the app, providing a seamless user experience.
 
-#### Information Design
+#### - Information Design
 
 Cocktail Central's information design is focused on making it easy for users to find and use the app's features. Recipe pages are designed with a clear and intuitive layout that highlights the most important information, such as ingredients and preparation instructions. User reviews and comments are also displayed prominently, providing valuable feedback and suggestions for improvement.
 
@@ -69,21 +69,27 @@ Overall, Cocktail Central's information design is designed to be simple and intu
 
 ### **Surface**
 
-The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy. Overall, the font and colour choices in Cocktail Central are designed to be modern, clean, and visually appealing, while also providing a high level of readability and usability for users.
+The visual design of the website, including the colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The Colours used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy. Overall, the font and colour choices in Cocktail Central are designed to be modern, clean, and visually appealing, while also providing a high level of readability and usability for users.
 
-#### Font
+#### - Font
 
 Cocktail Central uses the font Poppins throughout the app for a modern and clean look. The font is also highly readable, even at small sizes, which is important for users who may be browsing the site on mobile devices. 
 
-#### Colours
+#### - Colours
 
-The primary color is a bright orange color that is often associated with energy and excitement, fitting for a website about cocktails. 
+| Colour             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Colour | ![#FF5722](https://via.placeholder.com/10/FF5722?text=+) #FF5722 |
+| Secondary Colour | ![#8BC34A](https://via.placeholder.com/10/8BC34A?text=+) #8BC34A |
+| Background Oclour | ![#F2F2F2](https://via.placeholder.com/10/F2F2F2?text=+) #F2F2F2 |
 
-The secondary color is a light green color that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
+The primary colour is a bright orange colour that is often associated with energy and excitement, fitting for a website about cocktails. 
 
-The background color is a light gray color that provides a clean and neutral background, allowing the vibrant colors of the cocktails to stand out. This color can also help reduce eye strain when users are browsing the app for an extended period of time.
+The secondary colour is a light green colour that conveys freshness and vibrancy, which aligns well with the fresh and lively nature of cocktails. 
 
-The visual design of the website, including the color scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The colors used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
+The background colour is a light gray colour that provides a clean and neutral background, allowing the vibrant Colours of the cocktails to stand out. This Colour can also help reduce eye strain when users are browsing the app for an extended period of time.
+
+The visual design of the website, including the Colour scheme, typography, and imagery, has been carefully chosen to create an engaging and enjoyable user experience. The Colours used are inspired by cocktails and their ingredients, evoking a sense of freshness and vibrancy.
 
 ## Limitations and Future Implementation
 
