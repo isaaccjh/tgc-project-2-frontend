@@ -299,6 +299,10 @@ export default class Cocktails extends React.Component {
             return;
         }
 
+        if (this.state.ingredients === []) {
+            return;
+        }
+
         this.updateDistinctionsFormat();
 
         try {
