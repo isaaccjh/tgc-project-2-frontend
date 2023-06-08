@@ -204,7 +204,7 @@ export default class Cocktails extends React.Component {
     beginEdit = (postId) => {
         this.setState({
             postBeingEdited: postId,
-            updatedDistinctions:this.state.viewDistinctions,
+            updatedDistinctions: this.state.viewDistinctions,
             updatedPreparation: this.state.viewPreparation,
             updatedAlcoholic: this.state.viewAlcoholic,
             updatedName: this.state.viewName,
@@ -306,7 +306,7 @@ export default class Cocktails extends React.Component {
             return;
         }
 
-        if (this.state.ingredients === [] || !this.state.name || !this.state.glassType || this.state.distinctions === [] || !this.state.alcoholic || !this.state.imageUrl || !this.state.preparation ) {
+        if (this.state.ingredients === [] || !this.state.name || !this.state.glassType || this.state.distinctions === [] || !this.state.alcoholic || !this.state.imageUrl || !this.state.preparation) {
             return;
         }
 
@@ -674,55 +674,54 @@ export default class Cocktails extends React.Component {
                         displayIngredients={this.state.displayIngredients}
                     />
                     <div className="row m-3 p-0 g-4" id="card-display">
-                        {this.state.posts.map(post => (
-                           
-                                <CocktailCard
-                                    // READ ALL COCKTAIL POSTS
-                                    name={post.name}
-                                    imageUrl={post.imageUrl}
-                                    user={this.state.users.find(user => user._id === post.userId)}
-                                    cocktailModalStatus={this.state.cocktailModal}
-                                    cocktailModalId={this.state.activeCocktailModal}
-                                    // READ SINGLE COCKTAIL POST
-                                    toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
-                                    closeCocktailModal={this.closeCocktailModal}
-                                    viewGlassType={this.state.viewGlassType}
-                                    viewAlcoholic={this.state.viewAlcoholic}
-                                    viewImageUrl={this.state.viewImageUrl}
-                                    viewDistinctions={this.state.viewDistinctions}
-                                    viewName={this.state.viewName}
-                                    viewPreparation={this.state.viewPreparation}
-                                    viewIngredients={this.state.viewIngredients}
-                                    //UPDATE COCKTAIL POST
-                                    updatedName={this.state.updatedName}
-                                    updatedImageUrl={this.state.updatedImageUrl}
-                                    updatedAlcoholic={this.state.updatedAlcoholic}
-                                    updatedDistinctions={this.state.updatedDistinctions}
-                                    updatedGlassType={this.state.updatedGlassType}
-                                    updatedPreparation={this.state.updatedPreparation}
-                                    updateDistinctions={this.updateDistinctions}
-                                    nameError={this.state.nameError}
-                                    glassTypeError={this.state.glassTypeError}
-                                    alcoholicError={this.state.alcoholicError}
-                                    preparationError={this.state.preparationError}
-                                    imageUrlError={this.state.imageUrlError}
-                                    distinctionError={this.state.distinctionError}
-                                    createDistinctions={this.createDistinctions}
-                                    // FUNCTIONS
-                                    onUpdateField={this.onUpdateField}
-                                    deletePost={() => this.deletePost(post._id)}
-                                    deleteConfirmation={() => this.confirmDelete(post._id)}
-                                    cancelDelete={this.cancelDelete}
-                                    delete={this.state.deleteConfirmation}
-                                    postBeingEdited={this.state.postBeingEdited}
-                                    beginEdit={() => this.beginEdit(post._id)}
-                                    cancelEdit={this.cancelEdit}
-                                    deleteFlavour={this.deleteViewFlavourDistinction}
-                                    addDistinction={this.addToUpdatedDistinction}
-                                    updateFlavour={this.updateFlavour}
-                                    confirmEdit={this.confirmEdit}
-                                />
-                        ))}
+                        {this.state.posts && this.state.posts.length > 1 ? this.state.posts.map(post => (
+                            <CocktailCard
+                                // READ ALL COCKTAIL POSTS
+                                name={post.name}
+                                imageUrl={post.imageUrl}
+                                user={this.state.users.find(user => user._id === post.userId)}
+                                cocktailModalStatus={this.state.cocktailModal}
+                                cocktailModalId={this.state.activeCocktailModal}
+                                // READ SINGLE COCKTAIL POST
+                                toggleCocktailModal={() => this.toggleCocktailModal(post._id)}
+                                closeCocktailModal={this.closeCocktailModal}
+                                viewGlassType={this.state.viewGlassType}
+                                viewAlcoholic={this.state.viewAlcoholic}
+                                viewImageUrl={this.state.viewImageUrl}
+                                viewDistinctions={this.state.viewDistinctions}
+                                viewName={this.state.viewName}
+                                viewPreparation={this.state.viewPreparation}
+                                viewIngredients={this.state.viewIngredients}
+                                //UPDATE COCKTAIL POST
+                                updatedName={this.state.updatedName}
+                                updatedImageUrl={this.state.updatedImageUrl}
+                                updatedAlcoholic={this.state.updatedAlcoholic}
+                                updatedDistinctions={this.state.updatedDistinctions}
+                                updatedGlassType={this.state.updatedGlassType}
+                                updatedPreparation={this.state.updatedPreparation}
+                                updateDistinctions={this.updateDistinctions}
+                                nameError={this.state.nameError}
+                                glassTypeError={this.state.glassTypeError}
+                                alcoholicError={this.state.alcoholicError}
+                                preparationError={this.state.preparationError}
+                                imageUrlError={this.state.imageUrlError}
+                                distinctionError={this.state.distinctionError}
+                                createDistinctions={this.createDistinctions}
+                                // FUNCTIONS
+                                onUpdateField={this.onUpdateField}
+                                deletePost={() => this.deletePost(post._id)}
+                                deleteConfirmation={() => this.confirmDelete(post._id)}
+                                cancelDelete={this.cancelDelete}
+                                delete={this.state.deleteConfirmation}
+                                postBeingEdited={this.state.postBeingEdited}
+                                beginEdit={() => this.beginEdit(post._id)}
+                                cancelEdit={this.cancelEdit}
+                                deleteFlavour={this.deleteViewFlavourDistinction}
+                                addDistinction={this.addToUpdatedDistinction}
+                                updateFlavour={this.updateFlavour}
+                                confirmEdit={this.confirmEdit}
+                            />
+                        )) : <p>Loading...</p>}
                     </div>
                 </div>
             </div>
